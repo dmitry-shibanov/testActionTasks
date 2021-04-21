@@ -1,0 +1,23 @@
+name: Setup-java
+on: [push]
+
+jobs:
+  build:
+    name: Setup-java ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        distribution: ['adopt', 'zulu']
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v2
+        with:
+          java-version: 16
+          distribution: ${{ matrix.distribution }}
+          architecture: 'x64'
+
+      - name: Java -version
+        run: java -version
