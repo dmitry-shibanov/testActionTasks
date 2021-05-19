@@ -10,7 +10,7 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         distribution: ['adopt-hotspot', 'adopt-openj9']
-        version: [11, 12, 13, 14, 8.0 9.0]
+        version: [11, 12, 13, 14, 8.0, 9.0]
     steps:
       - uses: actions/checkout@v2
         
