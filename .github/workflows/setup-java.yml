@@ -9,16 +9,25 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-        distribution: ['adopt-hotspot', 'zulu', 'adopt-openj9']
+        distribution: ['adopt-hotspot', 'adopt-openj9']
         version: [11, 12, 13, 14, 8.0 9.0]
     steps:
       - uses: actions/checkout@v2
-
-      - uses: MarcelCoding/setup-java@main
+        
+      - uses: actions/setup-java@v2
         with:
           java-version: ${{ matrix.version }}
           distribution: ${{ matrix.distribution }}
-          architecture: 'x64'
+          architecture: 'x86'
+
+      - name: Java -version
+        run: java -version
+        
+      - uses: actions/setup-java@v2
+        with:
+          java-version: ${{ matrix.version }}
+          distribution: ${{ matrix.distribution }}
+          architecture: 'x32'
 
       - name: Java -version
         run: java -version
