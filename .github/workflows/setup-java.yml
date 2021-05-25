@@ -3,42 +3,16 @@ on: [push]
 
 jobs:
   build:
-    name: Setup-java ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-#         distribution: ['adopt-hotspot', 'adopt-openj9']
-#         version: [11, 12, 13, 14, 8.0, 9.0]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ['3.6.8', '3.7.9', '3.8.10', '3.9.5']
     steps:
-#       - uses: actions/checkout@v2
-        
-#       - uses: actions/setup-java@v2
-#         with:
-#           java-version: ${{ matrix.version }}
-#           distribution: ${{ matrix.distribution }}
-#           architecture: 'x86'
-
-#       - name: Java -version
-#         run: java -version
-        
-#       - uses: actions/setup-java@v2
-#         with:
-#           java-version: ${{ matrix.version }}
-#           distribution: ${{ matrix.distribution }}
-#           architecture: 'x32'
-
-#       - name: Java -version
-#         run: java -version
-      - run: |
-          node --version
-          yarn --version
-          yarn set version berry
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          node-version: '12.22.0'
-          
-      - run: |
-          node --version
-          yarn --version
+          python-version: ${{ matrix.python-version }}
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
