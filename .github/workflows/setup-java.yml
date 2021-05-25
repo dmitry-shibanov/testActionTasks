@@ -16,7 +16,9 @@ jobs:
         run: |
           $pythonToolcachePath = Join-Path -Path "C:\hostedtoolcache\windows" -ChildPath "Python"
           $pythonVersion = Join-Path -Path $pythonToolcachePath -ChildPath ${{ matrix.python-version }}
-          Remove-Item -Path $pythonVersion -Recurse -Force
+          if (Test-Path -Path $pythonVersion) {
+            Remove-Item -Path $pythonVersion -Recurse -Force
+          }
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
