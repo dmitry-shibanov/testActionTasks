@@ -25,3 +25,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
+      
+      - name: Test for windows
+        if: ${{ runner.os == 'Windows' }}
+        run: time
