@@ -7,25 +7,22 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ['3.6.8', '3.7.9', '3.8.10', '3.9.5', '3.9.4']
     steps:
       - uses: actions/checkout@v2
-      - name: remove dir
-        shell: pwsh
-        if: ${{ runner.os == 'Windows' }}
-        run: |
-          $pythonToolcachePath = Join-Path -Path "C:\hostedtoolcache\windows" -ChildPath "Python"
-          $pythonVersion = Join-Path -Path $pythonToolcachePath -ChildPath ${{ matrix.python-version }}
-          if (Test-Path -Path $pythonVersion) {
-            Remove-Item -Path $pythonVersion -Recurse -Force
-          }
-      - name: Set up Python
-        uses: actions/setup-python@v2
+#       - name: remove dir
+#         shell: pwsh
+#         if: ${{ runner.os == 'Windows' }}
+#         run: |
+#           $pythonToolcachePath = Join-Path -Path "C:\hostedtoolcache\windows" -ChildPath "Python"
+#           $pythonVersion = Join-Path -Path $pythonToolcachePath -ChildPath ${{ matrix.python-version }}
+#           if (Test-Path -Path $pythonVersion) {
+#             Remove-Item -Path $pythonVersion -Recurse -Force
+#           }
+      - name: Set up Java
+        uses: actions/setup-java@v2
         with:
-          python-version: ${{ matrix.python-version }}
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
-      
-      - name: Test for windows
-        if: ${{ runner.os == 'Windows' }}
-        run: time
+          java-version: 16
+          distribution: adopt
+          check-latest: true
+      - name: Display Java version
+        run: java -version
