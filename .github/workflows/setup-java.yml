@@ -26,3 +26,15 @@ jobs:
           check-latest: true
       - name: Display Java version
         run: java -version
+      
+      - run: |
+          yarn add express
+          rm -rf node_modules
+
+      - uses: actions/setup-node@v2
+        id: cache
+        with:
+          node-version: '14'
+          cache: yarn
+      - run: echo ${{ steps.cache.outputs }}
+      - run: yarn install
