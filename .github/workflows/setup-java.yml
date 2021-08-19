@@ -28,7 +28,9 @@ jobs:
         run: java -version
       
       - run: |
+          yarn init -y
           yarn add express
+          yarn install
           rm -rf node_modules
 
       - uses: actions/setup-node@v2
