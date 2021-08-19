@@ -38,5 +38,5 @@ jobs:
         with:
           node-version: '14'
           cache: yarn
-      - run: echo ${{ steps.cache.outputs }}
+      - run: echo ${{ steps.cache.outputs.cache-hit }}
       - run: yarn install
