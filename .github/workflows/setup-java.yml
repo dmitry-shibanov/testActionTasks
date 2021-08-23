@@ -22,4 +22,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: npm config get cache
+      - run: |
+          npm config get cache
+          node -e "const exec = require('child_process'); const fs = require('fs'); const output = exec.execSync('npm config get cache').toString().trim(); console.log(output); console.log(fs.existsSync(output));"
