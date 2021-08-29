@@ -40,6 +40,7 @@ jobs:
           distribution: adopt-openj9
           
       - run: |
+          ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\8.0.292-10\x64
           ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\8.0.292-10\x64\jre
           ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\8.0.292-10\x64\bin
           ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\11.0.12-7\x64
