@@ -32,7 +32,14 @@ jobs:
         with:
           java-version: 8.0.292+10
           distribution: adopt-openj9
+  
+      - name: Set up JDK
+        uses: actions/setup-java@v2.3.0
+        with:
+          java-version: 11
+          distribution: adopt-openj9
           
       - run: |
           ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\8.0.292-10\x64\jre
           ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\8.0.292-10\x64\bin
+          ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\11.0.12-7\x64
