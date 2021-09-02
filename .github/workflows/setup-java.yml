@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest, windows-2022]
+        os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - uses: actions/checkout@v2
 #       - name: remove dir
@@ -25,23 +25,12 @@ jobs:
           node-version: '14'
       - run: |
           npm config get cache
-          node -e "const exec = require('child_process'); const fs = require('fs'); const output = exec.execSync('npm config get cache').toString().trim(); console.log(output); console.log(fs.existsSync(output));"
-      
-      - name: Set up JDK
-        uses: actions/setup-java@v2.3.0
-        with:
-          java-version: 8.0.292+10
-          distribution: adopt-openj9
+          node -e "const exec = require('child_process'); const fs = require('fs'); const output = exec.execSync('yarn cache dir').toString().trim(); console.log(output); console.log(fs.existsSync(output));"
+    
   
-      - name: Set up JDK
-        uses: actions/setup-java@v2.3.0
-        with:
-          java-version: 11
-          distribution: adopt-openj9
-          
-      - run: |
-          ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\8.0.292-10\x64
-          ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\8.0.292-10\x64\jre
-          ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\8.0.292-10\x64\bin
-          ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\11.0.12-7\x64
-          ls C:\hostedtoolcache\windows\Java_Adopt-OpenJ9_jdk\8.0.292-10\x64\jre\bin
+      - name: Check yarn directory
+        shell: bash
+        run: |
+          checkDir=$(yarn cache dir)
+          echo $checkDir
+          [[ -d $checkDir ]] && echo "This directory exists!"
