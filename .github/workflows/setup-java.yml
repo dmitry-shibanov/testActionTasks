@@ -34,6 +34,8 @@ jobs:
           checkDir=$(yarn cache dir)
           echo $checkDir
           [[ -d $checkDir ]] && echo "This directory exists!"
+      
+      - run: echo "::error ::some error" 
           
       - uses: dmitry-shibanov/setup-python@change-branch-to-update-versions-manifest-file
         with:
