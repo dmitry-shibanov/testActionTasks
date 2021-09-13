@@ -34,3 +34,11 @@ jobs:
           checkDir=$(yarn cache dir)
           echo $checkDir
           [[ -d $checkDir ]] && echo "This directory exists!"
+          
+      - uses: dmitry-shibanov/setup-python@change-branch-to-update-versions-manifest-file
+        with:
+          python-version: 3.8.12
+          
+      - name: Check python version 
+        run: python --version
+        
