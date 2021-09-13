@@ -37,7 +37,7 @@ jobs:
           
       - uses: dmitry-shibanov/setup-python@change-branch-to-update-versions-manifest-file
         with:
-          python-version: 3.8.12
+          python-version: 3.8.11
           
       - name: Check python version 
         run: python --version
