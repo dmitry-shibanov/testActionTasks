@@ -37,7 +37,7 @@ jobs:
       
       - run: echo "::error ::some error" 
           
-      - uses: dmitry-shibanov/setup-python@change-branch-to-update-versions-manifest-file
+      - uses: actions/setup-python@v2
         with:
           python-version: 3.8.12
           
