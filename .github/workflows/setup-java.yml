@@ -44,12 +44,12 @@ jobs:
 #       - name: Check python version 
 #         run: python --version
         
-      - uses: actions/setup-java@v2
-        with:
-          java-version: 17-ea
-          distribution: zulu
+#       - uses: actions/setup-java@v2
+#         with:
+#           java-version: 17-ea
+#           distribution: zulu
           
-      - run: java -version
+#       - run: java -version
 
       - name: Setup java
         uses: actions/setup-java@v1
