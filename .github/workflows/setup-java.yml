@@ -37,10 +37,14 @@ jobs:
       
       - run: echo "::error ::some error" 
           
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.8.12
+#       - uses: actions/setup-python@v2
+#         with:
+#           python-version: 3.8.12
           
-      - name: Check python version 
-        run: python --version
+#       - name: Check python version 
+#         run: python --version
         
+      - uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: zulu
