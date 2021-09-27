@@ -11,7 +11,9 @@ jobs:
         os: [ubuntu-latest, ubuntu-18.04]
     steps:
       - uses: actions/checkout@v2
-      - run: yarn add express
+      - run: |
+          yarn init --yes
+          yarn add express
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
