@@ -21,7 +21,7 @@ jobs:
       - run: |
           npm config get cache
           node -e "const exec = require('child_process'); const fs = require('fs'); const output = exec.execSync('yarn cache dir').toString().trim(); console.log(output); console.log(fs.existsSync(output));"
-    
+          yarn audit
 
       - uses: actions/upload-artifact@v2
         with:
