@@ -11,10 +11,10 @@ jobs:
         os: [ubuntu-18.04]
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          yarn init --yes
-          yarn add body-parser nodemon mongoose
-      - uses: actions/setup-node@v2.2.0
+#       - run: |
+#           yarn init --yes
+#           yarn add body-parser nodemon mongoose
+      - uses: actions/setup-node@v2.3.0
         with:
           node-version: '14'
           cache: yarn
@@ -23,7 +23,7 @@ jobs:
           node -e "const exec = require('child_process'); const fs = require('fs'); const output = exec.execSync('yarn cache dir').toString().trim(); console.log(output); console.log(fs.existsSync(output));"
           yarn audit
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: yarn.lock
-          path: yarn.lock
+#       - uses: actions/upload-artifact@v2
+#         with:
+#           name: yarn.lock
+#           path: yarn.lock
