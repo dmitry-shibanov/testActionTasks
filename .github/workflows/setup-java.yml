@@ -11,9 +11,9 @@ jobs:
         os: [ubuntu-18.04]
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          yarn init --yes
-          yarn add express body-parser nodemon mongoose
+#       - run: |
+#           yarn init --yes
+#           yarn add express body-parser nodemon mongoose
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
