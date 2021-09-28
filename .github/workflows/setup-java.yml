@@ -14,7 +14,7 @@ jobs:
 #       - run: |
 #           yarn init --yes
 #           yarn add body-parser nodemon mongoose
-      - uses: actions/setup-node@v2.2.0
+      - uses: actions/setup-node@v2.3.0
         with:
           node-version: '14'
           cache: yarn
