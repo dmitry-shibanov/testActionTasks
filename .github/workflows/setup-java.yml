@@ -11,23 +11,9 @@ jobs:
         os: [ubuntu-18.04]
     steps:
       - uses: actions/checkout@v2
-#       - run: |
-#           yarn init --yes
-#           yarn add body-parser nodemon mongoose
-      - uses: actions/setup-node@v2.3.0
+      - uses: actions/setup-java@v2
         with:
-          node-version: '14'
-          cache: yarn
-      - run: |
-          npm config get cache
-          node -e "const exec = require('child_process'); const fs = require('fs'); const output = exec.execSync('yarn cache dir').toString().trim(); console.log(output); console.log(fs.existsSync(output));"
-          ls /home/runner/.cache/yarn/v6
-          ls /home/runner/.cache/yarn
-          yarn install
-          ls /home/runner/.cache/yarn
-          ls /home/runner/.cache/yarn/v6
-
-#       - uses: actions/upload-artifact@v2
-#         with:
-#           name: yarn.lock
-#           path: yarn.lock
+          distribution: temurin
+          java-version: 8
+          arch: aarch64
+      - run: java -version
