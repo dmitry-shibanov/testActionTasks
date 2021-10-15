@@ -22,7 +22,8 @@ jobs:
       - run: |
           node --version
           npm --version
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.10.0-rc.1
+      - run: node -e "const os = require('os'); process.stdout.write('[warning]some error' + os.EOL)"
+#       - name: Set up Python
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: 3.10.0-rc.1
