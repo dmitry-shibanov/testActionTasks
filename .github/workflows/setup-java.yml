@@ -19,7 +19,7 @@ jobs:
       - run: |
           node --version
           npm --version
-          npm install
+          npm ci
       
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
