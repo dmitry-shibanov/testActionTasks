@@ -8,24 +8,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-18.04, windows-latest, macos-latest]
+        os: [ubuntu-18.04]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-java@v2
-        with:
-          distribution: temurin
-          java-version: 17
-      - run: java -version
+
       - uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: 12
+      
       - run: |
           node --version
           npm --version
-      - run: |
-          node -e "const os = require('os'); process.stdout.write('[warning]some error' + os.EOL)"
-          node -e "const os = require('os'); process.stdout.write('::warning::some error' + os.EOL)"
-#       - name: Set up Python
-#         uses: actions/setup-python@v2
-#         with:
-#           python-version: 3.10.0-rc.1
+          npm install
+      
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: package-lock.json
+          path: package-lock.json
