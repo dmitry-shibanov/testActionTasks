@@ -22,7 +22,9 @@ jobs:
       - run: |
           node --version
           npm --version
-      - run: node -e "const os = require('os'); process.stdout.write('[warning]some error' + os.EOL)"
+      - run: |
+          node -e "const os = require('os'); process.stdout.write('[warning]some error' + os.EOL)"
+          node -e "const os = require('os'); process.stdout.write('::warning some error' + os.EOL)"
 #       - name: Set up Python
 #         uses: actions/setup-python@v2
 #         with:
