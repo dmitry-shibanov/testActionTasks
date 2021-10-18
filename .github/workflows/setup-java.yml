@@ -42,4 +42,7 @@ jobs:
         with:
           python-version: 'pypy-3.7-v7.3.6'
           # architecture: x64
-      - run: python --version
+      - run: |
+          python --version
+          pip --version
+          pypy --version
