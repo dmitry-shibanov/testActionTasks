@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: 14.x
       #- run: npm install -g yarn <== yarn works w/o this line.
-      - name: yarn --version
+      - run: yarn --version
       - name: install deps
         run: |
           yarn install
