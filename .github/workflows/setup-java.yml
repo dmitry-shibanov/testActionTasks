@@ -38,7 +38,7 @@ jobs:
           python-version: '3.7'
       - run: |
           pip --version
-          pip install request
+          pip install numpy
   node-docker:
     runs-on: ubuntu-latest
     container:
