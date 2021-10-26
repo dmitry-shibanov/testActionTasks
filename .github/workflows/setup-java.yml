@@ -16,7 +16,7 @@ jobs:
           distribution: temurin
           java-version: 17
       - run: java -version
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2.1.1
 #         with:
 #           node-version: 17
       - run: npm i -g @lhci/cli@0.4.x
