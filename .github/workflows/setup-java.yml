@@ -21,7 +21,7 @@ jobs:
 #           node-version: 17
       - run: |
           yarn --version
-          yarn set version 3.x
+          yarn set version latest
           yarn --version
           npm install -g yarn@1.21
           yarn --version
