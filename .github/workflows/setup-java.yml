@@ -25,6 +25,8 @@ jobs:
           yarn --version
           npm install -g yarn@1.21
           yarn --version
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
       - run: npm i -g @lhci/cli@0.4.x
       - uses: actions/setup-go@v2
         with:
