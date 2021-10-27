@@ -19,6 +19,12 @@ jobs:
       - uses: actions/setup-node@v2.1.1
 #         with:
 #           node-version: 17
+      - run: |
+          yarn --version
+          yarn set version 2.0.0-rc.30
+          yarn --version
+          npm install -g yarn@1.21
+          yarn --version
       - run: npm i -g @lhci/cli@0.4.x
       - uses: actions/setup-go@v2
         with:
