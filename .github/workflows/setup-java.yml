@@ -19,11 +19,13 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-      - run: |
-          yarn --version
-          yarn global add  serverless
-          serverless -v
-      - run: serverless -v
+      - name: Install Firebase Tools
+        run: |
+          yarn global add firebase-tools
+          echo "$(yarn global bin)" >> $GITHUB_PATH
+      - name: Use Firebase Tools
+        run: |
+          firebase --version
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
       - run: npm i -g @lhci/cli@0.4.x
