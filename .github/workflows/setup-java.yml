@@ -28,6 +28,14 @@ jobs:
           firebase --version
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.x
+      - run: dotnet --version
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.x
+      - run: dotnet --version
       - run: npm i -g @lhci/cli@0.4.x
       - uses: actions/setup-go@v2
         with:
