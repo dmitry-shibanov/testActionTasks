@@ -11,6 +11,13 @@ jobs:
         os: [ubuntu-18.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
+      - name: Setup NODE
+        uses: actions/setup-node@v1
+        with:
+          node-version: "17"
+        env:
+          NODE_OPTIONS: "--openssl-legacy-provider"
+      - run: node --version
       - uses: actions/setup-java@v2
         with:
           distribution: temurin
@@ -26,16 +33,7 @@ jobs:
       - name: Use Firebase Tools
         run: |
           firebase --version
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 5.x
-      - run: dotnet --version
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.x
-      - run: dotnet --version
+
       - run: npm i -g @lhci/cli@0.4.x
       - uses: actions/setup-go@v2
         with:
