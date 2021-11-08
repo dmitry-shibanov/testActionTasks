@@ -12,9 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup NODE
-        uses: dmitry-shibanov/setup-node@v-dmshib/cache-upload-issue-with-EBADF
+        uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "lts/gallium"
           cache: yarn
 #       - run: echo 'NODE_OPTIONS="--openssl-legacy-provider"' >> $GITHUB_ENV
       - run: |
@@ -47,6 +47,7 @@ jobs:
 #           node --version
 #           npm --version
       - run: |
+          node --version
           node -e "const os = require('os'); process.stdout.write('[warning]some error' + os.EOL)"
           node -e "const os = require('os'); process.stdout.write('::warning::some error' + os.EOL)"
 #       - name: Set up Python
