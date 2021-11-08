@@ -19,6 +19,7 @@ jobs:
 #       - run: echo 'NODE_OPTIONS="--openssl-legacy-provider"' >> $GITHUB_ENV
       - run: |
           cacheDir=$(yarn cache dir)
+          echo "cacheDir is $cacheDir"
           rm -rf $cacheDir
 #       - uses: actions/setup-java@v2
 #         with:
