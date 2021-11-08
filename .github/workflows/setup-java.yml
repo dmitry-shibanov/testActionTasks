@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup NODE
-        uses: actions/setup-node@v2
+        uses: dmitry-shibanov/setup-node@v-dmshib/cache-upload-issue-with-EBADF
         with:
           node-version: "14"
           cache: yarn
