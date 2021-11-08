@@ -15,9 +15,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "17"
-        env:
-          NODE_OPTIONS: "--openssl-legacy-provider"
-      - run: node --version
+      - run: echo 'NODE_OPTIONS="--openssl-legacy-provider"' >> $GITHUB_ENV
+      - run: |
+          echo $NODE_OPTIONS
+          node --version
       - uses: actions/setup-java@v2
         with:
           distribution: temurin
