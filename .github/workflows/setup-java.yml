@@ -21,6 +21,11 @@ jobs:
           cacheDir=$(yarn cache dir)
           echo "cacheDir is $cacheDir"
           rm -rf $cacheDir
+      - uses: dmitry-shibanov/setup-dotnet@v-dmshib/test-support-multiple-versions
+        with:
+          dotnet-version: |
+            3.1.x
+            '5.0'
 #       - uses: actions/setup-java@v2
 #         with:
 #           distribution: temurin
