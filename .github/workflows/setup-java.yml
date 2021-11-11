@@ -15,13 +15,16 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: Check cache
-        shell: bash
-        run: |
-          cacheFolder=$(npm config get cache)
-          ls -lA $cacheFolder
-          npm install -g npm@latest
-          ls -lA $cacheFolder
+      - run: |
+          yarn set version 3.x
+          yarn --version
+#       - name: Check cache
+#         shell: bash
+#         run: |
+#           cacheFolder=$(npm config get cache)
+#           ls -lA $cacheFolder
+#           npm install -g npm@latest
+#           ls -lA $cacheFolder
 #       - uses: Xlient/setup-dotnet@support-multiple-versions
 #         with:
 #           include-prerelease: true
