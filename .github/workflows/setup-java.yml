@@ -26,6 +26,7 @@ jobs:
           yarn config get cacheFolder
           yarn add express
           ls .yarn
+          ls .yarn/cache
 #       - name: Check cache
 #         shell: bash
 #         run: |
