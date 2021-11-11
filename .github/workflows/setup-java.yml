@@ -12,8 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup NODE
-        uses: actions/setup-node@v2
-#         with:
+        uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
+        with:
+          npm-version: latest
 #           node-version: 14
 
       - uses: Xlient/setup-dotnet@support-multiple-versions
