@@ -11,17 +11,23 @@ jobs:
         os: [ubuntu-18.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
-      - name: Setup NODE
-        uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
-        with:
-          npm-version: latest
+#       - name: Setup NODE
+#         uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
+#         with:
+#           npm-version: latest
 #           node-version: 14
 
       - uses: Xlient/setup-dotnet@support-multiple-versions
         with:
+          include-prerelease: true
           dotnet-version: |
             3.1.x
             5.0
+            2
+            6
+      - run: |
+          dotnet --info
+          dotnet --list-runtimes
 #       - uses: actions/setup-java@v2
 #         with:
 #           distribution: temurin
