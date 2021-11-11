@@ -14,14 +14,9 @@ jobs:
       - name: Setup NODE
         uses: actions/setup-node@v2
         with:
-          node-version: "lts/gallium"
-          cache: yarn
-#       - run: echo 'NODE_OPTIONS="--openssl-legacy-provider"' >> $GITHUB_ENV
-      - run: |
-          cacheDir=$(yarn cache dir)
-          echo "cacheDir is $cacheDir"
-          rm -rf $cacheDir
-      - uses: dmitry-shibanov/setup-dotnet@v-dmshib/test-support-multiple-versions
+          node-version: 16
+
+      - uses: Xlient/setup-dotnet@support-multiple-versions
         with:
           dotnet-version: |
             3.1.x
@@ -53,9 +48,12 @@ jobs:
 #           npm --version
       - run: |
           node --version
+          npm --version
+          npm install -g npm@latest
           node -e "const os = require('os'); process.stdout.write('[warning]some error' + os.EOL)"
           node -e "const os = require('os'); process.stdout.write('::warning::some error' + os.EOL)"
           npm install -g npm@latest
+          npm --version
 #       - name: Set up Python
 #         uses: actions/setup-python@v2
 #         with:
