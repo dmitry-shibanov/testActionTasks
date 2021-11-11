@@ -11,23 +11,28 @@ jobs:
         os: [ubuntu-18.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
-#       - name: Setup NODE
-#         uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
-#         with:
-#           npm-version: latest
-#           node-version: 14
-
-      - uses: Xlient/setup-dotnet@support-multiple-versions
+      - name: Setup NODE
+        uses: action/setup-node@v2
         with:
-          include-prerelease: true
-          dotnet-version: |
-            3.1.x
-            5.0
-            2.1
-            6.0
-      - run: |
-          dotnet --info
-          dotnet --list-runtimes
+          node-version: 14
+      - name: Check cache
+        shell: bash
+        run: |
+          cacheFolder=$(npm config get cache)
+          ls -lA $cacheFolder
+          npm install -g npm@latest
+          ls -lA $cacheFolder
+#       - uses: Xlient/setup-dotnet@support-multiple-versions
+#         with:
+#           include-prerelease: true
+#           dotnet-version: |
+#             3.1.x
+#             5.0
+#             2.1
+#             6.0
+#       - run: |
+#           dotnet --info
+#           dotnet --list-runtimes
 #       - uses: actions/setup-java@v2
 #         with:
 #           distribution: temurin
