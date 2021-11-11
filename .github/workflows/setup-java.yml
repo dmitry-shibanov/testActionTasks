@@ -24,6 +24,8 @@ jobs:
           yarn set version 3.x
           yarn --version
           yarn config get cacheFolder
+          yarn add express
+          ls .yarn
 #       - name: Check cache
 #         shell: bash
 #         run: |
