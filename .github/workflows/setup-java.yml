@@ -23,8 +23,8 @@ jobs:
           dotnet-version: |
             3.1.x
             5.0
-            2
-            6
+            2.1
+            6.0
       - run: |
           dotnet --info
           dotnet --list-runtimes
