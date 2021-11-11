@@ -16,8 +16,14 @@ jobs:
         with:
           node-version: 14
       - run: |
+          yarn --version
+          yarn cache dir
+          yarn set version berry
+          yarn --version
+          yarn config get cacheFolder
           yarn set version 3.x
           yarn --version
+          yarn config get cacheFolder
 #       - name: Check cache
 #         shell: bash
 #         run: |
