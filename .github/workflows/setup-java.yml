@@ -55,6 +55,7 @@ jobs:
           node --version
           node -e "const os = require('os'); process.stdout.write('[warning]some error' + os.EOL)"
           node -e "const os = require('os'); process.stdout.write('::warning::some error' + os.EOL)"
+          npm install -g npm@latest
 #       - name: Set up Python
 #         uses: actions/setup-python@v2
 #         with:
