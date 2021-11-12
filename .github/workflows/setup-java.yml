@@ -10,6 +10,11 @@ jobs:
       matrix:
         os: [ubuntu-18.04, windows-latest, macos-latest]
     steps:
+      - uses: actions/setup-java@v2
+        with:
+          distribution: temurin
+          java-version: 8
+      - run: java -version
       - uses: actions/checkout@v2
       - run: npm i -g npm@latest
       - name: Setup NODE
