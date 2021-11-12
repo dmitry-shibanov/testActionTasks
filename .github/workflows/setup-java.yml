@@ -11,6 +11,7 @@ jobs:
         os: [ubuntu-18.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
+      - run: npm in -g npm@latest
       - name: Setup NODE
         uses: actions/setup-node@v2
         with:
