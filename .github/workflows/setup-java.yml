@@ -68,6 +68,6 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
-
+    - run: echo $PATH
     - name: npm install
       run: npm install
