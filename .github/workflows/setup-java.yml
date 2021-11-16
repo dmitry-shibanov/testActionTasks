@@ -55,3 +55,19 @@ jobs:
           node-version: ${{ matrix.node_version }}
           architecture: ${{ matrix.architecture }}
       - run: npm install
+
+  test-alpine:
+    runs-on: ubuntu-latest
+    container:
+      image: php:7.3-fpm-alpine
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: use Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 12.x
+
+    - name: npm install
+      run: npm install
