@@ -68,6 +68,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
+        architecture: arm64
     - run: |
         echo $PATH
         ls /__t/node/12.22.7/x64/bin
