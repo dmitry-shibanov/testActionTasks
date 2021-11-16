@@ -70,6 +70,6 @@ jobs:
         node-version: 12.x
     - run: |
         echo $PATH
-        la /__t/node/12.22.7/x64/bin
+        ls /__t/node/12.22.7/x64/bin
     - name: npm install
       run: npm install
