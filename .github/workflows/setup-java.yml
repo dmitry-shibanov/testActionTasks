@@ -57,7 +57,7 @@ jobs:
 #       - run: npm install
 
   test-alpine:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     container:
       image: php:7.3-fpm-alpine
 
