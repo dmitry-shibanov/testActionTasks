@@ -65,17 +65,17 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: use Node
-      uses: actions/setup-node@v2
+      uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
       with:
-        node-version: 12.x
-        architecture: arm64
-    - run: |
-        echo $PATH
-        ls /__t/node/12.22.7/x64/bin
-        ln -s /__t/node/12.22.7/x64/bin/node /usr/bin/node
-        apk --no-cache add ca-certificates wget
-        wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
-        wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk
-        apk add glibc-2.28-r0.apk
+        node-version: 17.1.0
+#         architecture: arm64
+#     - run: |
+#         echo $PATH
+#         ls /__t/node/12.22.7/x64/bin
+#         ln -s /__t/node/12.22.7/x64/bin/node /usr/bin/node
+#         apk --no-cache add ca-certificates wget
+#         wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+#         wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk
+#         apk add glibc-2.28-r0.apk
     - name: npm install
       run: npm install
