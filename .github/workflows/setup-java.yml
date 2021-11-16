@@ -17,6 +17,11 @@ jobs:
           java-version: 17
           check-latest: true
       - run: java -version
+      - run: |
+          majorVersion=$(node -v | cut -d. -f1 | cut -d'v' -f2)
+          npm -v
+          npm i -g npm --prefix=/usr/local/opt/node@$majorVersion
+          npm -v
 #       - uses: actions/checkout@v2
 #       - run: npm i -g npm@latest
 #       - name: Setup NODE
