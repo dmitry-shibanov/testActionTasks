@@ -68,6 +68,14 @@ jobs:
       uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
       with:
         node-version: 17.1.0
+    - run: |
+        sudo apt update
+        sudo apt install software-properties-common
+        sudo add-apt-repository ppa:deadsnakes/ppa
+        sudo apt update
+        sudo apt install python3.8
+        python --version
+
 #         architecture: arm64
 #     - run: |
 #         echo $PATH
