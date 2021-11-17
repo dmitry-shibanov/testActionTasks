@@ -63,11 +63,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: use Node
-      uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
-      with:
-        node-version: 17.1.0
     - run: |
         sudo apt update
         sudo apt install software-properties-common
@@ -75,6 +70,10 @@ jobs:
         sudo apt update
         sudo apt install python3.8
         python --version
+    - name: use Node
+      uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
+      with:
+        node-version: 17.1.0
 
 #         architecture: arm64
 #     - run: |
