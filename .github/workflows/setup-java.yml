@@ -99,9 +99,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT_CHECKOUT }}
-          submodules: true
+#         with:
+#           token: ${{ secrets.PAT_CHECKOUT }}
+#           submodules: true
       - uses: actions/setup-node@v2.1.5
         with:
           node-version: 12
