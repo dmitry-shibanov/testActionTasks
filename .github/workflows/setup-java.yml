@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-18.04, windows-latest, macos-latest, ubuntu-20.04]
+        os: [ubuntu-18.04]
         distribution: [zulu, adopt, temurin]
     steps:
       - uses: actions/setup-java@v2
@@ -95,7 +95,7 @@ jobs:
 #           python-version: 3.10.0-rc.1
 
   test:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
