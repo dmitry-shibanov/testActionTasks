@@ -20,12 +20,15 @@ jobs:
           node --version
           npm --version
           npm ci
-      
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v2
+      - name: Test
+        uses: borales/actions-yarn@master
         with:
-          name: package-lock.json
-          path: package-lock.json
+          cmd: 'node -v'
+#       - name: 'Upload Artifact'
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: package-lock.json
+#           path: package-lock.json
 
 #   test:
 #     runs-on: ${{ matrix.os }}
