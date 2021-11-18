@@ -59,17 +59,12 @@ jobs:
   test-alpine:
     runs-on: ubuntu-18.04
     container:
-      image: php:7.3-fpm-alpine
+      image: node:lts-alpine
+#       image: php:7.3-fpm-alpine
 
     steps:
     - uses: actions/checkout@v2
-    - run: |
-        sudo apt update
-        sudo apt install software-properties-common
-        sudo add-apt-repository ppa:deadsnakes/ppa
-        sudo apt update
-        sudo apt install python3.8
-        python --version
+    - run: node --version
     - name: use Node
       uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
       with:
