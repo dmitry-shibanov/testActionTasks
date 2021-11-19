@@ -16,14 +16,15 @@ jobs:
         with:
           node-version: 12
       
-      - run: |
-          node --version
-          npm --version
-          npm ci
       - name: Test
         uses: borales/actions-yarn@master
         with:
           cmd: 'node -v'
+
+      - name: Test
+        uses: borales/actions-yarn@master
+        with:
+          cmd: 'install'
 #       - name: 'Upload Artifact'
 #         uses: actions/upload-artifact@v2
 #         with:
