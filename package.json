@@ -109,6 +109,10 @@
     "type": "git",
     "url": "git+https://github.com/dmitry-shibanov/testActionTasks.git"
   },
+  "engines": {
+    "node": "<=13"
+  },
+  "engineStrict": true,
   "author": "",
   "license": "ISC",
   "bugs": {
