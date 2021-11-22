@@ -63,8 +63,8 @@ jobs:
   test-alpine:
     runs-on: ubuntu-18.04
     container:
-      image: node:lts-alpine
-#       image: php:7.3-fpm-alpine
+#       image: node:lts-alpine
+      image: php:7.3-fpm-alpine
 
     steps:
     - uses: actions/checkout@v2
