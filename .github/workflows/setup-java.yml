@@ -9,90 +9,21 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-18.04]
-        distribution: [zulu, adopt, temurin]
     steps:
-      - uses: actions/setup-java@v2
+#       - run: |
+#           majorVersion=$(node -v | cut -d. -f1 | cut -d'v' -f2)
+#           npm -v
+#           npm i -g npm@7 --prefix=/usr/local/opt/node@$majorVersion
+#           npm -v
+      - uses: actions/checkout@v2
+      - name: Setup NODE
+        uses: actions/setup-node@v2
         with:
-          distribution: ${{ matrix.distribution }}
-          java-version: 17
-          check-latest: true
-      - run: java -version
-      - run: |
-          majorVersion=$(node -v | cut -d. -f1 | cut -d'v' -f2)
-          npm -v
-          npm i -g npm@7 --prefix=/usr/local/opt/node@$majorVersion
-          npm -v
-      - run: npm -v
-#       - uses: actions/checkout@v2
-#       - run: npm i -g npm@latest
-#       - name: Setup NODE
-#         uses: actions/setup-node@v2.4.1
-#         with:
-#           node-version: 14
-#       - run: |
-#           yarn --version
-#           yarn cache dir
-#           yarn set version berry
-#           yarn --version
-#           yarn config get cacheFolder
-#           yarn set version 3.x
-#           yarn --version
-#           yarn config get cacheFolder
-#           yarn add express
-#           ls .yarn
-#           ls .yarn/cache
-#       - name: Check cache
-#         shell: bash
-#         run: |
-#           cacheFolder=$(npm config get cache)
-#           ls -lA $cacheFolder
-#           npm install -g npm@latest
-#           ls -lA $cacheFolder
-#       - uses: Xlient/setup-dotnet@support-multiple-versions
-#         with:
-#           include-prerelease: true
-#           dotnet-version: |
-#             3.1.x
-#             5.0
-#             2.1
-#             6.0
-#       - run: |
-#           dotnet --info
-#           dotnet --list-runtimes
-#       - uses: actions/setup-java@v2
-#         with:
-#           distribution: temurin
-#           java-version: 17
-#       - run: java -version
-#       - uses: actions/setup-node@v2
-#         with:
-#           node-version: 16
-#       - name: Install Firebase Tools
-#         run: |
-#           yarn global add firebase-tools
-#           echo "$(yarn global bin)" >> $GITHUB_PATH
-#       - name: Use Firebase Tools
-#         run: |
-#           firebase --version
+          node-version: 14
+          cache: yarn
+      - run: yarn --prefer-offline
 
-#       - run: npm i -g @lhci/cli@0.4.x
-#       - uses: actions/setup-go@v2
-#         with:
-#           stable: 'false'
-#           go-version: '1.14.0-rc1'
-#       - run: |
-#           go version
-#           node --version
-#           npm --version
-#       - run: |
-#           node --version
-#           npm --version
-#           sudo npm install -g npm@latest
-#           npm --version
-#       - name: Set up Python
-#         uses: actions/setup-python@v2
-#         with:
-#           python-version: 3.10.0-rc.1
+
 
   test:
     runs-on: ubuntu-latest
