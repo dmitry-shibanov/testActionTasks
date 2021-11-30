@@ -47,3 +47,13 @@ jobs:
         run: yarn add @testacc-art/testrepo@1.0.2
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_TOKEN}}
+
+  pythonInContainer:
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:18.04
+    steps:
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.8.x'
+      - run: python --version
