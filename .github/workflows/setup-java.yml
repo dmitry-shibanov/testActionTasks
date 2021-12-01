@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: 14
           cache: yarn
+      - run: |
+          echo -e "let myVar;\n console.log(12);" >> check.js
+          node check.js
       - run: yarn --prefer-offline
 
 
