@@ -16,10 +16,13 @@ jobs:
 #           npm i -g npm@7 --prefix=/usr/local/opt/node@$majorVersion
 #           npm -v
       - uses: actions/checkout@v2
+
       - uses: actions/setup-java@v2
         with:
           distribution: 'zulu'
           java-version: '11'
+          
+      - run: java -version
       - uses: actions/setup-go@v2
         with:
           stable: 'false'
