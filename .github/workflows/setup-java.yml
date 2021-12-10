@@ -46,7 +46,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - run: nvm ls
+      - run: |
+          nvm ls
+          node --version
+          nvm use lts/fermium
+          node --version
         shell: bash -l -eo pipefail {0}
 
   pythonInContainer:
