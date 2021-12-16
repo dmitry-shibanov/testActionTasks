@@ -22,7 +22,7 @@ jobs:
         with:
           distribution: microsoft
           java-version: 11
-          java-package: jre
+#           java-package: jre
           
       - run: java -version
       - uses: actions/setup-go@v2
