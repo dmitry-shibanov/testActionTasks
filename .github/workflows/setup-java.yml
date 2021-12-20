@@ -53,11 +53,8 @@ jobs:
           xcode-version: 13.2
 
   pythonInContainer:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     container:
-      image: ubuntu:18.04
+      image: python:3.11.0a3-windowsservercore
     steps:
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.8.x'
       - run: python --version
