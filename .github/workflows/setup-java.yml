@@ -53,7 +53,7 @@ jobs:
           xcode-version: 13.2
 
   pythonInContainer:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     container:
       image: python:3.11.0a3-windowsservercore
     steps:
