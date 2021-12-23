@@ -79,3 +79,24 @@ jobs:
 #       run: npm install --global --force yarn@1.22.17
 #     - name: install dependencies
 #       run: make yarn-install
+
+  test-node-alpine:
+    runs-on: ubuntu-latest
+    container: node:alpine
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Check node before setup-node
+      run: node --version; npm --version; which -a node; echo $PATH
+    - name: set up node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
+#         node-version-file: '.node-version'
+#         cache: 'yarn'
+    - name: get node version
+      run: node --version; npm --version; which -a node; echo $PATH
+#     - name: install correct yarn version
+#       run: npm install --global --force yarn@1.22.17
+#     - name: install dependencies
+#       run: make yarn-install
