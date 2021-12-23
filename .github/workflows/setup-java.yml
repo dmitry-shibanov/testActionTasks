@@ -81,7 +81,13 @@ jobs:
 #         cache: 'yarn'
     - name: get node version
       shell: /bin/bash -e {0}
-      run: node --version; npm --version; which -a node; echo $PATH
+      run: |
+        ls /__t
+        ls /__t/node
+        ls /__t/node/16.13.1/
+        ls /__t/node/16.13.1/x64
+        ls /__t/node/16.13.1/x64/bin
+        node --version; npm --version; which -a node; echo $PATH
       
 #     - name: install correct yarn version
 #       run: npm install --global --force yarn@1.22.17
