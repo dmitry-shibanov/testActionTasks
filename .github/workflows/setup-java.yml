@@ -67,7 +67,12 @@ jobs:
       uses: actions/checkout@v2
     - name: Check node before setup-node
       run: node --version; npm --version; which -a node; echo $PATH
-    - run: ls /__t
+    - run: |
+        ls /__t
+        ls /__t/node
+        ls /__t/node/16.13.1/
+        ls /__t/node/16.13.1/x64
+        ls /__t/node/16.13.1/x64/bin
     - name: set up node
       uses: actions/setup-node@v2
       with:
