@@ -82,7 +82,7 @@ jobs:
 #         node-version-file: '.node-version'
 #         cache: 'yarn'
     - name: get node version
-      shell: bash # /bin/bash -e {0}
+#       shell: bash # /bin/bash -e {0}
       run: |
         ls /__t
         ls /__t/node
