@@ -106,8 +106,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Check node before setup-node
-      run: node --version; npm --version; which -a node; echo $PATH
     - name: set up node
       uses: actions/setup-node@v2
       with:
