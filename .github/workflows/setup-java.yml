@@ -73,10 +73,12 @@ jobs:
         ls /__t/node/16.13.1/
         ls /__t/node/16.13.1/x64
         ls /__t/node/16.13.1/x64/bin
-    - name: set up node
-      uses: actions/setup-node@v2
+    - name: use Node
+      uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
       with:
-        node-version: 16
+        node-version: 17.1.0
+
+#     - run: apk add --no-cache libstdc++
 #         node-version-file: '.node-version'
 #         cache: 'yarn'
     - name: get node version
