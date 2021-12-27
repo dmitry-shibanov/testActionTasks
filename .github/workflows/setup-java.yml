@@ -16,6 +16,14 @@ jobs:
 #           npm i -g npm@7 --prefix=/usr/local/opt/node@$majorVersion
 #           npm -v
       - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          cache: yarn
+          check-latest: true
+          node-version: lts/*
+          
+      - run: node --version
 
       - name: Setup-java
         uses: dmitry-shibanov/setup-java@v-dmshib/add-docs-microsoft
