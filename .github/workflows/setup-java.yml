@@ -16,10 +16,10 @@ jobs:
 #           npm i -g npm@7 --prefix=/usr/local/opt/node@$majorVersion
 #           npm -v
       - uses: actions/checkout@v2
-
+      - run: xcrun simctl list
       - uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '13.2.1'
+          xcode-version: latest-stable
       - run: xcrun simctl list
       - name: Setup Node
         uses: actions/setup-node@v2
