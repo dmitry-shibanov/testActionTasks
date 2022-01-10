@@ -54,6 +54,7 @@ jobs:
           node check.js
       - run: yarn --prefer-offline
       - run: xcrun simctl io booted screenshot screen.png
+      - run: xcrun simctl list
       - uses: actions/upload-artifact@v2
         with:
           name: screen.png
