@@ -3,62 +3,62 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [macos-latest]
-    steps:
-#       - run: |
-#           majorVersion=$(node -v | cut -d. -f1 | cut -d'v' -f2)
-#           npm -v
-#           npm i -g npm@7 --prefix=/usr/local/opt/node@$majorVersion
-#           npm -v
-      - uses: actions/checkout@v2
-      - run: xcrun simctl list
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
-      - run: xcrun simctl list
-      - run: open -a Simulator.app
-      - run: xcrun simctl list
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          cache: yarn
-          check-latest: true
-          node-version: 'lts/*'
+#   build:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [macos-latest]
+#     steps:
+# #       - run: |
+# #           majorVersion=$(node -v | cut -d. -f1 | cut -d'v' -f2)
+# #           npm -v
+# #           npm i -g npm@7 --prefix=/usr/local/opt/node@$majorVersion
+# #           npm -v
+#       - uses: actions/checkout@v2
+#       - run: xcrun simctl list
+#       - uses: maxim-lobanov/setup-xcode@v1
+#         with:
+#           xcode-version: latest-stable
+#       - run: xcrun simctl list
+#       - run: open -a Simulator.app
+#       - run: xcrun simctl list
+#       - name: Setup Node
+#         uses: actions/setup-node@v2
+#         with:
+#           cache: yarn
+#           check-latest: true
+#           node-version: 'lts/*'
           
-      - run: node --version
+#       - run: node --version
 
-      - name: Setup-java
-        uses: dmitry-shibanov/setup-java@v-dmshib/add-docs-microsoft
-        with:
-          distribution: microsoft
-          java-version: 11
-#           java-package: jre
+#       - name: Setup-java
+#         uses: dmitry-shibanov/setup-java@v-dmshib/add-docs-microsoft
+#         with:
+#           distribution: microsoft
+#           java-version: 11
+# #           java-package: jre
           
-      - run: java -version
-      - uses: actions/setup-go@v2
-        with:
-          stable: 'false'
-          go-version: '1.14.0-rc1'
-      - name: Setup NODE
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          cache: yarn
-      - run: |
-          echo -e "let myVar;\n console.log(12);" >> check.js
-          node check.js
-      - run: yarn --prefer-offline
-      - run: xcrun simctl io booted screenshot screen.png
-      - run: xcrun simctl list
-      - uses: actions/upload-artifact@v2
-        with:
-          name: screen.png
-          path: screen.png
+#       - run: java -version
+#       - uses: actions/setup-go@v2
+#         with:
+#           stable: 'false'
+#           go-version: '1.14.0-rc1'
+#       - name: Setup NODE
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: 14
+#           cache: yarn
+#       - run: |
+#           echo -e "let myVar;\n console.log(12);" >> check.js
+#           node check.js
+#       - run: yarn --prefer-offline
+#       - run: xcrun simctl io booted screenshot screen.png
+#       - run: xcrun simctl list
+#       - uses: actions/upload-artifact@v2
+#         with:
+#           name: screen.png
+#           path: screen.png
 
 
 #   test:
