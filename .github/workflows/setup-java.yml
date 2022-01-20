@@ -155,3 +155,11 @@ jobs:
 # #       run: npm install --global --force yarn@1.22.17
 # #     - name: install dependencies
 # #       run: make yarn-install
+  test-ip-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - run: |
+        hostname -i
+        echo -e "$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)\t$(hostname -f) $(hostname -s)"
