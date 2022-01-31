@@ -182,12 +182,15 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14.17.1
-      - run: |
+      - name: Check versions
+        shell: bash
+        run: |
           node --version
           npm --version
           ls -lA C:\hostedtoolcache\windows\node
       - name: Install latest npm version
-        run: npm install --global npm@latest
+        shell: bash
+        run: sudo npm install --global npm@latest
 #   win-preinstalled-node:
 #     name: "WIN: Global npm install without setup-node action"
 #     runs-on: windows-latest
