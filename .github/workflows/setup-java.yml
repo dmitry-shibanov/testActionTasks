@@ -179,17 +179,16 @@ jobs:
       - run: |
           node --version
           npm --version
-          choco uninstall nodejs -y --remove-dependencies
       - uses: actions/setup-node@v2
         with:
-          node-version: 14.17.1
+          node-version: 16
       - name: Check versions
         shell: bash
         run: |
           node --version
           npm --version
-          npm install -g nodemone
-          ls -lA "C:\hostedtoolcache\windows\node"
+#          npm install -g nodemone
+#          ls -lA "C:\hostedtoolcache\windows\node"
 #       - run: chmod -R 777 "C:\hostedtoolcache\windows\node"
       - name: Install latest npm version
         run: npm install --global npm@latest
