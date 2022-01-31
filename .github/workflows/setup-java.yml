@@ -189,6 +189,7 @@ jobs:
           npm --version
           ls -lA "C:\hostedtoolcache\windows\node"
           choco uninstall nodejs -y --remove-dependencies
+          choco uninstall npm -y --remove-dependencies
       - run: chmod -R 777 "C:\hostedtoolcache\windows\node"
       - name: Install latest npm version
         run: npm install --global npm@latest
