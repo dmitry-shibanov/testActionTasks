@@ -195,6 +195,8 @@ jobs:
         run: |
             npm install --global npm@6.14.13
             npm --version
+            npm install --global npm@latest
+            npm --version
 #   win-preinstalled-node:
 #     name: "WIN: Global npm install without setup-node action"
 #     runs-on: windows-latest
