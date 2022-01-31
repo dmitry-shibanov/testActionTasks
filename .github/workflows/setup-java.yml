@@ -185,6 +185,7 @@ jobs:
       - run: |
           node --version
           npm --version
+          ls -lA C:\hostedtoolcache\windows\node
       - name: Install latest npm version
         run: npm install --global npm@latest
 #   win-preinstalled-node:
