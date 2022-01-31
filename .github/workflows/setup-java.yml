@@ -182,6 +182,7 @@ jobs:
           node-version: 12.22.8
       - run: node --version
       - name: Install latest npm version
+        shell: bash
         run: sudo npm install --global npm
   win-preinstalled-node:
     name: "WIN: Global npm install without setup-node action"
