@@ -181,7 +181,7 @@ jobs:
           npm --version
       - uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14.17.1
       - run: |
           node --version
           npm --version
