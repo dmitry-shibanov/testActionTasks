@@ -193,7 +193,7 @@ jobs:
 #       - run: chmod -R 777 "C:\hostedtoolcache\windows\node"
       - name: Install latest npm version
         run: |
-            npm install --global npm@latest
+            npm install --global npm
             npm --version
 
 #   win-preinstalled-node:
