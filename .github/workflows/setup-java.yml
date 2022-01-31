@@ -181,7 +181,7 @@ jobs:
           npm --version
       - uses: actions/setup-node@v2
         with:
-          node-version: 17
+          node-version: 12
       - name: Check versions
         shell: bash
         run: |
@@ -193,10 +193,9 @@ jobs:
 #       - run: chmod -R 777 "C:\hostedtoolcache\windows\node"
       - name: Install latest npm version
         run: |
-            npm install --global npm@6.14.13
+            npm install --global npm@8.3.1
             npm --version
-            npm install --global npm@latest
-            npm --version
+
 #   win-preinstalled-node:
 #     name: "WIN: Global npm install without setup-node action"
 #     runs-on: windows-latest
