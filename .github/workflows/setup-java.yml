@@ -187,6 +187,7 @@ jobs:
         run: |
           node --version
           npm --version
+          npm install -g nodemon
 #          npm install -g nodemone
 #          ls -lA "C:\hostedtoolcache\windows\node"
 #       - run: chmod -R 777 "C:\hostedtoolcache\windows\node"
