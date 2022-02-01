@@ -184,13 +184,19 @@ jobs:
           python-version: '3.11.0-alpha.4'
       - run: |
           node -e "
-            const exec = require('child_process');
-            exec.exec('pip cache dir', (err, stdout, stderr) => {
-                if (err) {
-                  throw err;
-                }
-            console.log('stdout is', stdout);
-            console.log('stderr is', stderr);
+            const { spawn } = require('child_process');
+            const pipCache = spawn('pip', ['cache', 'dir']);
+
+            pipCache.stdout.on('data', (data) => {
+              console.log(`stdout: ${data}`);
+            });
+
+            pipCache.stderr.on('data', (data) => {
+              console.error(`stderr: ${data}`);
+            });
+
+            pipCache.on('close', (code) => {
+              console.log(`child process exited with code ${code}`);
             });
             "
 
