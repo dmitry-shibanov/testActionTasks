@@ -188,11 +188,11 @@ jobs:
             const pipCache = spawn('pip', ['cache', 'dir']);
 
             pipCache.stdout.on('data', (data) => {
-              console.log('stdout:', data);
+              console.log('stdout:', data.toString());
             });
 
             pipCache.stderr.on('data', (data) => {
-              console.error('stderr:', data);
+              console.error('stderr:', data.toString());
             });
 
             pipCache.on('close', (code) => {
