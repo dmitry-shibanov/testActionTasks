@@ -188,15 +188,15 @@ jobs:
             const pipCache = spawn('pip', ['cache', 'dir']);
 
             pipCache.stdout.on('data', (data) => {
-              console.log(`stdout: ${data}`);
+              console.log('stdout:', data);
             });
 
             pipCache.stderr.on('data', (data) => {
-              console.error(`stderr: ${data}`);
+              console.error('stderr:', data);
             });
 
             pipCache.on('close', (code) => {
-              console.log(`child process exited with code ${code}`);
+              console.log('child process exited with code', code);
             });
             "
 
