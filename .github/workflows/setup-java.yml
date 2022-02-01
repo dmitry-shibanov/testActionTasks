@@ -188,7 +188,7 @@ jobs:
           pip cache dir
           node -e "
             const { spawn } = require('child_process');
-            const pipCache = spawn('pip', ['cache', 'dir']);
+            const pipCache = spawn('pip', ['cache', 'dir'], {shell: true});
 
             pipCache.stdout.on('data', (data) => {
               console.log('stdout:', data.toString());
