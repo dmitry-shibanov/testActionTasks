@@ -185,6 +185,7 @@ jobs:
 #       - run: python -m pip install --upgrade pip
       - run: |
           pip --version
+          pip cache dir
           node -e "
             const { spawn } = require('child_process');
             const pipCache = spawn('pip', ['cache', 'dir']);
