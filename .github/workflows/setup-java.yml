@@ -170,6 +170,12 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.17
+    - name: Custom setup go
+      uses: akv-platform/setup-go@add-check-latest
+      with:
+        go-version: 1.17
+        check-latest: true
+    - run: go version
         
     - run: go version
 #   win-setup-node-action:
