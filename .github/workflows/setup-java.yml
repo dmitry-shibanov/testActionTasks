@@ -171,7 +171,7 @@ jobs:
       with:
         go-version: 1.17
     - name: Custom setup go
-      uses: akv-platform/setup-go@add-check-latest
+      uses: akv-platform/setup-go@test-add-check-latest
       with:
         go-version: 1.17
         check-latest: true
