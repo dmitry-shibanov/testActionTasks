@@ -160,9 +160,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v1
       with:
-        node-version: 17
+        node-version: 16
     - run: node --version
     - name: Setup go
       uses: actions/setup-go@v2
