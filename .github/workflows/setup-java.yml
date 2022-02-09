@@ -180,7 +180,11 @@ jobs:
         go-version: 1.17
         check-latest: true
     - run: go version
-        
+    - name: Custom setup go1.16
+      uses: akv-platform/setup-go@test-add-check-latest
+      with:
+        go-version: 1.16
+        check-latest: true
     - run: go version
   win-setup-node-action:
     name: "WIN: Global npm install with setup-node action"
