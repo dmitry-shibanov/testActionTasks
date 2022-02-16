@@ -185,7 +185,7 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.18.0-beta2
-        check-latest: false
+        stable: false
     - run: go version
   win-setup-node-action:
     name: "WIN: Global npm install with setup-node action"
