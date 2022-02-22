@@ -181,6 +181,7 @@ jobs:
         go-version: 1.17
         check-latest: true
     - run: go version
+    - run: rm -rf /opt/hostedtoolcache/go/*
     - name: Custom setup go1.18beta2
       uses: dmitry-shibanov/setup-go@v-dmshib/remove-stable-input
       with:
