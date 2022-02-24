@@ -177,9 +177,9 @@ jobs:
       with:
         node-version: 16
     - run: node --version
-    - uses: actions/setup-node@v3.0.0
+    - uses: actions/setup-node@v2
       with:
-        node-version: 8
+        node-version: 17
     - run: node --version
     - name: Setup go
       uses: actions/setup-go@v2.2.0
