@@ -179,7 +179,7 @@ jobs:
     - run: node --version
     - uses: actions/setup-node@v3.0.0
       with:
-        node-version: 17
+        node-version: 8
     - run: node --version
     - name: Setup go
       uses: actions/setup-go@v2.2.0
