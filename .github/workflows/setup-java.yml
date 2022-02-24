@@ -156,13 +156,17 @@ jobs:
 # #     - name: install dependencies
 # #       run: make yarn-install
   test-ip-ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - run: |
-        ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
-        mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
+#     - run: |
+#         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
+#         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
     - name: Setup Java
       uses: actions/setup-java@v2
       with:
@@ -174,10 +178,10 @@ jobs:
     - run: node --version
     - name: Setup go
       uses: actions/setup-go@v2.2.0
-    - run: |
-        hostname -i
-        echo -e "$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)\t$(hostname -f) $(hostname -s)"
-        cat /etc/resolv.conf
+#     - run: |
+#         hostname -i
+#         echo -e "$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)\t$(hostname -f) $(hostname -s)"
+#         cat /etc/resolv.conf
     - name: Setup go
       uses: actions/setup-go@v2.2.0
       with:
@@ -189,15 +193,15 @@ jobs:
         go-version: 1.17
         check-latest: true
     - run: go version
-    - run: rm -rf /opt/hostedtoolcache/go/*
+#     - run: rm -rf /opt/hostedtoolcache/go/*
 #     - name: Custom setup go1.18beta2
 #       uses: dmitry-shibanov/setup-go@v-dmshib/remove-stable-input
 #       with:
 #         go-version: 1.x
     - name: Install Go
-      uses: dmitry-shibanov/setup-go@v-dmshib/update-action-node16-test
+      uses: dmitry-shibanov/setup-go@v-dmshib/remove-stable-input
       with:
-        go-version: 1.7
+        go-version: 1.16.0-rc.2
     - run: go version
   win-setup-node-action:
     name: "WIN: Global npm install with setup-node action"
