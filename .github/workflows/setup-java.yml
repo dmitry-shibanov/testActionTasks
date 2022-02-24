@@ -163,6 +163,7 @@ jobs:
     - run: |
         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14-1
+        cat cat /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1/x64/release
     - name: Setup Java
       uses: actions/setup-java@v2
       with:
