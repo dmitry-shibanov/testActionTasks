@@ -166,7 +166,7 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v2
       with:
-        java-version: 11
+        java-version: 11.0.14+101
         distribution: temurin
     - uses: actions/setup-node@v1
       with:
