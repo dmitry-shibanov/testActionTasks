@@ -160,7 +160,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - run: ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
+    - run: |
+        ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
+        mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14-1
     - name: Setup Java
       uses: actions/setup-java@v2
       with:
