@@ -168,13 +168,18 @@ jobs:
 #         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
 #         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
     - name: Setup Java
-      uses: actions/setup-java@v2
+      uses: actions/setup-java@v3.0.0
       with:
-        java-version: 11.0.14+101
+        java-version: 11
         distribution: temurin
-    - uses: actions/setup-node@v1
+    - run: java -version
+    - uses: actions/setup-node@v3.0.0
       with:
         node-version: 16
+    - run: node --version
+    - uses: actions/setup-node@v3.0.0
+      with:
+        node-version: 17
     - run: node --version
     - name: Setup go
       uses: actions/setup-go@v2.2.0
