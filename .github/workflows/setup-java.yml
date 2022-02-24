@@ -201,7 +201,7 @@ jobs:
     - name: Install Go
       uses: dmitry-shibanov/setup-go@v-dmshib/remove-stable-input
       with:
-        go-version: 1.16.0-rc.2
+        go-version: 1.16.0-rc.1
     - run: go version
   win-setup-node-action:
     name: "WIN: Global npm install with setup-node action"
