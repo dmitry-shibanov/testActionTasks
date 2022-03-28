@@ -161,6 +161,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
+        distribution: ['zulu', 'temurin', 'adopt', 'liberica']
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -170,8 +171,8 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v3.0.0
       with:
-        java-version: 11
-        distribution: temurin
+        java-version: 17
+        distribution: ${{ matrix.distribution }}
     - run: java -version
     - uses: actions/setup-node@v3.0.0
       with:
