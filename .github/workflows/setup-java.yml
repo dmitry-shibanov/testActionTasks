@@ -170,9 +170,9 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: 3.7
-    - run: |
-        pipx install pipenv
-        pipenv --python
+#     - run: |
+#         pipx install pipenv
+#         pipenv --python
 #     - run: |
 #         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
 #         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
