@@ -161,7 +161,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-        distribution: ['zulu', 'temurin', 'adopt', 'liberica']
+        distribution: ['zulu', 'temurin', 'adopt', 'liberica', 'corretto']
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -177,10 +177,11 @@ jobs:
 #         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
 #         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
     - name: Setup Java
-      uses: actions/setup-java@v3.0.0
+      uses: WtfJoke/setup-java@addCorretto
       with:
-        java-version: 18
+        java-version: 11
         distribution: ${{ matrix.distribution }}
+        java-package: 'jre'
     - run: java -version
     - uses: actions/setup-node@v3.0.0
       with:
