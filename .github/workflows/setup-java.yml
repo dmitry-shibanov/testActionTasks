@@ -168,10 +168,11 @@ jobs:
     - run: python --version
     - run: pipx install poetry
     - name: Setup Python
-      uses: dmitry-shibanov/setup-python@v-dmshib/fix-poetry-version
+      id: setup-python
+      uses: actions/setup-python@v3
       with:
         python-version: "3.10"
-    - run: poetry env info
+    - run: echo "${{ steps.setup-python.outputs.python-version }}"
 #     - run: |
 #         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
 #         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
