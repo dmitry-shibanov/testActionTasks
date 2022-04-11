@@ -183,7 +183,7 @@ jobs:
         distribution: ${{ matrix.distribution }}
         java-package: 'jre'
     - run: java -version
-    - uses: actions/setup-node@v3.0.0
+    - uses: actions/setup-node@v3.1.1
       with:
         node-version: 14
     - run: |
