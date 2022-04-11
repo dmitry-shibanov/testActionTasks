@@ -264,11 +264,20 @@ jobs:
 
 
   win-preinstalled-node:
-    name: "WIN: Global npm install without setup-node action"
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    container:
+      image:  ubuntu:20.04
     steps:
       - uses: actions/checkout@v2
-      - run: node --version
-      - name: Install latest npm version
-        run: npm install --global npm
-      - run: npm --version
+      - name: Setup Python
+        id: setup-python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+      - name: Check
+        run: |
+          echo git `git version`;
+          echo branch `git branch --show-current`;
+          echo node `node -v`;
+          echo pnpm `pnpm -v`
+          echo python `python --version`
