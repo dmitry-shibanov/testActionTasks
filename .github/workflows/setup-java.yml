@@ -169,11 +169,12 @@ jobs:
     - run: pipx install poetry
     - name: Setup Python
       id: setup-python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@91712e11bb36198065bf804db8a1c69241f2485b
       with:
-        python-version: '3.x'
+        python-version: ""
     - name: Check
       run: |
+        python --version
         echo git `git version`;
         echo branch `git branch --show-current`;
         echo node `node -v`;
