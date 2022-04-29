@@ -169,9 +169,10 @@ jobs:
     - run: pipx install poetry
     - name: Setup Python
       id: setup-python
-      uses: actions/setup-python@91712e11bb36198065bf804db8a1c69241f2485b
+      uses: actions/setup-python@v3
       with:
-        python-version: ""
+        python-version: "3.7"
+        check-latest: true
     - name: Check
       run: |
         python --version
