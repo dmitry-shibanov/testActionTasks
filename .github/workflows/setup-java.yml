@@ -164,40 +164,46 @@ jobs:
         distribution: ['zulu', 'temurin', 'adopt', 'liberica', 'microsoft']
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
-    - run: python --version
-    - run: pipx install poetry
-    - name: Setup Python
-      id: setup-python
-      uses: actions/setup-python@v2
-      with:
-        python-version: "3.8"
+      uses: actions/checkout@v3
+#     - run: python --version
+#     - run: pipx install poetry
+#     - name: Setup Python
+#       id: setup-python
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: "3.8"
         
-    - run: |
-        python -m pip install --upgrade pip setuptools pipenv virtualenv PyYAML flake8 pylint nose coverage
-        pipenv --python '3.8' lock -r > requirements.txt
-        pip install -r requirements.txt
-    - name: Check
-      run: |
-        python --version
-        echo git `git version`;
-        echo branch `git branch --show-current`;
-        echo node `node -v`;
-        echo pnpm `pnpm -v`
-        echo python `python --version`
-    - run: echo "${{ steps.setup-python.outputs.python-version }}"
 #     - run: |
-#         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
-#         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
-    - name: Setup Java
-      uses: actions/setup-java@v3
+#         python -m pip install --upgrade pip setuptools pipenv virtualenv PyYAML flake8 pylint nose coverage
+#         pipenv --python '3.8' lock -r > requirements.txt
+#         pip install -r requirements.txt
+#     - name: Check
+#       run: |
+#         python --version
+#         echo git `git version`;
+#         echo branch `git branch --show-current`;
+#         echo node `node -v`;
+#         echo pnpm `pnpm -v`
+#         echo python `python --version`
+#     - run: echo "${{ steps.setup-python.outputs.python-version }}"
+# #     - run: |
+# #         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
+# #         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
+#     - name: Setup Java
+#       uses: actions/setup-java@v3
+#       with:
+#         java-version: '17.0'
+#         distribution: ${{ matrix.distribution }}
+#     - run: java -version
+    - uses: pnpm/action-setup@v2.1.0
       with:
-        java-version: '17.0'
-        distribution: ${{ matrix.distribution }}
-    - run: java -version
-    - uses: actions/setup-node@v3.1.1
+        version: 7
+    - uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: 16.9.0
+    - run: |
+        corepack enable
+        pnpm --version
     - run: |
         node --version
         npm --version
