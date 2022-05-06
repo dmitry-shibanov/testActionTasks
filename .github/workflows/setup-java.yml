@@ -185,7 +185,24 @@ jobs:
         python-version: "3.7"
         check-latest: true
     - run: python --version
-
+#     - name: Remove version
+#       shell: pwsh
+#       run: |
+#         if ($IsLinux) {
+#           rm -rf /opt/hostedtoolcache/Python/3.7.13
+#         }
+#     - run: python --version
+    - name: Setup Python
+      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+      with:
+        python-version: "pypy-3.7"
+    - run: python --version
+#     - name: Setup Python
+#       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+#       with:
+#         python-version: "3.7"
+#         check-latest: true
+    - run: python --version
 #     - run: |
 #         python -m pip install --upgrade pip setuptools pipenv virtualenv PyYAML flake8 pylint nose coverage
 #         pipenv --python '3.8' lock -r > requirements.txt
