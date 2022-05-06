@@ -167,12 +167,23 @@ jobs:
       uses: actions/checkout@v3
 #     - run: python --version
 #     - run: pipx install poetry
+    - name: Remove version
+      shell: pwsh
+      run: |
+        if ($IsLinux) {
+          rm -rf /opt/hostedtoolcache/Python/3.7.13
+        }
     - run: python --version
+    - name: Setup Python
+      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+      with:
+        python-version: "3.7.12"
     - name: Setup Python
       id: setup-python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
         python-version: "3.7"
+        check-latest: true
     - run: python --version
 
 #     - run: |
