@@ -195,7 +195,13 @@ jobs:
     - name: Setup Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
+        python-version: "pypy-3.7-7.3.8"
+    - run: python --version
+    - name: Setup Python
+      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+      with:
         python-version: "pypy-3.7"
+        check-latest: true
     - run: python --version
 #     - name: Setup Python
 #       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
