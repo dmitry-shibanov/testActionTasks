@@ -241,12 +241,12 @@ jobs:
 # #     - run: |
 # #         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
 # #         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
-#     - name: Setup Java
-#       uses: actions/setup-java@v3
-#       with:
-#         java-version: '17.0'
-#         distribution: ${{ matrix.distribution }}
-#     - run: java -version
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: temurin
+    - run: java -version
     - uses: pnpm/action-setup@v2
       with:
         version: 7
