@@ -241,6 +241,7 @@ jobs:
 # #     - run: |
 # #         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
 # #         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
+    - run: rm -rf /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/*
     - name: Setup Java
       uses: actions/setup-java@v3
       with:
