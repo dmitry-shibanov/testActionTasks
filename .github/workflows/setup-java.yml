@@ -3,165 +3,13 @@ on:
   workflow_dispatch:
 
 jobs:
-#   build:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [macos-latest]
-#     steps:
-# #       - run: |
-# #           majorVersion=$(node -v | cut -d. -f1 | cut -d'v' -f2)
-# #           npm -v
-# #           npm i -g npm@7 --prefix=/usr/local/opt/node@$majorVersion
-# #           npm -v
-#       - uses: actions/checkout@v2
-#       - run: xcrun simctl list
-#       - uses: maxim-lobanov/setup-xcode@v1
-#         with:
-#           xcode-version: latest-stable
-#       - run: xcrun simctl list
-#       - run: open -a Simulator.app
-#       - run: xcrun simctl list
-#       - name: Setup Node
-#         uses: actions/setup-node@v2
-#         with:
-#           cache: yarn
-#           check-latest: true
-#           node-version: 'lts/*'
-          
-#       - run: node --version
-
-#       - name: Setup-java
-#         uses: dmitry-shibanov/setup-java@v-dmshib/add-docs-microsoft
-#         with:
-#           distribution: microsoft
-#           java-version: 11
-# #           java-package: jre
-          
-#       - run: java -version
-#       - uses: actions/setup-go@v2
-#         with:
-#           stable: 'false'
-#           go-version: '1.14.0-rc1'
-#       - name: Setup NODE
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: 14
-#           cache: yarn
-#       - run: |
-#           echo -e "let myVar;\n console.log(12);" >> check.js
-#           node check.js
-#       - run: yarn --prefer-offline
-#       - run: xcrun simctl io booted screenshot screen.png
-#       - run: xcrun simctl list
-#       - uses: actions/upload-artifact@v2
-#         with:
-#           name: screen.png
-#           path: screen.png
-
-
-#   test:
-#     runs-on: windows-latest
-
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-
-#       - run: |
-#           docker build --tag test-docker .
-#           $CID=$(docker run test-docker)
-#           docker logs $CID
-
-#   pythonInContainer:
-#     runs-on: ubuntu-latest
-#     container:
-#       image: python:3.11.0a3-windowsservercore
-#     steps:
-#       - run: python --version
-#   test-jekyll:
-#     runs-on: ubuntu-latest
-#     container: jekyll/jekyll:4.0
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v2
-#     - name: Check node before setup-node
-#       run: node --version; npm --version; which -a node; echo $PATH
-#     - run: |
-#         ls /__t
-#         ls /__t/node
-#         ls /__t/node/16.13.1/
-#         ls /__t/node/16.13.1/x64
-#         ls /__t/node/16.13.1/x64/bin
-#     - name: use Node
-#       uses: dmitry-shibanov/setup-node@v-dmshib/npm-version
-#       with:
-#         node-version: 17.1.0
-
-# #     - run: apk add --no-cache libstdc++
-# #         node-version-file: '.node-version'
-# #         cache: 'yarn'
-#     - name: get node version
-# #       shell: bash # /bin/bash -e {0}
-#       run: |
-#         ls /__t
-#         ls /__t/node
-#         ls /__t/node/16.13.1/
-#         ls /__t/node/16.13.1/x64
-#         ls /__t/node/16.13.1/x64/bin
-#         node --version; npm --version; which -a node; echo $PATH
-      
-#     - name: install correct yarn version
-#       run: npm install --global --force yarn@1.22.17
-#     - name: install dependencies
-#       run: make yarn-install
-
-#   test-node-alpine:
-#     runs-on: ubuntu-latest
-#     container: node:alpine
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v2
-#     - name: Check node before setup-node
-#       run: node --version; npm --version; which -a node; echo $PATH
-#     - name: set up node
-#       uses: actions/setup-node@v2
-#       with:
-#         node-version: 16
-# #         node-version-file: '.node-version'
-# #         cache: 'yarn'
-#     - name: get node version
-#       run: node --version; npm --version; which -a node; echo $PATH
-# #     - name: install correct yarn version
-# #       run: npm install --global --force yarn@1.22.17
-# #     - name: install dependencies
-# #       run: make yarn-install
-#   test-node-ubuntu:
-#     runs-on: ubuntu-latest
-#     container: ubuntu:18.04
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v2
-#     - name: set up node
-#       uses: actions/setup-node@v2
-#       with:
-#         node-version: 16
-# #         node-version-file: '.node-version'
-# #         cache: 'yarn'
-#     - name: get node version
-#       shell: /bin/bash -e {0}
-#       run: node --version; npm --version; which -a node; echo $PATH
-# #     - name: install correct yarn version
-# #       run: npm install --global --force yarn@1.22.17
-# #     - name: install dependencies
-# #       run: make yarn-install
   test-ip-ubuntu:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-        distribution: ['zulu']
+        distribution: ['current', 'latest', 'node']
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -171,7 +19,7 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@main
       with:
-        node-version: current
+        node-version: ${{ matrix.distribution }}
     - run: node --version
     - name: Remove version
       shell: pwsh
@@ -247,12 +95,12 @@ jobs:
 # #     - run: |
 # #         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
 # #         mv /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14.1-1 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.14
-    - run: rm -rf /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/*
-    - name: Setup Java
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: temurin
+#     - run: rm -rf /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/*
+#     - name: Setup Java
+#       uses: actions/setup-java@v3
+#       with:
+#         java-version: '11'
+#         distribution: temurin
     - run: java -version
     - uses: pnpm/action-setup@v2
       with:
