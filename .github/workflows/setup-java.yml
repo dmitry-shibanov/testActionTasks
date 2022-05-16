@@ -201,3 +201,22 @@ jobs:
           echo node `node -v`;
           echo pnpm `pnpm -v`
           echo python `python --version`
+          
+          
+  test-setup-node:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        version: ['current', 'latest', 'node']
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - run: node --version
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.version }}
+        architecture: x64
+    - run: node --version
