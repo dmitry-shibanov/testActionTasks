@@ -17,9 +17,10 @@ jobs:
 #     - run: pipx install poetry
     - run: node --version
     - name: Setup Node
-      uses: actions/setup-node@main
+      uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.distribution }}
+        node-version: current
+        architecture: x64
     - run: node --version
     - name: Remove version
       shell: pwsh
