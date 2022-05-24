@@ -208,14 +208,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-        version: ["3.7", "3.8", "3.9"]
+        os: [ubuntu-latest]
+        version: ["3.7"]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - name: Setup Node
+    - run: |
+        rm -rf /Users/runner/hostedtoolcache/Python/3.7.13
+    - name: Setup Python
+      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+      with:
+        python-version: 3.7.12
+    - name: Setup Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
         python-version: ${{ matrix.version }}
         check-latest: true
-    - run: python --version
