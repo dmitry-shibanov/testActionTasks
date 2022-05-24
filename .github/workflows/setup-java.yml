@@ -214,13 +214,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - run: |
+        ls /Users/runner/hostedtoolcache/Python
         rm -rf /Users/runner/hostedtoolcache/Python/3.7.13
+        ls /Users/runner/hostedtoolcache/Python
     - name: Setup Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
         python-version: 3.7.12
+    - run: python --version
     - name: Setup Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
         python-version: ${{ matrix.version }}
         check-latest: true
+    - run: python --version
