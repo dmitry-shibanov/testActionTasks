@@ -214,9 +214,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - run: |
-        ls /Users/runner/hostedtoolcache/Python
-        rm -rf /Users/runner/hostedtoolcache/Python/3.7.13
-        ls /Users/runner/hostedtoolcache/Python
+        ls /opt/hostedtoolcache/Python
+        rm -rf /opt/hostedtoolcache/Python/3.7.13
+        ls /opt/hostedtoolcache/Python
     - name: Setup Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
