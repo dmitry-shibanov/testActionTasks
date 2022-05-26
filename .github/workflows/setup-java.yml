@@ -214,7 +214,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - run: |
-        pipx install poetry # --pip-args=--pre
+        pipx install poetry --pip-args=--pre
         poetry config --list
         poetry config virtualenvs.prefer-active-python true
         poetry config --list
