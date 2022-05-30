@@ -23,10 +23,9 @@ jobs:
     - run: java -version
     - run: node --version
     - name: Setup Node
-      uses: actions/setup-node@v3
+      uses: jablko/setup-node@patch-1
       with:
-        node-version: current
-        architecture: x64
+        node-version: lts/-1
     - run: node --version
     - name: Remove version
       shell: pwsh
