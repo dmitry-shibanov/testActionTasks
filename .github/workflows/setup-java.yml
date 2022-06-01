@@ -39,7 +39,8 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v3 # dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
-        python-version: 3.8-dev # "3.7.12"
+        python-version: ^3.8-dev # "3.7.12"
+    - run: python --version
     - name: Setup Python
       id: setup-python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
