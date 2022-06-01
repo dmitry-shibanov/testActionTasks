@@ -28,18 +28,18 @@ jobs:
         node-version: lts/-1
         check-latest: true
     - run: node --version
-    - name: Remove version
-      shell: pwsh
-      run: |
-        if ($IsLinux) {
-          rm -rf /opt/hostedtoolcache/Python/3.7.13
-          rm -rf /opt/hostedtoolcache/PyPy/3.7.13
-        }
+#     - name: Remove version
+#       shell: pwsh
+#       run: |
+#         if ($IsLinux) {
+#           rm -rf /opt/hostedtoolcache/Python/3.7.13
+#           rm -rf /opt/hostedtoolcache/PyPy/3.7.13
+#         }
     - run: python --version
     - name: Setup Python
-      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+      uses: actions/setup-python@v3 # dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
-        python-version: "3.7.12"
+        python-version: 3.8-dev # "3.7.12"
     - name: Setup Python
       id: setup-python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
