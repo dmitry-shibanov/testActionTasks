@@ -13,7 +13,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - run: echo ${{ runner.os }}-$(node -V)-${{ hashFiles('package.json','yarn.lock') }}
+    - run: echo ${{ runner.os }}-$(node -v)-${{ hashFiles('package.json','yarn.lock') }}
 #     - run: python --version
 #     - run: pipx install poetry
     - name: Set up JDK 17
