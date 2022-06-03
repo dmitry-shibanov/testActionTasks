@@ -31,10 +31,14 @@ jobs:
     - run: |
         node --version
         npm install
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      run: |
+        echo "::set-output name=nodeVersion::$(node -v)"
     - name: Enable Cache
       uses: actions/cache@v3
       with:
-        key: ${{ runner.os }}-$(node -v)-${{ hashFiles('package.json','yarn.lock') }}
+        key: ${{ runner.os }}-${{ steps.npm-cache-dir.outputs.nodeVersion }}-${{ hashFiles('package.json','yarn.lock') }}
         path: node_modules
 #     - name: Remove version
 #       shell: pwsh
