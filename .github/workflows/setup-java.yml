@@ -13,6 +13,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+    - name: Set up PyPy 3.7
+      uses: actions/setup-python@main
+      with:
+        python-version: pypy3.7
+    - run: python --version
     - run: |
         env | grep "JAVA_HOME"
     - name: Set up JDK 18
