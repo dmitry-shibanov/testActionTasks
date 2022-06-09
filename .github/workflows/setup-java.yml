@@ -50,7 +50,7 @@ jobs:
       with:
         node-version: 16
         registry-url: http://reg.example.com/
-    - run: cat .npmrc
+    - run: ls -lA
     - run: npm config get registry
     - run: |
         node --version
