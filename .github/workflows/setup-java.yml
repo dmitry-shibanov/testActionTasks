@@ -51,10 +51,13 @@ jobs:
     - run: java -version
     - run: node --version
     - name: Setup Node
-      uses: dmitry-shibanov/setup-node@v-dmshib/catch-server-errors
+      uses: actions/setup-node@v3
       with:
         node-version: 16
-        cache: npm
+    - run: |
+        npm --version
+        npx --version
+#         cache: npm
 
     - run: npm install
   win-setup-node-action:
