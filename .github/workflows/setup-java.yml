@@ -129,7 +129,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.9
-    - run: pipx install poetry
+#     - run: pipx install poetry
     - run: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
     - run: poetry init -n
     - run: poetry env use "3.9"
