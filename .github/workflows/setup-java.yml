@@ -125,12 +125,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+    - run: curl -sSL https://install.python-poetry.org | python
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: 3.9
-    - run: pipx install poetry
-    - run: curl -sSL https://install.python-poetry.org | python
+#     - run: pipx install poetry
 #     - run: source $HOME/.poetry/env
     - run: poetry init -n
     - run: poetry env use "3.9"
