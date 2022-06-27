@@ -128,10 +128,10 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.7
+        python-version: 3.9
     - run: pipx install poetry
     - run: poetry init -n
-    - run: poetry env use "3.7"
+    - run: poetry env use "3.9"
     - run: poetry add flake8
     - uses: actions/upload-artifact@v2
       with:
