@@ -131,6 +131,7 @@ jobs:
         python-version: 3.7
     - run: pipx install poetry
     - run: poetry init -n
+    - run: poetry env use "3.7"
     - run: poetry add flake8
     - uses: actions/upload-artifact@v2
       with:
