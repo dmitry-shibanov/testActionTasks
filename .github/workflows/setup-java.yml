@@ -121,28 +121,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest]
-        version: ["3.7"]
+        os: [ubuntu-latest]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - run: |
-        pipx install poetry --pip-args=--pre
-        poetry config --list
-        poetry config virtualenvs.prefer-active-python true
-        poetry config --list
-    - run: |
-        ls /opt/hostedtoolcache/Python
-        rm -rf /opt/hostedtoolcache/Python/3.7.13
-        ls /opt/hostedtoolcache/Python
     - name: Setup Python
-      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+      uses: actions/setup-python@v4
       with:
-        python-version: 3.7.12
-    - run: python --version
-    - name: Setup Python
-      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+        python-version: 3.7
+    - run: pipx install poetry
+    - run: poetry init -n
+    - run: poetry add flake8
+    - uses: actions/upload-artifact@v2
       with:
-        python-version: ${{ matrix.version }}
-        check-latest: true
-    - run: python --version
+        name: my-artifact
+        path: |
+          pyproject.toml
+          poetry.lock
