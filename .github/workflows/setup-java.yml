@@ -135,7 +135,7 @@ jobs:
 #     - run: source $HOME/.poetry/env
 #     - run: poetry init -n
 #     - run: poetry env use "3.9"
-    - run: pipenv install flake8 numpy
+    - run: pipenv install flake8==4.0.1 numpy==1.23.0
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
