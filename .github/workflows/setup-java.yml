@@ -130,14 +130,13 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.9
+    - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 #     - run: pipx install poetry
 #     - run: source $HOME/.poetry/env
-    - run: poetry init -n
-    - run: poetry env use "3.9"
-    - run: poetry add flake8
+#     - run: poetry init -n
+#     - run: poetry env use "3.9"
+    - run: pipenv install flake8 numpy
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: |
-          pyproject.toml
-          poetry.lock
+        path: Pipfile.lock
