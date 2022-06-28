@@ -139,4 +139,6 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: Pipfile.lock
+        path: |
+          Pipfile.lock
+          Pipfile
