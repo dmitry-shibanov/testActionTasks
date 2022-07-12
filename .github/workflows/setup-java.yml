@@ -124,7 +124,7 @@ jobs:
       uses: dmitry-shibanov/setup-node@fix-error-node-version
       id: setup-node
       with:
-        node-version: 16
+        node-version: 14
     - run: |
         echo "${{ steps.setup-node.outputs.node-version }} check"
 #     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
