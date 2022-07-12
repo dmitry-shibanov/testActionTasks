@@ -121,7 +121,7 @@ jobs:
       uses: actions/checkout@v3
 #     - run: curl -sSL https://install.python-poetry.org | python
     - name: Setup Node
-      uses: actions/setup-node@v3
+      uses: dmitry-shibanov/setup-node@fix-error-node-version
       id: setup-node
       with:
         node-version: 16
