@@ -104,7 +104,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: node --version
       - name: Setup Node
-        uses: dmitry-shibanov/setup-node@fix-error-node-version
+        uses: actions/setup-node@v3.3.0
         with:
           node-version: '16.x'
       - run: node --version
