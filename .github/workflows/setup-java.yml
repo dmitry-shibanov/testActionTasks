@@ -122,9 +122,11 @@ jobs:
 #     - run: curl -sSL https://install.python-poetry.org | python
     - name: Setup Node
       uses: actions/setup-node@v3
+      id: setup-node
       with:
         node-version: 16
-    - run: node --version
+    - run: |
+        echo ${{ steps.cache-primes.outputs.cache-hit }}
 #     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 # #     - run: pipx install poetry
 # #     - run: source $HOME/.poetry/env
