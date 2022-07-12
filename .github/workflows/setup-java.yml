@@ -107,6 +107,7 @@ jobs:
         uses: dmitry-shibanov/setup-node@fix-error-node-version
         with:
           node-version: '16.x'
+      - run: node --version
           
           
 #   test-setup-python:
