@@ -126,7 +126,7 @@ jobs:
       with:
         node-version: 16
     - run: |
-        echo ${{ steps.setup-node.outputs.node-version }}
+        echo "${{ steps.setup-node.outputs.node-version }} check"
 #     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 # #     - run: pipx install poetry
 # #     - run: source $HOME/.poetry/env
