@@ -110,20 +110,21 @@ jobs:
       - run: node --version
           
           
-#   test-setup-python:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-latest]
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
+  test-setup-python:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
 #     - run: curl -sSL https://install.python-poetry.org | python
-#     - name: Setup Python
-#       uses: actions/setup-python@v4
-#       with:
-#         python-version: 3.9
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - run: node --version
 #     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 # #     - run: pipx install poetry
 # #     - run: source $HOME/.poetry/env
