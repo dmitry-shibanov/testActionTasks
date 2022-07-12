@@ -96,49 +96,42 @@ jobs:
 #             "
 
 
-#   win-preinstalled-node:
-#     runs-on: ubuntu-latest
-#     container:
-#       image:  ubuntu:20.04
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Setup Python
-#         id: setup-python
-#         uses: actions/setup-python@v3
-#         with:
-#           python-version: '3.x'
-#       - name: Check
-#         run: |
-#           echo git `git version`;
-#           echo branch `git branch --show-current`;
-#           echo node `node -v`;
-#           echo pnpm `pnpm -v`
-#           echo python `python --version`
-          
-          
-  test-setup-python:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest]
+  win-preinstalled-node:
+    runs-on: ubuntu-latest
+    container:
+      image:  node:14-alpine
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - run: curl -sSL https://install.python-poetry.org | python
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.9
-    - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-#     - run: pipx install poetry
-#     - run: source $HOME/.poetry/env
-#     - run: poetry init -n
-#     - run: poetry env use "3.9"
-    - run: pipenv install flake8==4.0.1 numpy==1.23.0
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: |
-          Pipfile.lock
-          Pipfile
+      - uses: actions/checkout@v2
+      - run: node --version
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          
+          
+#   test-setup-python:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-latest]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - run: curl -sSL https://install.python-poetry.org | python
+#     - name: Setup Python
+#       uses: actions/setup-python@v4
+#       with:
+#         python-version: 3.9
+#     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+# #     - run: pipx install poetry
+# #     - run: source $HOME/.poetry/env
+# #     - run: poetry init -n
+# #     - run: poetry env use "3.9"
+#     - run: pipenv install flake8==4.0.1 numpy==1.23.0
+#     - uses: actions/upload-artifact@v2
+#       with:
+#         name: my-artifact
+#         path: |
+#           Pipfile.lock
+#           Pipfile
