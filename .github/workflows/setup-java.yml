@@ -115,11 +115,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-#     - run: curl -sSL https://install.python-poetry.org | python
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 6.32.9
+    - run: pnpm store path --silent
+    - run: pnpm store path --silent
     - name: Setup Node
       uses: dmitry-shibanov/setup-node@fix-error-node-version
       id: setup-node
