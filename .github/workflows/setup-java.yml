@@ -121,7 +121,7 @@ jobs:
       uses: actions/checkout@v3
     - uses: pnpm/action-setup@v2
       with:
-        version: 5.x
+        version: 6.x
     - run: pnpm store path --silent
     - run: pnpm store path
     - name: Setup Node
