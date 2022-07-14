@@ -122,7 +122,7 @@ jobs:
     - uses: dmitry-shibanov/setup-go@v-dmshib/test-7zr
       with:
         go-version: 1.12
-    - run: go -version
+    - run: go version
 #     - run: pnpm store path --silent
 #     - run: pnpm store path
 #     - name: Setup Node
