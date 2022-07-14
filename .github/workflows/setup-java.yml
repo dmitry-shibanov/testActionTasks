@@ -119,18 +119,19 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
+    - uses: dmitry-shibanov/setup-go@v-dmshib/test-7zr
       with:
-        version: 6.x
-    - run: pnpm store path --silent
-    - run: pnpm store path
-    - name: Setup Node
-      uses: dmitry-shibanov/setup-node@fix-error-node-version
-      id: setup-node
-      with:
-        node-version: 14
-    - run: |
-        echo "${{ steps.setup-node.outputs.node-version }} check"
+        go-version: 1.12
+    - run: go -version
+#     - run: pnpm store path --silent
+#     - run: pnpm store path
+#     - name: Setup Node
+#       uses: dmitry-shibanov/setup-node@fix-error-node-version
+#       id: setup-node
+#       with:
+#         node-version: 14
+#     - run: |
+#         echo "${{ steps.setup-node.outputs.node-version }} check"
 #     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 # #     - run: pipx install poetry
 # #     - run: source $HOME/.poetry/env
