@@ -15,6 +15,7 @@ jobs:
     - run: |
         echo "$AGENT_TOOLSDIRECTORY"
         echo "$RUNNER_TOOLCACHE"
+        ls $AGENT_TOOLSDIRECTORY/PyPy
         rm -rf $AGENT_TOOLSDIRECTORY/Python/3.9.*
     - name: Set up Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
