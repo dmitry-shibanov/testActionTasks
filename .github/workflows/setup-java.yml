@@ -17,6 +17,7 @@ jobs:
         echo "$RUNNER_TOOLCACHE"
         ls $AGENT_TOOLSDIRECTORY/PyPy
         rm -rf $AGENT_TOOLSDIRECTORY/Python/3.9.*
+        rm -rf $AGENT_TOOLSDIRECTORY/PyPy/3.*
     - name: Set up Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
@@ -28,13 +29,18 @@ jobs:
         python-version: 3.9
         check-latest: true
     - run: python --version
-    - name: Set up PyPy 3.7
-      uses: actions/setup-python@main
+
+    - name: Set up Python
+      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
-        python-version: pypy3.7
+        python-version: pypy-3.7.12
     - run: python --version
-
-
+    - name: Set up Python
+      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+      with:
+        python-version: pypy-3.7
+        check-latest: true
+    - run: python --version
 #     - run: npm install
 #   win-setup-node-action:
 #     name: "WIN: Global npm install with setup-node action"
