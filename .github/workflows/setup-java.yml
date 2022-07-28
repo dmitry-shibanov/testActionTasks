@@ -111,7 +111,7 @@ jobs:
         tar -xzf OpenJDK8U-jdk_x64_linux_hotspot_8u302b08.tar.gz --strip-components=1 -C $JAVA_HOME && sudo rm OpenJDK8U-jdk_x64_linux_hotspot_8u302b08.tar.gz
         ls /opt/hostedtoolcache
         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
-    - uses: actions/setup-java@v3
+    - uses: dmitry-shibanov/setup-java@v-dmshib/test-docker
       with:
         distribution: 'temurin'
         java-version: 8.0.302
