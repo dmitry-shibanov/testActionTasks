@@ -106,6 +106,8 @@ jobs:
         URL=https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u302-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u302b08.tar.gz
         sudo wget --quiet "${URL}"
         JAVA_HOME=/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/${JAVA_VERSION}-8/x64	
+        ls /opt/hostedtoolcache
+        ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
     - uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
