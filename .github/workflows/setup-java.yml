@@ -105,7 +105,7 @@ jobs:
         JAVA_VERSION=8.0.302
         URL=https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u302-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u302b08.tar.gz
         echo $URL
-        sudo wget --quiet "$URL"
+        sudo wget "$URL"
         JAVA_HOME=/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.302-8/x64	
         sudo tar -xzf OpenJDK8U-jdk_x64_linux_hotspot_8u302b08.tar.gz --strip-components=1 -C $JAVA_HOME && sudo rm OpenJDK8U-jdk_x64_linux_hotspot_8u302b08.tar.gz
         ls /opt/hostedtoolcache
