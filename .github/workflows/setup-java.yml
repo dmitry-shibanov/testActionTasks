@@ -113,6 +113,9 @@ jobs:
         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.332-9/x64
         ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.332-9
+    - run: |
+        ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.302-8/x64
+        ls /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.302-8
     - uses: dmitry-shibanov/setup-java@v-dmshib/test-docker
       with:
         distribution: 'temurin'
