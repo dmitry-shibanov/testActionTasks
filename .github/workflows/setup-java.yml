@@ -101,10 +101,15 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-go@v-dmshib/test-7zr
+    - uses: actions/setup-java@v3
       with:
-        go-version: 1.12
-    - run: go version
+        distribution: 'temurin'
+        java-version: '8.0.302'
+        
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '8.0.302'
 #     - run: pnpm store path --silent
 #     - run: pnpm store path
 #     - name: Setup Node
