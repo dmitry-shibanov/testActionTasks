@@ -1,6 +1,9 @@
 name: Setup-java
 on:
   workflow_dispatch:
+  
+env:
+  RUNNER_TEMP: ''
 
 jobs:
   test-ip-ubuntu:
@@ -18,7 +21,6 @@ jobs:
         ls $AGENT_TOOLSDIRECTORY/PyPy
         rm -rf $AGENT_TOOLSDIRECTORY/Python/3.9.*
         rm -rf $AGENT_TOOLSDIRECTORY/PyPy/3.*
-        echo "RUNNER_TEMP=" >> $GITHUB_ENV
     - name: Set up Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
