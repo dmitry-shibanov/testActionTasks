@@ -18,6 +18,7 @@ jobs:
         ls $AGENT_TOOLSDIRECTORY/PyPy
         rm -rf $AGENT_TOOLSDIRECTORY/Python/3.9.*
         rm -rf $AGENT_TOOLSDIRECTORY/PyPy/3.*
+        $RUNNER_TEMP=''
     - name: Set up Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
