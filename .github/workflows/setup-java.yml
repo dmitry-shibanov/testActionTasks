@@ -23,7 +23,9 @@ jobs:
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
         python-version: 3.9.11
-    - run: python --version
+    - run: |
+        python --version
+        echo "RUNNER_TEMP is $RUNNER_TEMP"
     - name: Set up Python
       uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
       with:
