@@ -88,7 +88,7 @@ jobs:
     container:
       image: balenalib/armv7hf-alpine-node:14.19-3.15
     steps:
-      - uses: actions/checkout@v2
+#       - uses: actions/checkout@v2
       - run: node --version
       - name: Setup Go
         uses: Pantela996/setup-go@main
