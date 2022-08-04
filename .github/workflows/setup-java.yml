@@ -86,15 +86,16 @@ jobs:
   win-preinstalled-node:
     runs-on: ubuntu-latest
     container:
-      image:  node:14-alpine
+      image: balenalib/armv7hf-alpine-node:14.19-3.15
     steps:
       - uses: actions/checkout@v2
       - run: node --version
-      - name: Setup Node
-        uses: actions/setup-node@v3.3.0
+      - name: Setup Go
+        uses: Pantela996/setup-go@main
         with:
-          node-version: '16.x'
-      - run: node --version
+          go-version: '1.14'
+          architecture: arm
+      - run: go version
           
           
   test-setup-python:
