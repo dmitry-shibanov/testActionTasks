@@ -15,6 +15,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+    - name: Setup go
+      uses: panticmilos/setup-go@main
+      with:
+        go-version: 1.14
+        architecture: arm
+    - run: go version
     - run: |
         echo "$AGENT_TOOLSDIRECTORY"
         echo "$RUNNER_TOOLCACHE"
