@@ -90,12 +90,12 @@ jobs:
 
 
   win-preinstalled-node:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     container:
       image: milospantic17/armv6linux
     steps:
 #       - uses: actions/checkout@v2
-      - run: node --version
+#       - run: node --version
       - name: Setup Go
         uses: Pantela996/setup-go@main
         with:
