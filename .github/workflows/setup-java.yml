@@ -92,7 +92,7 @@ jobs:
   win-preinstalled-node:
     runs-on: ubuntu-latest
     container:
-      image: balenalib/armv7hf-alpine-node:14.19-3.15
+      image: milospantic17/armv6linux
     steps:
 #       - uses: actions/checkout@v2
       - run: node --version
