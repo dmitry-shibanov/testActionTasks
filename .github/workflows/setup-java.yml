@@ -32,7 +32,7 @@ jobs:
         (New-Object System.Net.WebClient).DownloadFile($downloadUrl, "$env:RUNNER_TEMP/$localFilename")
       shell: pwsh
     - name: setup-java
-      uses: actions/setup-java@v3
+      uses: akv-platform/setup-java@v-sdolin/issue-359
       with:
         distribution: 'jdkfile'
         jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
@@ -40,7 +40,7 @@ jobs:
         architecture: x64
         
     - name: setup-java
-      uses: actions/setup-java@v3
+      uses: akv-platform/setup-java@v-sdolin/issue-359
       with:
         distribution: 'jdkfile'
         jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
