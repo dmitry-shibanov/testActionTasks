@@ -15,6 +15,37 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      
+    - name: Download Adopt OpenJDK file
+      run: |
+        if ($IsLinux) {
+          $downloadUrl = "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.10_9.tar.gz"
+          $localFilename = "java_package.tar.gz"
+        } elseif ($IsMacOS) {
+          $downloadUrl = "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_mac_hotspot_11.0.10_9.tar.gz"
+          $localFilename = "java_package.tar.gz"
+        } elseif ($IsWindows) {
+          $downloadUrl = "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_windows_hotspot_11.0.10_9.zip"
+          $localFilename = "java_package.zip"
+        }
+        echo "LocalFilename=$localFilename" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        (New-Object System.Net.WebClient).DownloadFile($downloadUrl, "$env:RUNNER_TEMP/$localFilename")
+      shell: pwsh
+    - name: setup-java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'jdkfile'
+        jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
+        java-version: '11.0.0-ea'
+        architecture: x64
+        
+    - name: setup-java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'jdkfile'
+        jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
+        java-version: '11.0.0-ea'
+        architecture: x64
     - name: Setup go
       uses: panticmilos/setup-go@main
       with:
