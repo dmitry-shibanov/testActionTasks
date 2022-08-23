@@ -49,7 +49,7 @@ jobs:
     - name: Setup go
       uses: actions/setup-go@main
       with:
-        go-version: 1.16
+        go-version: 1.17
     - run: go version
     - run: |
         echo "$AGENT_TOOLSDIRECTORY"
