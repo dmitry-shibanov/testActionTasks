@@ -50,6 +50,7 @@ jobs:
       uses: actions/setup-go@main
       with:
         go-version: 1.17
+        architecture: arm
     - run: go version
     - run: |
         echo "$AGENT_TOOLSDIRECTORY"
