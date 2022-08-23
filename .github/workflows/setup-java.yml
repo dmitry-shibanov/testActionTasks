@@ -47,10 +47,9 @@ jobs:
 #         java-version: '11.0.0-ea'
 #         architecture: x64
     - name: Setup go
-      uses: panticmilos/setup-go@vmpantic/support-arm32-go
+      uses: actions/setup-go@main
       with:
-        go-version: 1.14
-        architecture: arm
+        go-version: 1.16
     - run: go version
     - run: |
         echo "$AGENT_TOOLSDIRECTORY"
