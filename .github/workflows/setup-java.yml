@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [macos-latest]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -22,7 +22,9 @@ jobs:
       with:
         python-version: 3.7
     - run: echo -e "import os\nprint(os.environ['PATH'])" | python
+    - run: echo -e "import os\nprint(os.environ['PATH'])" | python3
     - run: python --version
+    - run: python3 --version
     - run: |
         echo "$AGENT_TOOLSDIRECTORY"
         echo "$RUNNER_TOOLCACHE"
