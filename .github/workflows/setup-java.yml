@@ -2,8 +2,9 @@ name: Setup-java
 on:
   workflow_dispatch:
   
-env:
-  RUNNER_TEMP: ''
+defaults:
+  run:
+    shell: bash -l {0}
 
 jobs:
   test-ip-ubuntu:
@@ -11,47 +12,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      
-#     - name: Download Adopt OpenJDK file
-#       run: |
-#         if ($IsLinux) {
-#           $downloadUrl = "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.10_9.tar.gz"
-#           $localFilename = "java_package.tar.gz"
-#         } elseif ($IsMacOS) {
-#           $downloadUrl = "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_mac_hotspot_11.0.10_9.tar.gz"
-#           $localFilename = "java_package.tar.gz"
-#         } elseif ($IsWindows) {
-#           $downloadUrl = "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_windows_hotspot_11.0.10_9.zip"
-#           $localFilename = "java_package.zip"
-#         }
-#         echo "LocalFilename=$localFilename" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-#         (New-Object System.Net.WebClient).DownloadFile($downloadUrl, "$env:RUNNER_TEMP/$localFilename")
-#       shell: pwsh
-#     - name: setup-java
-#       uses: akv-platform/setup-java@v-sdolin/issue-359
-#       with:
-#         distribution: 'jdkfile'
-#         jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
-#         java-version: '11.0.0-ea'
-#         architecture: x64
-        
-#     - name: setup-java
-#       uses: akv-platform/setup-java@v-sdolin/issue-359
-#       with:
-#         distribution: 'jdkfile'
-#         jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
-#         java-version: '11.0.0-ea'
-#         architecture: x64
-    - name: Setup go
-      uses: actions/setup-go@main
+
+    - name: Setup python
+      uses: actions/setup-python@v2
       with:
-        go-version: 1.17
-        architecture: arm
-    - run: go version
+        python-version: 3.7
+    - run: echo -e "import os\nprint(os.environ['PATH'])" | python
+    - run: python --version
     - run: |
         echo "$AGENT_TOOLSDIRECTORY"
         echo "$RUNNER_TOOLCACHE"
