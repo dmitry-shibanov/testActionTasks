@@ -2,9 +2,6 @@ name: Setup-java
 on:
   workflow_dispatch:
   
-defaults:
-  run:
-    shell: bash -l {0}
 
 jobs:
   test-ip-ubuntu:
