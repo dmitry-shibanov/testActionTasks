@@ -14,13 +14,30 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-
-    - name: Create emulator
+    - name: Install emulator and create avd
       run: |
-        $HOME/Library/Android/sdk/cmdline-tools/latest/bin/avdmanager create avd --force --name Nexus6P --abi google_apis/x86_64 --device "Nexus 6P"
+        echo '----------Install Emulator--------------'
+        $ANDROID_HOME/tools/bin/sdkmanager --install emulator
+        $ANDROID_HOME/emulator/emulator -version
+        echo '----------Download Images--------------'
+        $ANDROID_HOME/tools/bin/sdkmanager "system-images;android-31;default;x86_64"
+        echo '----------Create AVD--------------'
+        $ANDROID_HOME/tools/bin/avdmanager create avd -n Pixel_5_API_31 -d pixel --package "system-images;android-31;default;x86_64"
+        echo '----------Show Available Emulators--------------'
+        $ANDROID_HOME/emulator/emulator -list-avds
+        echo '----------Start adb server--------------'
+        $ANDROID_HOME/platform-tools/adb start-server
+        # echo '----------Start Emulator--------------'
+        # $ANDROID_HOME/tools/emulator -port 18725 -verbose -no-window -no-audio -gpu swiftshader_indirect @Pixel_5_API_31 &
+        # echo '----------Show Devices--------------'
+        # JAVA_HOME=$(/usr/libexec/java_home -v 1.8) $ANDROID_HOME/platform-tools/adb devices
+
+#     - name: Create emulator
+#       run: |
+#         $HOME/Library/Android/sdk/cmdline-tools/latest/bin/avdmanager create avd --force --name Nexus6P --abi google_apis/x86_64 --device "Nexus 6P"
     - run: |
           brew install ffmpeg
-          node -e "const exec = require('child_process'); exec.exec('ffmpeg -f avfoundation -i 0 -t 420 out.mov'); exec.exec('~/Android/Sdk/tools/emulator -avd Nexus6P -skin 1440x2560');"
+          node -e "const exec = require('child_process'); exec.exec('ffmpeg -f avfoundation -i 0 -t 420 out.mov'); exec.exec('$ANDROID_HOME/emulator/emulator -avd Pixel_5_API_31 -skin 1440x2560');"
     - name: upload video
       uses: actions/upload-artifact@master
       with:
