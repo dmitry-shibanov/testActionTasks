@@ -17,45 +17,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Setup python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.7
-    - run: echo -e "import os\nprint(os.environ['PATH'])" | python
-    - run: echo -e "import os\nprint(os.environ['PATH'])" | python3
-    - run: python --version
-    - run: python3 --version
-    - run: |
-        echo "$AGENT_TOOLSDIRECTORY"
-        echo "$RUNNER_TOOLCACHE"
-        ls $AGENT_TOOLSDIRECTORY/PyPy
-        rm -rf $AGENT_TOOLSDIRECTORY/Python/3.9.*
-        rm -rf $AGENT_TOOLSDIRECTORY/PyPy/3.*
-    - name: Set up Python
-      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
-      with:
-        python-version: 3.9.11
-    - run: |
-        python --version
-        echo "RUNNER_TEMP is $RUNNER_TEMP"
-    - name: Set up Python
-      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
-      with:
-        python-version: 3.9
-        check-latest: true
-    - run: python --version
 
-    - name: Set up Python
-      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
+    - name: Create emulator
+      run: |
+        ~/Android/Sdk/tools/bin/avdmanager create avd --force --name Nexus6P --abi google_apis/x86_64 --device "Nexus 6P"
+        - name: run ui test and video recording
+    - run: |
+          brew install ffmpeg
+          node -e "const exec = require('child_process'); exec.exec('ffmpeg -f avfoundation -i 0 -t 420 out.mov'); exec.exec('~/Android/Sdk/tools/emulator -avd Nexus6P -skin 1440x2560');"
+    - name: upload video
+      uses: actions/upload-artifact@master
       with:
-        python-version: pypy-3.7
-    - run: python --version
-    - name: Set up Python
-      uses: dmitry-shibanov/setup-python@v-dmshib/add-check-latest
-      with:
-        python-version: pypy-3.7
-        check-latest: true
-    - run: python --version
+        name: out
+        path: out.mov
 #     - run: npm install
 #   win-setup-node-action:
 #     name: "WIN: Global npm install with setup-node action"
