@@ -84,7 +84,21 @@ jobs:
 #               console.log('child process exited with code', code);
 #             });
 #             "
-
+  build-linux:
+    # Build Linux binaries, ready for release.
+    # This runs inside an Alpine Linux container so we can more easily create a
+    # statically linked binary.
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:3.16
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Go
+        uses: dmitry-shibanov/setup-go@v-dmshib/test-command-output
+        with:
+          go-version: '1.18'
+      - run: go env GOMODCACHE
 
   win-preinstalled-node:
     runs-on: ubuntu-18.04
