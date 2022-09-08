@@ -96,7 +96,7 @@ jobs:
         uses: actions/checkout@v3
       - run: apk add tar git openssh gcompat make g++ ruby
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: dmitry-shibanov/setup-go@v-dmshib/test-command-output
         with:
           go-version: '1.18'
       - run: go env GOMODCACHE
