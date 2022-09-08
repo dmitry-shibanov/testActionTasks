@@ -98,6 +98,7 @@ jobs:
         uses: dmitry-shibanov/setup-go@v-dmshib/test-command-output
         with:
           go-version: '1.18'
+          cache: true
       - run: go env GOMODCACHE
 
   win-preinstalled-node:
