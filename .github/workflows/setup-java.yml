@@ -16,104 +16,57 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 14
-    - name: Install emulator and create avd
-      run: |
-        echo '----------Install Emulator--------------'
-        $ANDROID_HOME/tools/bin/sdkmanager --install emulator
-        $ANDROID_HOME/emulator/emulator -version
-        echo '----------Download Images--------------'
-        $ANDROID_HOME/tools/bin/sdkmanager "system-images;android-31;default;x86_64"
-        echo '----------Create AVD--------------'
-        $ANDROID_HOME/tools/bin/avdmanager create avd -n Pixel_5_API_31 -d pixel --package "system-images;android-31;default;x86_64"
-        echo '----------Show Available Emulators--------------'
-        $ANDROID_HOME/emulator/emulator -list-avds
-        echo '----------Start adb server--------------'
-        $ANDROID_HOME/platform-tools/adb start-server
-        # echo '----------Start Emulator--------------'
-        # $ANDROID_HOME/tools/emulator -port 18725 -verbose -no-window -no-audio -gpu swiftshader_indirect @Pixel_5_API_31 &
-        # echo '----------Show Devices--------------'
-        # JAVA_HOME=$(/usr/libexec/java_home -v 1.8) $ANDROID_HOME/platform-tools/adb devices
-
-#     - name: Create emulator
+#     - name: Install emulator and create avd
 #       run: |
-#         $HOME/Library/Android/sdk/cmdline-tools/latest/bin/avdmanager create avd --force --name Nexus6P --abi google_apis/x86_64 --device "Nexus 6P"
-    - run: |
-        brew install ffmpeg
-        $ANDROID_HOME/emulator/emulator -avd Pixel_5_API_31 -skin 1440x2560
-        ffmpeg -f avfoundation -i 0 -t 120 out.mov
+#         echo '----------Install Emulator--------------'
+#         $ANDROID_HOME/tools/bin/sdkmanager --install emulator
+#         $ANDROID_HOME/emulator/emulator -version
+#         echo '----------Download Images--------------'
+#         $ANDROID_HOME/tools/bin/sdkmanager "system-images;android-31;default;x86_64"
+#         echo '----------Create AVD--------------'
+#         $ANDROID_HOME/tools/bin/avdmanager create avd -n Pixel_5_API_31 -d pixel --package "system-images;android-31;default;x86_64"
+#         echo '----------Show Available Emulators--------------'
+#         $ANDROID_HOME/emulator/emulator -list-avds
+#         echo '----------Start adb server--------------'
+#         $ANDROID_HOME/platform-tools/adb start-server
+#         # echo '----------Start Emulator--------------'
+#         # $ANDROID_HOME/tools/emulator -port 18725 -verbose -no-window -no-audio -gpu swiftshader_indirect @Pixel_5_API_31 &
+#         # echo '----------Show Devices--------------'
+#         # JAVA_HOME=$(/usr/libexec/java_home -v 1.8) $ANDROID_HOME/platform-tools/adb devices
+
+# #     - name: Create emulator
+# #       run: |
+# #         $HOME/Library/Android/sdk/cmdline-tools/latest/bin/avdmanager create avd --force --name Nexus6P --abi google_apis/x86_64 --device "Nexus 6P"
 #     - run: |
-#           brew install ffmpeg
-#           node -e "const exec = require('child_process'); exec.exec('ffmpeg -f avfoundation -i 0 -t 120 out.mov', {env: {...process.env}}, (err, stdout, stderr) => console.log(`stdout: ${stdout} \n stderr: ${stderr}`)); exec.exec('$ANDROID_HOME/emulator/emulator -avd Pixel_5_API_31 -skin 1440x2560'); setTimeout(() => process.exit(0), 180000)"
-    - name: upload video
-      uses: actions/upload-artifact@master
-      with:
-        name: out
-        path: out.mov
-#     - run: npm install
-#   win-setup-node-action:
-#     name: "WIN: Global npm install with setup-node action"
-#     runs-on: windows-latest
+#         brew install ffmpeg
+#         $ANDROID_HOME/emulator/emulator -avd Pixel_5_API_31 -skin 1440x2560
+#         ffmpeg -f avfoundation -i 0 -t 120 out.mov
+# #     - run: |
+# #           brew install ffmpeg
+# #           node -e "const exec = require('child_process'); exec.exec('ffmpeg -f avfoundation -i 0 -t 120 out.mov', {env: {...process.env}}, (err, stdout, stderr) => console.log(`stdout: ${stdout} \n stderr: ${stderr}`)); exec.exec('$ANDROID_HOME/emulator/emulator -avd Pixel_5_API_31 -skin 1440x2560'); setTimeout(() => process.exit(0), 180000)"
+#     - name: upload video
+#       uses: actions/upload-artifact@master
+#       with:
+#         name: out
+#         path: out.mov
+# #     - run: npm install
+            "
+#   build-linux:
+#     # Build Linux binaries, ready for release.
+#     # This runs inside an Alpine Linux container so we can more easily create a
+#     # statically linked binary.
+#     runs-on: ubuntu-latest
+#     container:
+#       image: alpine:3.16
 #     steps:
-#       - uses: actions/checkout@v2
-#       - uses: actions/setup-node@v3
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#       - run: apk add tar git openssh gcompat make g++ ruby
+#       - name: Install Go
+#         uses: dmitry-shibanov/setup-go@v-dmshib/test-command-output
 #         with:
-#           node-version: 12
-#       - run: npm --version
-#       - name: Install latest npm version
-#         run: npm install --global npm
-#       - run: npm --version
-#       - uses: actions/setup-python@v2
-#         with:
-#           python-version: '3.11.0-alpha.4'
-# #       - run: python -m pip install --upgrade pip
-#       - run: |
-#           pip --version
-#           node -e "
-#             const { spawn } = require('child_process');
-#             const pipCache = spawn('pip', ['cache', 'dir'], {shell: true});
-
-#             pipCache.stdout.on('data', (data) => {
-#               console.log('stdout:', data.toString());
-#             });
-
-#             pipCache.stderr.on('data', (data) => {
-#               console.error('stderr:', data.toString());
-#             });
-
-#             pipCache.on('close', (code) => {
-#               console.log('child process exited with code', code);
-#             });
-#             "
-  build-linux:
-    # Build Linux binaries, ready for release.
-    # This runs inside an Alpine Linux container so we can more easily create a
-    # statically linked binary.
-    runs-on: ubuntu-latest
-    container:
-      image: alpine:3.16
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - run: apk add tar git openssh gcompat make g++ ruby
-      - name: Install Go
-        uses: dmitry-shibanov/setup-go@v-dmshib/test-command-output
-        with:
-          go-version: '1.18'
-      - run: go env GOMODCACHE
-
-  win-preinstalled-node:
-    runs-on: ubuntu-18.04
-    container:
-      image: milospantic17/armv6linux
-    steps:
-#       - uses: actions/checkout@v2
-#       - run: node --version
-      - name: Setup Go
-        uses: Pantela996/setup-go@main
-        with:
-          go-version: '1.14'
-          architecture: arm
-      - run: go version
+#           go-version: '1.18'
+#       - run: go env GOMODCACHE
           
           
   test-setup-python:
@@ -122,34 +75,15 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
+        version: [ 11, 16, 8 ]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
     - uses: actions/setup-java@v3
       with:
-        distribution: 'temurin'
-        java-version: 19
+        distribution: 'microsoft'
+        java-version: ${{ matrix.version }}
         
     - run: java -version
         
-#     - run: pnpm store path --silent
-#     - run: pnpm store path
-#     - name: Setup Node
-#       uses: dmitry-shibanov/setup-node@fix-error-node-version
-#       id: setup-node
-#       with:
-#         node-version: 14
-#     - run: |
-#         echo "${{ steps.setup-node.outputs.node-version }} check"
-#     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-# #     - run: pipx install poetry
-# #     - run: source $HOME/.poetry/env
-# #     - run: poetry init -n
-# #     - run: poetry env use "3.9"
-#     - run: pipenv install flake8==4.0.1 numpy==1.23.0
-#     - uses: actions/upload-artifact@v2
-#       with:
-#         name: my-artifact
-#         path: |
-#           Pipfile.lock
-#           Pipfile
+
