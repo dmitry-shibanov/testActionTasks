@@ -79,7 +79,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@main
       with:
         distribution: 'microsoft'
         java-version: ${{ matrix.version }}
