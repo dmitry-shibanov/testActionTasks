@@ -90,6 +90,6 @@ jobs:
       with:
         cache: true
         go-version: 1.19
-        cache-dependency-path: '**/go.sum'
+        cache-dependency-path: .github/workflows/go.sum
         
 
