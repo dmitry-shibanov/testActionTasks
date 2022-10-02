@@ -85,5 +85,11 @@ jobs:
         java-version: ${{ matrix.version }}
         
     - run: java -version
+    
+    - uses: actions/setup-go@v3
+      with:
+        cache: true
+        go-version: 1.19
+        cache-dependency-path: '**/go.sum'
         
 
