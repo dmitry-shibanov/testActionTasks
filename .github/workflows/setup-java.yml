@@ -85,10 +85,17 @@ jobs:
     - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
       with:
         python-version: |
+          3.7
           3.8
           3.9
           3.10
-        
+    - run: |
+        git clone https://github.com/python-hyper/wsproto
+        cd wsproto
+        python -m pip install --upgrade pip setuptools
+        pip install --upgrade tox tox-gh-actions
+        tox --parallel auto --notest
+        tox --parallel
     - run: python --version
     
 #     - uses: actions/setup-go@v3
