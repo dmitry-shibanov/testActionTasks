@@ -85,12 +85,11 @@ jobs:
     - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
       with:
         python-version: |
-              3.8
-              3.9
-              3.11
-              3.10
+          3.8
+          3.9
+          3.11
         
-    - run: python -version
+    - run: python --version
     
 #     - uses: actions/setup-go@v3
 #       with:
