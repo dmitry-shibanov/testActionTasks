@@ -94,9 +94,8 @@ jobs:
         cd wsproto
         python -m pip install --upgrade pip setuptools
         pip install --upgrade tox tox-gh-actions
-        # tox --parallel auto --notest
-        # tox --parallel
-        tox -e py37,py38,coverage -p all
+        tox --parallel auto --notest
+        tox --parallel 2
     - run: python --version
     
 #     - uses: actions/setup-go@v3
