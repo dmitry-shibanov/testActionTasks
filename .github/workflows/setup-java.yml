@@ -4,56 +4,22 @@ on:
   
 
 jobs:
-  test-ip-ubuntu:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [macos-11]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        check-latest: true
-    - run: node --version
-    - run: |
-        node -e "console.log(process.env['GITHUB_OUTPUT']);console.log(process.env['GITHUB_STATE']);"
-#     - name: Install emulator and create avd
-#       run: |
-#         echo '----------Install Emulator--------------'
-#         $ANDROID_HOME/tools/bin/sdkmanager --install emulator
-#         $ANDROID_HOME/emulator/emulator -version
-#         echo '----------Download Images--------------'
-#         $ANDROID_HOME/tools/bin/sdkmanager "system-images;android-31;default;x86_64"
-#         echo '----------Create AVD--------------'
-#         $ANDROID_HOME/tools/bin/avdmanager create avd -n Pixel_5_API_31 -d pixel --package "system-images;android-31;default;x86_64"
-#         echo '----------Show Available Emulators--------------'
-#         $ANDROID_HOME/emulator/emulator -list-avds
-#         echo '----------Start adb server--------------'
-#         $ANDROID_HOME/platform-tools/adb start-server
-#         # echo '----------Start Emulator--------------'
-#         # $ANDROID_HOME/tools/emulator -port 18725 -verbose -no-window -no-audio -gpu swiftshader_indirect @Pixel_5_API_31 &
-#         # echo '----------Show Devices--------------'
-#         # JAVA_HOME=$(/usr/libexec/java_home -v 1.8) $ANDROID_HOME/platform-tools/adb devices
-
-# #     - name: Create emulator
-# #       run: |
-# #         $HOME/Library/Android/sdk/cmdline-tools/latest/bin/avdmanager create avd --force --name Nexus6P --abi google_apis/x86_64 --device "Nexus 6P"
-#     - run: |
-#         brew install ffmpeg
-#         $ANDROID_HOME/emulator/emulator -avd Pixel_5_API_31 -skin 1440x2560
-#         ffmpeg -f avfoundation -i 0 -t 120 out.mov
-# #     - run: |
-# #           brew install ffmpeg
-# #           node -e "const exec = require('child_process'); exec.exec('ffmpeg -f avfoundation -i 0 -t 120 out.mov', {env: {...process.env}}, (err, stdout, stderr) => console.log(`stdout: ${stdout} \n stderr: ${stderr}`)); exec.exec('$ANDROID_HOME/emulator/emulator -avd Pixel_5_API_31 -skin 1440x2560'); setTimeout(() => process.exit(0), 180000)"
-#     - name: upload video
-#       uses: actions/upload-artifact@master
+#   test-ip-ubuntu:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [macos-11]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - uses: actions/setup-node@v3
 #       with:
-#         name: out
-#         path: out.mov
-# #     - run: npm install
+#         node-version: 18
+#         check-latest: true
+#     - run: node --version
+
+
 
 #   build-linux:
 #     # Build Linux binaries, ready for release.
@@ -78,30 +44,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-latest, windows-2019]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
+    - uses: actions/setup-python@v4
       with:
-        python-version: |
-          3.7
-          3.8
-          3.9
-          3.10
-    - run: |
-        git clone https://github.com/python-hyper/wsproto
-        cd wsproto
-        python -m pip install --upgrade pip setuptools
-        pip install --upgrade tox tox-gh-actions
-        tox --parallel auto --notest
-        tox --parallel 2
+        python-version: 3.6.8
     - run: python --version
-    
-#     - uses: actions/setup-go@v3
-#       with:
-#         cache: true
-#         go-version: 1.19
-#         cache-dependency-path: .github/workflows/go.sum
         
 
