@@ -42,7 +42,7 @@ jobs:
   test-setup-python:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
+#       fail-fast: false
       matrix:
         os: [windows-latest, windows-2019]
     steps:
