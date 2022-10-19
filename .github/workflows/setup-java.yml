@@ -59,9 +59,9 @@ jobs:
 
     - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
       with:
-        node-version: 17.0.0-rc.1
+        node-version: 17.0.0-rc.x
     - run: node --version
     - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
       with:
-        node-version: 17.0.0-rc.1
+        node-version: 17.0.0-rc.x
     - run: node --version
