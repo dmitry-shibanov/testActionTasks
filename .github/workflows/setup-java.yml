@@ -57,3 +57,11 @@ jobs:
         node-version: 17-nightly
     - run: node --version
 
+    - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
+      with:
+        node-version: 17.0.0-rc.x
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
+      with:
+        node-version: 17.0.0-rc.x
+    - run: node --version
