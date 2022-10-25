@@ -52,6 +52,8 @@ jobs:
       with:
         node-version: 17-nightly
     - name: Get node version
+      id: version
+      shell: bash
       run: |
         latestNodeVersion=$(curl https://nodejs.org/dist/index.json | jq -r '. [0].version')
         echo "LATEST_NODE_VERSION=$latestNodeVersion" >> $GITHUB_OUTPUT
