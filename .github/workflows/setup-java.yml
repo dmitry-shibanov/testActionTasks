@@ -51,6 +51,11 @@ jobs:
     - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
       with:
         node-version: 17-nightly
+    - name: Get node version
+      run: |
+        latestNodeVersion=$(curl https://nodejs.org/dist/index.json | jq -r '. [0].version')
+        echo "LATEST_NODE_VERSION=$latestNodeVersion" >> $GITHUB_OUTPUT
+    - run: ${{ steps.version.outputs.LATEST_NODE_VERSION }}
     - run: node --version
     - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
       with:
