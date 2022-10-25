@@ -49,11 +49,11 @@ jobs:
       uses: actions/checkout@v3
     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
       with:
-        node-version: 17.0.0-nightly20211018c0a70203de
+        node-version: 20.0.0-nightly20221024aab9f3246e
     - run: node --version
     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
       with:
-        node-version: 17-nightly
+        node-version: 20-nightly
         check-latest: true
     - run: node --version
   test-setup-python:
