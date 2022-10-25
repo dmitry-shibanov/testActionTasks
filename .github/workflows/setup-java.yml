@@ -42,32 +42,18 @@ jobs:
   test-setup-python:
     runs-on: ${{ matrix.os }}
     strategy:
-#       fail-fast: false
+      fail-fast: false
       matrix:
-        os: [windows-latest, macos-lates, ubuntu-latest]
+        os: [windows-latest, ubuntu-latest]
+        version: [17-nightly, 18-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
+    - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
       with:
-        node-version: 17-nightly
-    - name: Get node version
-      id: version
-      shell: bash
-      run: |
-        latestNodeVersion=$(curl https://nodejs.org/dist/index.json | jq -r '. [0].version')
-        echo "LATEST_NODE_VERSION=$latestNodeVersion" >> $GITHUB_OUTPUT
-    - run: echo ${{ steps.version.outputs.LATEST_NODE_VERSION }}
+        node-version: ${{ matrix.version }}
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
+    - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
       with:
-        node-version: 17-nightly
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
-      with:
-        node-version: 17.0.0-rc.1
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/add-nightly-support
-      with:
-        node-version: 17.0.0-rc.1
+        node-version: ${{ matrix.version }}
     - run: node --version
