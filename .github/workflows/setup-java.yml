@@ -38,7 +38,24 @@ jobs:
 #           go-version: '1.18'
 #       - run: go env GOMODCACHE
           
-          
+  setup-node-check-latest:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
+      with:
+        node-version: 17.0.0-nightly20211018c0a70203de
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
+      with:
+        node-version: 17-nightly
+        check-latest: true
+    - run: node --version
   test-setup-python:
     runs-on: ${{ matrix.os }}
     strategy:
