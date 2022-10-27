@@ -7,7 +7,7 @@ jobs:
   test-ip-ubuntu:
     runs-on: ${{ matrix.os }}
     env:
-      NODE_AUTH_TOKEN: ${{ secrets.*** }}
+      NODE_AUTH_TOKEN: ${{ secrets.somesecret }}
     strategy:
       fail-fast: false
       matrix:
