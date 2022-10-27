@@ -4,20 +4,20 @@ on:
   
 
 jobs:
-#   test-ip-ubuntu:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [macos-11]
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
-#     - uses: actions/setup-node@v3
-#       with:
-#         node-version: 18
-#         check-latest: true
-#     - run: node --version
+  test-ip-ubuntu:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        registry-url: 'https://npm.pkg.github.com'
+    - run: node --version
 
 
 
@@ -38,39 +38,39 @@ jobs:
 #           go-version: '1.18'
 #       - run: go env GOMODCACHE
           
-  setup-node-check-latest:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-      with:
-        node-version: 20.0.0-nightly20221024aab9f3246e
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-      with:
-        node-version: 20-nightly
-        check-latest: true
-    - run: node --version
-  test-setup-python:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest]
-        version: [17-nightly, 18-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-      with:
-        node-version: ${{ matrix.version }}
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-      with:
-        node-version: ${{ matrix.version }}
-    - run: node --version
+#   setup-node-check-latest:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [windows-latest, ubuntu-latest]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
+#       with:
+#         node-version: 20.0.0-nightly20221024aab9f3246e
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
+#       with:
+#         node-version: 20-nightly
+#         check-latest: true
+#     - run: node --version
+#   test-setup-python:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [windows-latest, ubuntu-latest]
+#         version: [17-nightly, 18-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
+#       with:
+#         node-version: ${{ matrix.version }}
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
+#       with:
+#         node-version: ${{ matrix.version }}
+#     - run: node --version
