@@ -20,7 +20,7 @@ jobs:
 #         node-version: 16
 #         registry-url: 'https://npm.pkg.github.com'
 #     - run: node --version
-    - uses: actions/setup-python@v2
+    - uses: dmitry-shibanov/setup-python@v-dmshib/update-core-for-v2
       with:
         python-version: 2.7
         
