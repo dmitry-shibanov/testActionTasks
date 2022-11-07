@@ -15,10 +15,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-#     - uses: actions/setup-node@v3
-#       with:
-#         node-version: 16
-#         registry-url: 'https://npm.pkg.github.com'
+    - uses: actions/setup-go@v3
+      with:
+        go-version: 1.19.x
+        check-latest: true
 #     - run: node --version
     - uses: actions/setup-node@v1
       with:
