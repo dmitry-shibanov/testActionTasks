@@ -63,7 +63,7 @@ jobs:
     - uses: akv-platform/setup-node@v-sdolin/v8-canary
       with:
         node-version: 20-v8-canary
-        check-latest: true
+#         check-latest: true
     - run: node --version
 #   test-setup-python:
 #     runs-on: ${{ matrix.os }}
