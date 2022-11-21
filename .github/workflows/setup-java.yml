@@ -15,8 +15,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: actions/setup-python@v3
-    - run: $pythonLocation        
+    - uses: actions/setup-python@v4
+    - run: echo $pythonLocation        
     - run: python --version
 
 
