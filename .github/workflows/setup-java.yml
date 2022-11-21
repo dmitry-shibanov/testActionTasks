@@ -8,45 +8,46 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       NODE_AUTH_TOKEN: ${{ secrets.ACTIONS_STEP_DEBUG }}
+      PIP_DISABLE_PIP_VERSION_CHECK: 1
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
     - uses: actions/setup-python@v4
       with:
-        update-environment: true
-    - run: echo $pythonLocation        
+        python-version: 3.5
+#     - run: echo $pythonLocation        
     - run: python --version
 
-  issue_candidate:
-    runs-on: ubuntu-20.04
+#   issue_candidate:
+#     runs-on: ubuntu-20.04
 
-    container:
-      image: ${{ matrix.os }}
+#     container:
+#       image: ${{ matrix.os }}
 
-    strategy:
-      fail-fast: false
+#     strategy:
+#       fail-fast: false
 
-      matrix:
-        os:
-          - 'centos:7'
-        python:
-          - '3.6'
-          - '3.7'
-          - '3.8'
-          - '3.9'
-          - '3.10'
-    steps:
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python }}
+#       matrix:
+#         os:
+#           - 'centos:7'
+#         python:
+#           - '3.6'
+#           - '3.7'
+#           - '3.8'
+#           - '3.9'
+#           - '3.10'
+#     steps:
+#       - name: Setup Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: ${{ matrix.python }}
 
-      - name: Check that Python is ok
-        run: python --version
+#       - name: Check that Python is ok
+#         run: python --version
 
 #   build-linux:
 #     # Build Linux binaries, ready for release.
