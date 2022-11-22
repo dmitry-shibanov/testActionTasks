@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
-    - name: Checkout repository
+#     - name: Checkout repository
 #       uses: actions/checkout@v3
     - run: git clone https://github.com/tox-dev/tox.git .
     - uses: actions/setup-python@v-dmshib/install-multiple-python-versions
