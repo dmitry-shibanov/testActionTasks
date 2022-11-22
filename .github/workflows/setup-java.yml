@@ -14,12 +14,20 @@ jobs:
         os: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+#       uses: actions/checkout@v3
+    - run: git clone https://github.com/tox-dev/tox.git .
+    - uses: actions/setup-python@v-dmshib/install-multiple-python-versions
       with:
-        python-version: 3.5
+        python-version: |
+              3.10
+              3.9
+              3.8
+              3.7
+              3.6
 #     - run: echo $pythonLocation        
     - run: python --version
+    - run: pip install tox
+    - run: tox -e py27,py36,py37,py38,py39,py310,coverage -p all
 
 #   issue_candidate:
 #     runs-on: ubuntu-20.04
