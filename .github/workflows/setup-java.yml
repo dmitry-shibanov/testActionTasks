@@ -16,7 +16,7 @@ jobs:
 #     - name: Checkout repository
 #       uses: actions/checkout@v3
     - run: git clone https://github.com/tox-dev/tox.git .
-    - uses: actions/setup-python@v-dmshib/install-multiple-python-versions
+    - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
       with:
         python-version: |
               3.10
