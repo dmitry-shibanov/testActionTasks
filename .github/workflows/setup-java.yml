@@ -27,7 +27,7 @@ jobs:
 #     - run: echo $pythonLocation        
     - run: python --version
     - run: pip install tox
-    - run: tox -e py27,py36,py37,py38,py39,py310,coverage -p all
+    - run: tox -e py27,py36,py37,py38,py39,py310 -p all
 
 #   issue_candidate:
 #     runs-on: ubuntu-20.04
