@@ -4,22 +4,22 @@ on:
   
 
 jobs:
-  test-ip-ubuntu:
-    runs-on: ${{ matrix.os }}
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Node 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: node --version
+#   test-ip-ubuntu:
+#     runs-on: ${{ matrix.os }}
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-latest, windows-latest, macos-latest]
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+#       - name: Setup Node 18
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 18
+#       - run: node --version
 # #     - name: Checkout repository
 # #       uses: actions/checkout@v3
 #     - run: git clone https://github.com/tox-dev/tox.git .
@@ -80,49 +80,58 @@ jobs:
 #           go-version: '1.18'
 #       - run: go env GOMODCACHE
           
-#   setup-node-check-latest:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [windows-latest, ubuntu-latest]
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-#       with:
-#         node-version: 20.0.0-nightly202211061f517130dd
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-#       with:
-#         node-version: 20-nightly
-#         check-latest: true
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-#       with:
-#         node-version: 16-nightly
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-#       with:
-#         node-version: 16
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-#       with:
-#         node-version: 16
-#         check-latest: true
-#     - run: node --version
-#   test-setup-python:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [windows-latest, ubuntu-latest]
-#         version: [17-nightly, 18-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2]
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-#       with:
-#         node-version: ${{ matrix.version }}
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/add-support-for-nightly-and-rc
-#       with:
-#         node-version: ${{ matrix.version }}
-#     - run: node --version
+  setup-node-check-latest:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
+      with:
+        node-version: 20.0.0-nightly202211061f517130dd
+    - run: node --version
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
+      with:
+        node-version: 20-nightly
+        check-latest: true
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
+      with:
+        node-version: 16-nightly
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
+      with:
+        node-version: 16
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
+      with:
+        node-version: 16
+        check-latest: true
+    - run: node --version
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
+      with:
+        node-version: 20.0.0-v8-canary20221103f7e2421e91
+    - run: node --version
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
+      with:
+        node-version: 20.0.0-v8-canary
+        check-latest: true
+    - run: node --version
+  test-setup-python:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        version: [17-nightly, 18-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2, 20-v8-canary, 20.0.0-v8-canary, 20.0.0-v8-canary20221103f7e2421e91]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
