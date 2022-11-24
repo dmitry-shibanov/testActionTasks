@@ -97,12 +97,15 @@ jobs:
       with:
         node-version: 20-nightly
         check-latest: true
+    - run: node --version
     - uses: akv-platform/setup-node@v-sdolin/v8-canary
       with:
         node-version: 16-nightly
+    - run: node --version
     - uses: akv-platform/setup-node@v-sdolin/v8-canary
       with:
         node-version: 16
+    - run: node --version
     - uses: akv-platform/setup-node@v-sdolin/v8-canary
       with:
         node-version: 16
