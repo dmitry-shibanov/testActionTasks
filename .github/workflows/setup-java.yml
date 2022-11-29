@@ -126,7 +126,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest]
-        version: [~16.4.0]
+        version: [16.0.0-rc.2]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
