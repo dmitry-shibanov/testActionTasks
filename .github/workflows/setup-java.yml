@@ -19,6 +19,7 @@ jobs:
         uses: dmitry-shibanov/setup-go@test-dist-aliases
         with:
           go-version: oldstable
+          architecture: arm64
       - run: go version
 # #     - name: Checkout repository
 # #       uses: actions/checkout@v3
