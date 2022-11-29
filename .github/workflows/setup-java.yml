@@ -130,11 +130,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: actions/setup-node@main
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
       with:
         node-version: ${{ matrix.version }}
     - run: node --version
-    - uses: actions/setup-node@main
+    - uses: akv-platform/setup-node@v-sdolin/v8-canary
       with:
         node-version: ${{ matrix.version }}
     - run: node --version
