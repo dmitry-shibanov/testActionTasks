@@ -4,23 +4,23 @@ on:
   
 
 jobs:
-  test-ip-ubuntu:
-    runs-on: ${{ matrix.os }}
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Go oldstable
-        uses: dmitry-shibanov/setup-go@test-dist-aliases
-        with:
-          go-version: oldstable
-          architecture: arm64
-      - run: go version
+#   test-ip-ubuntu:
+#     runs-on: ${{ matrix.os }}
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-latest, windows-latest, macos-latest]
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+#       - name: Setup Go oldstable
+#         uses: dmitry-shibanov/setup-go@test-dist-aliases
+#         with:
+#           go-version: oldstable
+#           architecture: arm64
+#       - run: go version
 # #     - name: Checkout repository
 # #       uses: actions/checkout@v3
 #     - run: git clone https://github.com/tox-dev/tox.git .
@@ -81,66 +81,82 @@ jobs:
 #           go-version: '1.18'
 #       - run: go env GOMODCACHE
           
-  setup-node-check-latest:
+#   setup-node-check-latest:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [windows-latest, ubuntu-latest]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: 20.0.0-nightly202211061f517130dd
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: 20-nightly
+#         check-latest: true
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: 16-nightly
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: 16
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: 16
+#         check-latest: true
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: 20.0.0-v8-canary20221103f7e2421e91
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: 20.0.0-v8-canary
+#         check-latest: true
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: 16-v8-canary
+#         check-latest: true
+#     - run: node --version
+#   test-setup-python:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [windows-latest, ubuntu-latest]
+#         version: [17-nightly, 18-nightly, 17.0.0-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2, 20-v8-canary, 20.0.0-v8-canary, 20.0.0-v8-canary20221103f7e2421e91]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: ${{ matrix.version }}
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: ${{ matrix.version }}
+#     - run: node --version
+
+  setup-java-microsoft:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        version: [17.0.3, 17.0.1+12.1, 16.0.2+7.1, 11.0.15, 11.0.13+8.1, 17, 16, 11]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: 20.0.0-nightly202211061f517130dd
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: 20-nightly
-        check-latest: true
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: 16-nightly
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: 16
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: 16
-        check-latest: true
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: 20.0.0-v8-canary20221103f7e2421e91
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: 20.0.0-v8-canary
-        check-latest: true
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: 16-v8-canary
-        check-latest: true
-    - run: node --version
-  test-setup-python:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest]
-        version: [17-nightly, 18-nightly, 17.0.0-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2, 20-v8-canary, 20.0.0-v8-canary, 20.0.0-v8-canary20221103f7e2421e91]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+    - uses: actions/setup-java@main
       with:
         node-version: ${{ matrix.version }}
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: ${{ matrix.version }}
-    - run: node --version
+        distribution: microsoft
+    - run: java -version
