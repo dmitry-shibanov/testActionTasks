@@ -27,12 +27,12 @@ jobs:
           go-version: oldstable
           check-latest: true
       - run: go version
-      - name: Setup Go oldstable
-        uses: dmitry-shibanov/setup-go@test-dist-aliases
-        with:
-          go-version: oldstable
-          check-latest: true
-          architecture: arm64
+#       - name: Setup Go oldstable
+#         uses: dmitry-shibanov/setup-go@test-dist-aliases
+#         with:
+#           go-version: oldstable
+#           check-latest: true
+#           architecture: arm64
       - run: go version
       - name: Setup Java
         uses: actions/setup-java@v3
