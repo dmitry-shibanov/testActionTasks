@@ -67,7 +67,7 @@ jobs:
 
 
   setup-go-aliases:
-    name: For ${{ matrix.os }} ${{ matrix.alias }} with ${{ matrix.arch }} and ${{ matrix.check-latest }}
+    name: ${{ matrix.os }} ${{ matrix.alias }} ${{ matrix.arch }} ${{ matrix.check-latest }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
