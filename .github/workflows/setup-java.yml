@@ -11,16 +11,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, windows-latest, macos-latest]
+        os: [ubuntu-22.04, windows-latest, macos-latest]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
-      - name: python-check
-        run: python3.9 -V
-        shell: bash
+          python-version: "2.7"
+#       - name: python-check
+#         run: python3.9 -V
+#         shell: bash
+      - run: python --version
       - name: Setup Go oldstable
         uses: dmitry-shibanov/setup-go@test-dist-aliases
         with:
