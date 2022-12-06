@@ -4,49 +4,49 @@ on:
   
 
 jobs:
-  test-ip-ubuntu:
-    runs-on: ${{ matrix.os }}
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-22.04, windows-latest, macos-latest]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "2.7"
-#       - name: python-check
-#         run: python3.9 -V
-#         shell: bash
-      - run: python --version
-      - name: Setup Go oldstable
-        uses: dmitry-shibanov/setup-go@test-dist-aliases
-        with:
-          go-version: oldstable
-          check-latest: true
-      - run: go version
-      - name: Setup Go oldstable
-        uses: dmitry-shibanov/setup-go@test-dist-aliases
-        with:
-          go-version: oldstable
-          check-latest: true
-      - run: go version
+#   test-ip-ubuntu:
+#     runs-on: ${{ matrix.os }}
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-22.04, windows-latest, macos-latest]
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: "2.7"
+# #       - name: python-check
+# #         run: python3.9 -V
+# #         shell: bash
+#       - run: python --version
 #       - name: Setup Go oldstable
 #         uses: dmitry-shibanov/setup-go@test-dist-aliases
 #         with:
 #           go-version: oldstable
 #           check-latest: true
-#           architecture: arm64
-      - run: go version
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: 11
-          distribution: temurin
-      - run: java -version
+#       - run: go version
+#       - name: Setup Go oldstable
+#         uses: dmitry-shibanov/setup-go@test-dist-aliases
+#         with:
+#           go-version: oldstable
+#           check-latest: true
+#       - run: go version
+# #       - name: Setup Go oldstable
+# #         uses: dmitry-shibanov/setup-go@test-dist-aliases
+# #         with:
+# #           go-version: oldstable
+# #           check-latest: true
+# #           architecture: arm64
+#       - run: go version
+#       - name: Setup Java
+#         uses: actions/setup-java@v3
+#         with:
+#           java-version: 11
+#           distribution: temurin
+#       - run: java -version
 #       - run: go version
 # #     - name: Checkout repository
 # #       uses: actions/checkout@v3
@@ -63,6 +63,37 @@ jobs:
 #     - run: python --version
 #     - run: pip install tox
 #     - run: tox -e py27,py36,py37,py38,py39,py310 -p all
+
+
+
+  setup-go-aliases:
+    name: For ${{ matrix.os }} ${{ matrix.alias }} with ${{ matrix.arch }} and ${{ matrix.check-latest }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-latest]
+        alias: [stable, oldstable]
+        arch: [x64, x32, arm, armv6l, ppc64le]
+        check-latest: [true, false]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Go oldstable
+        uses: panticmilos/setup-go@v-mpantic/add-stable-alias
+        with:
+          go-version: ${{ matrix.alias }}
+          check-latest: ${{ matrix.check-latest }}
+          architecture: ${{ matrix.arch }}
+      - run: go version
+      - name: Setup Go oldstable
+        uses: panticmilos/setup-go@v-mpantic/add-stable-alias
+        with:
+          go-version: ${{ matrix.alias }}
+          check-latest: ${{ matrix.check-latest }}
+          architecture: ${{ matrix.arch }}
+      - run: go version
+
 
 #   issue_candidate:
 #     runs-on: ubuntu-20.04
@@ -172,18 +203,18 @@ jobs:
 #         node-version: ${{ matrix.version }}
 #     - run: node --version
 
-  setup-java-microsoft:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        version: [17.0.3, 17.0.1+12.1, 16.0.2+7.1, 11.0.15, 11.0.13+8.1, 17, 16, 11]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: actions/setup-java@main
-      with:
-        java-version: ${{ matrix.version }}
-        distribution: microsoft
-    - run: java -version
+#   setup-java-microsoft:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [windows-latest, ubuntu-latest, macos-latest]
+#         version: [17.0.3, 17.0.1+12.1, 16.0.2+7.1, 11.0.15, 11.0.13+8.1, 17, 16, 11]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - uses: actions/setup-java@main
+#       with:
+#         java-version: ${{ matrix.version }}
+#         distribution: microsoft
+#     - run: java -version
