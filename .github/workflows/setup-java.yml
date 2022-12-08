@@ -225,15 +225,14 @@ jobs:
 #     - run: go version
     
   setup-java-major-file:
-    name: Major ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }} ${{ matrix.check-latest }}
+    name: Major ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04, windows-latest, macos-latest]
-        version: [1.8, 8, 17, 11, 16]
-        distribution: ['temurin', 'adopt', 'adopt-openj9', 'zulu', 'liberica', 'microsoft', 'corretto']
-        check-latest: [true, false]
+        version: [1.8, 8, 17, 11]
+        distribution: ['temurin', 'adopt', 'zulu', 'liberica', 'microsoft', 'corretto']
         exclude:
         - distribution: microsoft
           version: 8
@@ -243,17 +242,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - run: echo ${{ matrix.version }} >> .java-version
-      - name: Setup Go oldstable
+      - name: Setup Java
         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file # panticmilos/setup-go@vmpantic/add-stable-alias
         with:
           java-version-file: .java-version
-          check-latest: ${{ matrix.check-latest }}
           distribution: ${{ matrix.distribution }}
       - run: java -version
-      - name: Setup Go oldstable
+      - name: Setup Java
         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file
         with:
           java-version-file: .java-version
-          check-latest: ${{ matrix.check-latest }}
           distribution: ${{ matrix.distribution }}
       - run: java -version
