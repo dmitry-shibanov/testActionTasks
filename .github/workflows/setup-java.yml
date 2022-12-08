@@ -92,7 +92,7 @@ jobs:
 #           go-version: ${{ matrix.alias }}
 #           check-latest: ${{ matrix.check-latest }}
 #           architecture: ${{ matrix.arch }}
-      - run: go version
+#       - run: go version
 
 
 #   issue_candidate:
