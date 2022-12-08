@@ -255,18 +255,44 @@ jobs:
 #           distribution: ${{ matrix.distribution }}
 #       - run: java -version
 
-  setup-java-major-minor-file:
-    name: Major Minor ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
+#   setup-java-major-minor-file:
+#     name: Major Minor ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-22.04, windows-latest, macos-latest]
+#         version: [11.0, 8.0.302, 16.0.2+7]
+#         distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
+#         exclude:
+#         - distribution: microsoft
+#           version: 8.0.302
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+#       - run: echo ${{ matrix.version }} >> .java-version
+#       - name: Setup Java
+#         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file # panticmilos/setup-go@vmpantic/add-stable-alias
+#         with:
+#           java-version-file: .java-version
+#           distribution: ${{ matrix.distribution }}
+#       - run: java -version
+#       - name: Setup Java
+#         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file
+#         with:
+#           java-version-file: .java-version
+#           distribution: ${{ matrix.distribution }}
+#       - run: java -version
+  
+  setup-java-ea-versions:
+    name: EA ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04, windows-latest, macos-latest]
-        version: [11.0, 8.0.302, 16.0.2+7]
+        version: [17-ea]
         distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
-        exclude:
-        - distribution: microsoft
-          version: 8.0.302
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -282,8 +308,8 @@ jobs:
         with:
           java-version-file: .java-version
           distribution: ${{ matrix.distribution }}
-      - run: java -version
-      
+      - run: java -version  
+
 #   setup-javacorretto:
 #     name: ${{ matrix.distribution }} ${{ matrix.version }} (jdk-x64) - ${{ matrix.os }}
 #     runs-on: ${{ matrix.os }}
