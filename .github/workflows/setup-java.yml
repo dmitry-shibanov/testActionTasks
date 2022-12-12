@@ -66,33 +66,33 @@ jobs:
 
 
 
-  setup-go-aliases:
-    name: ${{ matrix.os }} ${{ matrix.alias }} ${{ matrix.arch }} ${{ matrix.check-latest }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-22.04, windows-latest, macos-latest]
-        alias: [stable, oldstable, 1.17, 1.19.1, 1.20.0-rc1.]
-        arch: [x64, x32, arm, armv6l]
-        check-latest: [true, false]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Go oldstable
-        uses: actions/setup-go@main
-        with:
-          go-version: ${{ matrix.alias }}
-          check-latest: ${{ matrix.check-latest }}
-          architecture: ${{ matrix.arch }}
-      - run: go version
-      - name: Setup Go oldstable
-        uses: actions/setup-go@main
-        with:
-          go-version: ${{ matrix.alias }}
-          check-latest: ${{ matrix.check-latest }}
-          architecture: ${{ matrix.arch }}
-      - run: go version
+#   setup-go-aliases:
+#     name: ${{ matrix.os }} ${{ matrix.alias }} ${{ matrix.arch }} ${{ matrix.check-latest }}
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-22.04, windows-latest, macos-latest]
+#         alias: [stable, oldstable, 1.17, 1.19.1, 1.20.0-rc1.]
+#         arch: [x64, x32, arm, armv6l]
+#         check-latest: [true, false]
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+#       - name: Setup Go oldstable
+#         uses: actions/setup-go@main
+#         with:
+#           go-version: ${{ matrix.alias }}
+#           check-latest: ${{ matrix.check-latest }}
+#           architecture: ${{ matrix.arch }}
+#       - run: go version
+#       - name: Setup Go oldstable
+#         uses: actions/setup-go@main
+#         with:
+#           go-version: ${{ matrix.alias }}
+#           check-latest: ${{ matrix.check-latest }}
+#           architecture: ${{ matrix.arch }}
+#       - run: go version
 
 
 #   issue_candidate:
@@ -224,108 +224,108 @@ jobs:
 #         architecture: x32
 #     - run: go version
     
-#   setup-java-major-file:
-#     name: Major ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-22.04, windows-latest, macos-latest]
-#         version: [1.8, 8, 17, 11]
-#         distribution: ['temurin', 'adopt', 'zulu', 'liberica', 'microsoft', 'corretto']
-#         exclude:
-#         - distribution: microsoft
-#           version: 8
-#         - distribution: microsoft
-#           version: 1.8
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v3
-#       - run: echo ${{ matrix.version }} >> .java-version
-#       - name: Setup Java
-#         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file # panticmilos/setup-go@vmpantic/add-stable-alias
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
-#       - name: Setup Java
-#         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
+  setup-java-major-file:
+    name: Major ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-latest]
+        version: [1.8, 8, 17, 11]
+        distribution: ['temurin', 'adopt', 'zulu', 'liberica', 'microsoft', 'corretto']
+        exclude:
+        - distribution: microsoft
+          version: 8
+        - distribution: microsoft
+          version: 1.8
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: echo ${{ matrix.version }} >> .java-version
+      - name: Setup Java
+        uses: e-korolevskii/setup-java@Add-support-for-java.version-file
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
+      - name: Setup Java
+        uses: e-korolevskii/setup-java@Add-support-for-java.version-file
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
 
-#   setup-java-major-minor-file:
-#     name: Major Minor ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-22.04, windows-latest, macos-latest]
-#         version: [11.0, 8.0.302, 16.0.2+7]
-#         distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
-#         exclude:
-#         - distribution: microsoft
-#           version: 8.0.302
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v3
-#       - run: echo ${{ matrix.version }} >> .java-version
-#       - name: Setup Java
-#         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file # panticmilos/setup-go@vmpantic/add-stable-alias
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
-#       - name: Setup Java
-#         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
+  setup-java-major-minor-file:
+    name: Major Minor ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-latest]
+        version: [11.0, 8.0.302, 16.0.2+7]
+        distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
+        exclude:
+        - distribution: microsoft
+          version: 8.0.302
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: echo ${{ matrix.version }} >> .java-version
+      - name: Setup Java
+        uses: e-korolevskii/setup-java@Add-support-for-java.version-file
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
+      - name: Setup Java
+        uses: e-korolevskii/setup-java@Add-support-for-java.version-file
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
   
-#   setup-java-ea-versions:
-#     name: EA ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-22.04, windows-latest, macos-latest]
-#         version: [17-ea, 15.0.0-ea, 15.0.0-ea.2, 15.0.0+2-ea, openjdk64-15.0.0+2-ea]
-#         distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v3
-#       - run: echo ${{ matrix.version }} >> .java-version
-#       - name: Setup Java
-#         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file # panticmilos/setup-go@vmpantic/add-stable-alias
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
-#       - name: Setup Java
-#         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version  
+  setup-java-ea-versions:
+    name: EA ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-latest]
+        version: [17-ea, 15.0.0-ea, 15.0.0-ea.2, 15.0.0+2-ea, openjdk64-15.0.0+2-ea]
+        distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: echo ${{ matrix.version }} >> .java-version
+      - name: Setup Java
+        uses: e-korolevskii/setup-java@Add-support-for-java.version-file
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
+      - name: Setup Java
+        uses: e-korolevskii/setup-java@Add-support-for-java.version-file
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version  
 
-#   setup-javacorretto:
-#     name: ${{ matrix.distribution }} ${{ matrix.version }} (jdk-x64) - ${{ matrix.os }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [macos-latest, windows-latest, ubuntu-latest]
-#         distribution: ['corretto' ] # internally 'adopt-hotspot' is the same as 'adopt'
-#         version: ['8', '11', '16']
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#       - name: setup-java
-#         uses: dmitry-shibanov/setup-java@v-dmshib/fixes-for-java-version-file
-#         with:
-#           java-version: ${{ matrix.version }}
-#           distribution: ${{ matrix.distribution }}
-#       - name: Verify Java
-#         run: java -version
+  setup-javacorretto:
+    name: ${{ matrix.distribution }} ${{ matrix.version }} (jdk-x64) - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        distribution: ['corretto', 'temurin' ] # internally 'adopt-hotspot' is the same as 'adopt'
+        version: ['8', '11', '16']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: setup-java
+        uses: e-korolevskii/setup-java@Add-support-for-java.version-file
+        with:
+          java-version: ${{ matrix.version }}
+          distribution: ${{ matrix.distribution }}
+      - name: Verify Java
+        run: java -version
