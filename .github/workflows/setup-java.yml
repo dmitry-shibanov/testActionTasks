@@ -80,14 +80,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Go oldstable
-        uses: actions/setup-go@main # panticmilos/setup-go@vmpantic/add-stable-alias # dmitry-shibanov/setup-go@fix-stable-aliases-toolcache
+        uses: dmitry-shibanov/setup-go@v-dmshib/fix-log-for-stable-aliases
         with:
           go-version: ${{ matrix.alias }}
           check-latest: ${{ matrix.check-latest }}
           architecture: ${{ matrix.arch }}
       - run: go version
       - name: Setup Go oldstable
-        uses: actions/setup-go@main
+        uses: dmitry-shibanov/setup-go@v-dmshib/fix-log-for-stable-aliases
         with:
           go-version: ${{ matrix.alias }}
           check-latest: ${{ matrix.check-latest }}
