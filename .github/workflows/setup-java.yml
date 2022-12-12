@@ -73,21 +73,21 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04, windows-latest, macos-latest]
-        alias: [stable, oldstable, 1.16, 1.17, 1.18.8, 1.19.1, 1.20.0-rc1.]
-        arch: [x64, x32, arm, armv6l, ppc64le]
+        alias: [stable, oldstable, 1.17 1.19.1, 1.20.0-rc1.]
+        arch: [x64, x32, arm, armv6l]
         check-latest: [true, false]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Go oldstable
-        uses: panticmilos/setup-go@vmpantic/add-stable-alias # dmitry-shibanov/setup-go@fix-stable-aliases-toolcache
+        uses: actions/setup-go@main # panticmilos/setup-go@vmpantic/add-stable-alias # dmitry-shibanov/setup-go@fix-stable-aliases-toolcache
         with:
           go-version: ${{ matrix.alias }}
           check-latest: ${{ matrix.check-latest }}
           architecture: ${{ matrix.arch }}
       - run: go version
       - name: Setup Go oldstable
-        uses: panticmilos/setup-go@vmpantic/add-stable-alias
+        uses: actions/setup-go@main
         with:
           go-version: ${{ matrix.alias }}
           check-latest: ${{ matrix.check-latest }}
