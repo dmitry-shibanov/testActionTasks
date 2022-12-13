@@ -147,6 +147,7 @@ jobs:
 #       - run: go env GOMODCACHE
           
   setup-node-check-latest:
+    name: CheckLatest ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -193,6 +194,7 @@ jobs:
     - run: node --version
 
   setup-node-toolcache:
+    name: ToolCache ${{ matrix.os }} ${{ matrix.version }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -211,7 +213,25 @@ jobs:
         node-version: ${{ matrix.version }}
     - run: node --version
 
-
+  setup-node-stable-versions:
+    name: Stable ${{ matrix.os }} ${{ matrix.version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        version: [16, 17, 18, 19.2.0, 19.1, lts/-2, latest, lts/gallium]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
 #   setup-java-microsoft:
 #     runs-on: ${{ matrix.os }}
 #     strategy:
