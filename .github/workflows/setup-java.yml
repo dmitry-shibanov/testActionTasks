@@ -4,17 +4,17 @@ on:
   
 
 jobs:
-  test-ip-ubuntu:
-    runs-on: ${{ matrix.os }}
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-22.04, windows-latest, macos-latest]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+#   test-ip-ubuntu:
+#     runs-on: ${{ matrix.os }}
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-22.04, windows-latest, macos-latest]
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
 # #       - uses: actions/setup-python@v4
 # #         with:
 # #           python-version: "2.7"
@@ -42,21 +42,21 @@ jobs:
 # #           check-latest: true
 # #           architecture: arm64
 #       - run: go version
-      - name: Setup Java
-        uses: actions/setup-java@main
-        with:
-          java-version: |
-              8
-              11
-              17
-          distribution: temurin
-      - run: java -version
-      - name: Setup Java
-        uses: actions/setup-java@main
-        with:
-          java-version: 17
-          distribution: oracle
-      - run: java -version
+#       - name: Setup Java
+#         uses: actions/setup-java@main
+#         with:
+#           java-version: |
+#               8
+#               11
+#               17
+#           distribution: temurin
+#       - run: java -version
+#       - name: Setup Java
+#         uses: actions/setup-java@main
+#         with:
+#           java-version: 17
+#           distribution: oracle
+#       - run: java -version
 #       - name: Setup Java
 #         uses: actions/setup-java@v3
 #         with:
