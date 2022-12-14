@@ -49,7 +49,7 @@ jobs:
               8
               11
               17
-          distribution: oracle
+          distribution: temurin
       - run: java -version
       - name: Setup Java
         uses: actions/setup-java@main
