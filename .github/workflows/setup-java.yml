@@ -146,92 +146,94 @@ jobs:
 #           go-version: '1.18'
 #       - run: go env GOMODCACHE
           
-  setup-node-check-latest:
-    name: CheckLatest ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: 20.0.0-nightly202211061f517130dd
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: 20-nightly
-        check-latest: true
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: 16-nightly
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: 16
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: 16
-        check-latest: true
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: 20.0.0-v8-canary20221103f7e2421e91
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: 20.0.0-v8-canary
-        check-latest: true
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: 16-v8-canary
-        check-latest: true
-    - run: node --version
+#   setup-node-check-latest:
+#     name: CheckLatest ${{ matrix.os }}
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [windows-latest, ubuntu-latest]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: 20.0.0-nightly202211061f517130dd
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: 20-nightly
+#         check-latest: true
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: 16-nightly
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: 16
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: 16
+#         check-latest: true
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: 20.0.0-v8-canary20221103f7e2421e91
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: 20.0.0-v8-canary
+#         check-latest: true
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: 16-v8-canary
+#         check-latest: true
+#     - run: node --version
 
-  setup-node-toolcache:
-    name: ToolCache ${{ matrix.os }} ${{ matrix.version }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest]
-        version: [17-nightly, 18-nightly, 17.0.0-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2, 20-v8-canary, 20.0.0-v8-canary, 20.0.0-v8-canary20221103f7e2421e91]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: ${{ matrix.version }}
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: ${{ matrix.version }}
-    - run: node --version
+#   setup-node-toolcache:
+#     name: ToolCache ${{ matrix.os }} ${{ matrix.version }}
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [windows-latest, ubuntu-latest]
+#         version: [17-nightly, 18-nightly, 17.0.0-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2, 20-v8-canary, 20.0.0-v8-canary, 20.0.0-v8-canary20221103f7e2421e91]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: ${{ matrix.version }}
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: ${{ matrix.version }}
+#     - run: node --version
 
-  setup-node-stable-versions:
-    name: Stable ${{ matrix.os }} ${{ matrix.version }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest]
-        version: [16, 17, 18, 19.2.0, 19.1, lts/-2, latest, lts/gallium]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: ${{ matrix.version }}
-    - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-      with:
-        node-version: ${{ matrix.version }}
-    - run: node --version
+#   setup-node-stable-versions:
+#     name: Stable ${{ matrix.os }} ${{ matrix.version }}
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [windows-latest, ubuntu-latest]
+#         version: [16, 17, 18, 19.2.0, 19.1, lts/-2, latest, lts/gallium]
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+#       with:
+#         node-version: ${{ matrix.version }}
+#     - run: node --version
+#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+#       with:
+#         node-version: ${{ matrix.version }}
+#     - run: node --version
+
+
 #   setup-java-microsoft:
 #     runs-on: ${{ matrix.os }}
 #     strategy:
@@ -252,108 +254,108 @@ jobs:
 #         architecture: x32
 #     - run: go version
     
-#   setup-java-major-file:
-#     name: Major ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-22.04, windows-latest, macos-latest]
-#         version: [1.8, 8, 17, 11]
-#         distribution: ['temurin', 'adopt', 'zulu', 'liberica', 'microsoft', 'corretto']
-#         exclude:
-#         - distribution: microsoft
-#           version: 8
-#         - distribution: microsoft
-#           version: 1.8
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v3
-#       - run: echo ${{ matrix.version }} >> .java-version
-#       - name: Setup Java
-#         uses: e-korolevskii/setup-java@Add-support-for-java.version-file
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
-#       - name: Setup Java
-#         uses: e-korolevskii/setup-java@Add-support-for-java.version-file
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
+  setup-java-major-file:
+    name: Major ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-latest]
+        version: [1.8, 8, 17, 11]
+        distribution: ['temurin', 'adopt', 'zulu', 'liberica', 'microsoft', 'corretto']
+        exclude:
+        - distribution: microsoft
+          version: 8
+        - distribution: microsoft
+          version: 1.8
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: echo ${{ matrix.version }} >> .java-version
+      - name: Setup Java
+        uses: actions/setup-java@main
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
+      - name: Setup Java
+        uses: actions/setup-java@main
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
 
-#   setup-java-major-minor-file:
-#     name: Major Minor ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-22.04, windows-latest, macos-latest]
-#         version: [11.0, 8.0.302, 16.0.2+7]
-#         distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
-#         exclude:
-#         - distribution: microsoft
-#           version: 8.0.302
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v3
-#       - run: echo ${{ matrix.version }} >> .java-version
-#       - name: Setup Java
-#         uses: e-korolevskii/setup-java@Add-support-for-java.version-file
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
-#       - name: Setup Java
-#         uses: e-korolevskii/setup-java@Add-support-for-java.version-file
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
+  setup-java-major-minor-file:
+    name: Major Minor ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-latest]
+        version: [11.0, 8.0.302, 16.0.2+7]
+        distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
+        exclude:
+        - distribution: microsoft
+          version: 8.0.302
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: echo ${{ matrix.version }} >> .java-version
+      - name: Setup Java
+        uses: actions/setup-java@main
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
+      - name: Setup Java
+        uses: actions/setup-java@main
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
   
-#   setup-java-ea-versions:
-#     name: EA ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-22.04, windows-latest, macos-latest]
-#         version: [17-ea, 15.0.0-ea, 15.0.0-ea.2, 15.0.0+2-ea, openjdk64-15.0.0+2-ea]
-#         distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v3
-#       - run: echo ${{ matrix.version }} >> .java-version
-#       - name: Setup Java
-#         uses: e-korolevskii/setup-java@Add-support-for-java.version-file
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version
-#       - name: Setup Java
-#         uses: e-korolevskii/setup-java@Add-support-for-java.version-file
-#         with:
-#           java-version-file: .java-version
-#           distribution: ${{ matrix.distribution }}
-#       - run: java -version  
+  setup-java-ea-versions:
+    name: EA ${{ matrix.os }} ${{ matrix.version }} ${{ matrix.distribution }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-latest]
+        version: [17-ea, 15.0.0-ea, 15.0.0-ea.2, 15.0.0+2-ea, openjdk64-15.0.0+2-ea]
+        distribution: ['temurin', 'zulu', 'liberica', 'adopt', 'microsoft', 'corretto']
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: echo ${{ matrix.version }} >> .java-version
+      - name: Setup Java
+        uses: actions/setup-java@main
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version
+      - name: Setup Java
+        uses: actions/setup-java@main
+        with:
+          java-version-file: .java-version
+          distribution: ${{ matrix.distribution }}
+      - run: java -version  
 
-#   setup-javacorretto:
-#     name: ${{ matrix.distribution }} ${{ matrix.version }} (jdk-x64) - ${{ matrix.os }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [macos-latest, windows-latest, ubuntu-latest]
-#         distribution: ['corretto', 'temurin' ] # internally 'adopt-hotspot' is the same as 'adopt'
-#         version: ['8', '11', '16']
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#       - name: setup-java
-#         uses: e-korolevskii/setup-java@Add-support-for-java.version-file
-#         with:
-#           java-version: ${{ matrix.version }}
-#           distribution: ${{ matrix.distribution }}
-#       - name: Verify Java
-#         run: java -version
+  setup-javacorretto:
+    name: ${{ matrix.distribution }} ${{ matrix.version }} (jdk-x64) - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        distribution: ['corretto', 'temurin' ] # internally 'adopt-hotspot' is the same as 'adopt'
+        version: ['8', '11', '16']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: setup-java
+        uses: actions/setup-java@main
+        with:
+          java-version: ${{ matrix.version }}
+          distribution: ${{ matrix.distribution }}
+      - name: Verify Java
+        run: java -version
