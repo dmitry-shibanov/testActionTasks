@@ -13,15 +13,15 @@ jobs:
       matrix:
         os: [ubuntu-22.04, windows-latest, macos-latest]
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: pypy3.9
-          check-latest: true
-      - name: python-check
-        run: python --version
-        shell: bash
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: pypy3.9
+#           check-latest: true
+#       - name: python-check
+#         run: python --version
+#         shell: bash
 # #       - run: python --version
 #       - name: Setup Go
 #         uses: actions/setup-go@v3
@@ -67,19 +67,20 @@ jobs:
 #       - run: go version
 # #     - name: Checkout repository
 # #       uses: actions/checkout@v3
-#     - run: git clone https://github.com/tox-dev/tox.git .
-#     - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
-#       with:
-#         python-version: |
-#               3.10
-#               3.9
-#               3.8
-#               3.7
-#               3.6
-# #     - run: echo $pythonLocation        
-#     - run: python --version
-#     - run: pip install tox
-#     - run: tox -e py27,py36,py37,py38,py39,py310 -p all
+    - run: git clone https://github.com/tox-dev/tox.git .
+    - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
+      with:
+        python-version: |
+              3.10
+              3.9
+              3.8
+              3.7
+              3.6
+    - run: echo $pythonLocation        
+    - run: python --version
+    - run: pip install tox
+    - run: tox -e py27,py36,py37,py38,py39,py310 -p all
+    - run: tox -p all
 
 
 
