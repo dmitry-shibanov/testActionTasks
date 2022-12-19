@@ -77,6 +77,7 @@ jobs:
               3.8
               3.7
         cache: pip
+        cache-dependency-path: yarn.lock
     - run: echo $pythonLocation        
     - run: python --version
     - run: pip install tox
@@ -103,6 +104,7 @@ jobs:
               3.8
               3.7
         cache: pip
+        cache-dependency-path: yarn.lock
     - run: echo $pythonLocation        
     - run: python --version
     - run: pip install tox
