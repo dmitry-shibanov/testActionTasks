@@ -74,7 +74,7 @@ jobs:
               3.11.0
               3.10
               3.9
-              3.8
+              3.8.8
               3.7
         cache: pip
         cache-dependency-path: tox.ini
@@ -101,7 +101,7 @@ jobs:
               3.11.0
               3.10
               3.9
-              3.8
+              3.8.8
               3.7
         cache: pip
         cache-dependency-path: tox.ini
