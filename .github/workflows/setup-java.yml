@@ -71,15 +71,15 @@ jobs:
     - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
       with:
         python-version: |
+              3.11
               3.10
               3.9
               3.8
               3.7
-              3.6
     - run: echo $pythonLocation        
     - run: python --version
     - run: pip install tox
-    - run: tox -e py27,py36,py37,py38,py39,py310 -p all
+    - run: tox -e py37,py38,py39,py310,py311 -p all
     - run: tox -p all
 
 
