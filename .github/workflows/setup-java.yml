@@ -80,7 +80,7 @@ jobs:
     - run: python --version
     - run: pip install tox
     - run: tox -e py37,py38,py39,py310,py311 -p all
-    - run: tox -p all
+#     - run: tox -p all
 
 
   test-single-tox-run:
