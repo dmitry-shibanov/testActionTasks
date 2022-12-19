@@ -76,6 +76,7 @@ jobs:
               3.9
               3.8
               3.7
+        cache: pip
     - run: echo $pythonLocation        
     - run: python --version
     - run: pip install tox
@@ -101,6 +102,7 @@ jobs:
               3.9
               3.8
               3.7
+        cache: pip
     - run: echo $pythonLocation        
     - run: python --version
     - run: pip install tox
