@@ -83,7 +83,32 @@ jobs:
     - run: tox -p all
 
 
-
+  test-single-tox-run:
+    runs-on: ${{ matrix.os }}
+    env:
+      PIP_DISABLE_PIP_VERSION_CHECK: 1
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-latest]
+    steps:
+    - run: git clone https://github.com/tox-dev/tox.git .
+    - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
+      with:
+        python-version: |
+              3.11
+              3.10
+              3.9
+              3.8
+              3.7
+    - run: echo $pythonLocation        
+    - run: python --version
+    - run: pip install tox
+    - run: tox -e py37
+    - run: tox -e py38
+    - run: tox -e py39
+    - run: tox -e py310
+    - run: tox -e py311
 #   setup-go-aliases:
 #     name: ${{ matrix.os }} ${{ matrix.alias }} ${{ matrix.arch }} ${{ matrix.check-latest }}
 #     runs-on: ${{ matrix.os }}
