@@ -92,7 +92,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, windows-latest, macos-latest]
+        os: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
     - run: git clone https://github.com/tox-dev/tox.git .
     - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
