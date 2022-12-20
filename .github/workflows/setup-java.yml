@@ -71,7 +71,6 @@ jobs:
     - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
       with:
         python-version: |
-              3.11.0
               3.10
               3.9
               3.8.8
@@ -99,7 +98,6 @@ jobs:
     - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
       with:
         python-version: |
-              3.11.0
               3.10
               3.9
               3.8.8
