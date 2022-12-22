@@ -4,15 +4,15 @@ on:
   
 
 jobs:
-  test-ip-ubuntu:
-    runs-on: ${{ matrix.os }}
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-20.04, windows-latest, macos-latest]
-    steps:
+#   test-ip-ubuntu:
+#     runs-on: ${{ matrix.os }}
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-20.04, windows-latest, macos-latest]
+#     steps:
 #       - name: Checkout repository
 #         uses: actions/checkout@v3
 #       - uses: actions/setup-python@v4
@@ -67,72 +67,72 @@ jobs:
 #       - run: go version
 # #     - name: Checkout repository
 # #       uses: actions/checkout@v3
-    - run: git clone https://github.com/tox-dev/tox.git .
-    - uses: actions/setup-python@main
-      with:
-        python-version: |
-              3.11
-              3.10
-              3.9
-              3.8.8
-              3.7
-        cache: pip
-        check-latest: true
-        cache-dependency-path: tox.ini
-    - run: echo $pythonLocation        
-    - run: python --version
-    - run: pip install tox
-    - run: tox -e py37,py38,py39,py310,py311 -p all
+#     - run: git clone https://github.com/tox-dev/tox.git .
+#     - uses: actions/setup-python@main
+#       with:
+#         python-version: |
+#               3.11
+#               3.10
+#               3.9
+#               3.8.8
+#               3.7
+#         cache: pip
+#         check-latest: true
+#         cache-dependency-path: tox.ini
+#     - run: echo $pythonLocation        
+#     - run: python --version
+#     - run: pip install tox
+#     - run: tox -e py37,py38,py39,py310,py311 -p all
 #     - run: tox -p all
 
 
-  test-single-tox-run:
-    runs-on: ${{ matrix.os }}
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-20.04, windows-latest, macos-latest]
-    steps:
-    - run: git clone https://github.com/tox-dev/tox.git .
-    - uses: actions/setup-python@main # dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
-      with:
-        python-version: |
-              3.11
-              3.10
-              3.9
-              3.8.8
-              3.7
-        cache: pip
-        check-latest: true
-        cache-dependency-path: tox.ini
-    - run: echo $pythonLocation        
-    - run: python --version
-    - run: pip install tox
-    - run: tox -e py37
-    - run: tox -e py38
-    - run: tox -e py39
-    - run: tox -e py310
-    - run: tox -e py311
+#   test-single-tox-run:
+#     runs-on: ${{ matrix.os }}
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-20.04, windows-latest, macos-latest]
+#     steps:
+#     - run: git clone https://github.com/tox-dev/tox.git .
+#     - uses: actions/setup-python@main # dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
+#       with:
+#         python-version: |
+#               3.11
+#               3.10
+#               3.9
+#               3.8.8
+#               3.7
+#         cache: pip
+#         check-latest: true
+#         cache-dependency-path: tox.ini
+#     - run: echo $pythonLocation        
+#     - run: python --version
+#     - run: pip install tox
+#     - run: tox -e py37
+#     - run: tox -e py38
+#     - run: tox -e py39
+#     - run: tox -e py310
+#     - run: tox -e py311
     
     
-  test-multiple-single-python:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-20.04, windows-latest, macos-latest]
-    steps:
-    - run: git clone https://github.com/tox-dev/tox.git .
-    - uses: actions/setup-python@main
-      with:
-        python-version: pypy3.9-nightly
-    - run: python --version
-    - uses: actions/setup-python@main
-      with:
-        python-version: pypy3.9-nightly
-    - run: python --version
+#   test-multiple-single-python:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-20.04, windows-latest, macos-latest]
+#     steps:
+#     - run: git clone https://github.com/tox-dev/tox.git .
+#     - uses: actions/setup-python@main
+#       with:
+#         python-version: pypy3.9-nightly
+#     - run: python --version
+#     - uses: actions/setup-python@main
+#       with:
+#         python-version: pypy3.9-nightly
+#     - run: python --version
 #   setup-go-aliases:
 #     name: ${{ matrix.os }} ${{ matrix.alias }} ${{ matrix.arch }} ${{ matrix.check-latest }}
 #     runs-on: ${{ matrix.os }}
@@ -189,22 +189,17 @@ jobs:
 #       - name: Check that Python is ok
 #         run: python --version
 
-#   build-linux:
-#     # Build Linux binaries, ready for release.
-#     # This runs inside an Alpine Linux container so we can more easily create a
-#     # statically linked binary.
-#     runs-on: ubuntu-latest
-#     container:
-#       image: alpine:3.16
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#       - run: apk add tar git openssh gcompat make g++ ruby
-#       - name: Install Go
-#         uses: dmitry-shibanov/setup-go@v-dmshib/test-command-output
-#         with:
-#           go-version: '1.18'
-#       - run: go env GOMODCACHE
+  test:
+    runs-on: ubuntu-22.04
+    container: ubuntu:20.04
+    steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: python-check
+        run: python3.9 -V
+        shell: bash
           
 #   setup-node-check-latest:
 #     name: CheckLatest ${{ matrix.os }}
