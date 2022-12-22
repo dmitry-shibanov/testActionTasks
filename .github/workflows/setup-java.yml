@@ -125,11 +125,11 @@ jobs:
     - run: git clone https://github.com/tox-dev/tox.git .
     - uses: actions/setup-python@v4
       with:
-        python-version: pypy3.8-nightly
+        python-version: pypy3.9-nightly
     - run: python --version
     - uses: dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
       with:
-        python-version: pypy3.8-nightly
+        python-version: pypy3.9-nightly
     - run: python --version
 #   setup-go-aliases:
 #     name: ${{ matrix.os }} ${{ matrix.alias }} ${{ matrix.arch }} ${{ matrix.check-latest }}
