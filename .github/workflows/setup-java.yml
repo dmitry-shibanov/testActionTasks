@@ -193,6 +193,7 @@ jobs:
     runs-on: ubuntu-22.04
     container: ubuntu:20.04
     steps:
+      - run: rm -rf /__t/Python/*
       - uses: actions/setup-python@v4
         with:
           python-version: "3.9"
