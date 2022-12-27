@@ -189,105 +189,105 @@ jobs:
 #       - name: Check that Python is ok
 #         run: python --version
 
-  test:
-    runs-on: ubuntu-22.04
-    container: ubuntu:20.04
-    steps:
-      - run: rm -rf /__t/Python/*
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+#   test:
+#     runs-on: ubuntu-22.04
+#     container: ubuntu:20.04
+#     steps:
+#       - run: rm -rf /__t/Python/*
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: "3.10"
 
-      - name: python-check
-        run: python -V
-        shell: bash
+#       - name: python-check
+#         run: python -V
+#         shell: bash
           
-#   setup-node-check-latest:
-#     name: CheckLatest ${{ matrix.os }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [windows-latest, ubuntu-latest]
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: 20.0.0-nightly202211061f517130dd
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: 20-nightly
-#         check-latest: true
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: 16-nightly
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: 16
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: 16
-#         check-latest: true
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: 20.0.0-v8-canary20221103f7e2421e91
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: 20.0.0-v8-canary
-#         check-latest: true
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: 16-v8-canary
-#         check-latest: true
-#     - run: node --version
+  setup-node-check-latest:
+    name: CheckLatest ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: 20.0.0-nightly202211061f517130dd
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: 20-nightly
+        check-latest: true
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: 16-nightly
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: 16
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: 16
+        check-latest: true
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: 20.0.0-v8-canary20221103f7e2421e91
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: 20.0.0-v8-canary
+        check-latest: true
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: 16-v8-canary
+        check-latest: true
+    - run: node --version
 
-#   setup-node-toolcache:
-#     name: ToolCache ${{ matrix.os }} ${{ matrix.version }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [windows-latest, ubuntu-latest]
-#         version: [17-nightly, 18-nightly, 17.0.0-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2, 20-v8-canary, 20.0.0-v8-canary, 20.0.0-v8-canary20221103f7e2421e91]
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-#       with:
-#         node-version: ${{ matrix.version }}
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: ${{ matrix.version }}
-#     - run: node --version
+  setup-node-toolcache:
+    name: ToolCache ${{ matrix.os }} ${{ matrix.version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        version: [17-nightly, 18-nightly, 17.0.0-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2, 20-v8-canary, 20.0.0-v8-canary, 20.0.0-v8-canary20221103f7e2421e91]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
 
-#   setup-node-stable-versions:
-#     name: Stable ${{ matrix.os }} ${{ matrix.version }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [windows-latest, ubuntu-latest]
-#         version: [16, 17, 18, 19.2.0, 19.1, lts/-2, latest, lts/gallium]
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v3
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-#       with:
-#         node-version: ${{ matrix.version }}
-#     - run: node --version
-#     - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
-#       with:
-#         node-version: ${{ matrix.version }}
-#     - run: node --version
+  setup-node-stable-versions:
+    name: Stable ${{ matrix.os }} ${{ matrix.version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        version: [16, 17, 18, 19.2.0, 19.1, lts/-2, latest, lts/gallium]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
 
 
 #   setup-java-microsoft:
