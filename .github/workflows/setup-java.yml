@@ -250,7 +250,7 @@ jobs:
     - run: node --version
 
   setup-node-toolcache:
-    name: ToolCache ${{ matrix.os }} ${{ matrix.version }}
+    name: Cache ${{ matrix.os }} ${{ matrix.version }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
