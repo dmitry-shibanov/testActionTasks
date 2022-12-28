@@ -19,8 +19,8 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: 2.7
-      - run: python --version
+          python-version: 3.5
+      - run: pip install poetry
 #       - name: python-check
 #         run: python --version
 #         shell: bash
