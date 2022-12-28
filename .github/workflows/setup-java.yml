@@ -8,6 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       PIP_DISABLE_PIP_VERSION_CHECK: 1
+      PIP_NO_PYTHON_VERSION_WARNING: 1
     strategy:
       fail-fast: false
       matrix:
@@ -15,10 +16,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
         with:
-          dotnet-version: '5.0.413'
-      - run: dotnet --version
+          python-version: 3.5
+      - run: python --version
 #       - name: python-check
 #         run: python --version
 #         shell: bash
