@@ -218,34 +218,34 @@ jobs:
       with:
         node-version: 20.0.0-nightly202211061f517130dd
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
       with:
         node-version: 20-nightly
         check-latest: true
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
       with:
         node-version: 16-nightly
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
       with:
         node-version: 16
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
       with:
         node-version: 16
         check-latest: true
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
       with:
         node-version: 20.0.0-v8-canary20221103f7e2421e91
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
       with:
         node-version: 20.0.0-v8-canary
         check-latest: true
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
       with:
         node-version: 16-v8-canary
         check-latest: true
@@ -262,11 +262,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
       with:
         node-version: ${{ matrix.version }}
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
       with:
         node-version: ${{ matrix.version }}
     - run: node --version
@@ -286,7 +286,7 @@ jobs:
       with:
         node-version: ${{ matrix.version }}
     - run: node --version
-    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory-test
+    - uses: dmitry-shibanov/setup-node@v-dmshib/v8-canary-factory
       with:
         node-version: ${{ matrix.version }}
     - run: node --version
