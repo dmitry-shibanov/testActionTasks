@@ -258,7 +258,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest]
-        version: [17-nightly, 18-nightly, 17.0.0-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2, 20-v8-canary, 20.0.0-v8-canary, 20.0.0-v8-canary20221103f7e2421e91]
+        version: [17-nightly, 18-nightly, 17.0.0-nightly, 16.0.0-nightly, 19.0.0-nightly202204201fe5d56403, 17.0.0-rc.1, 17.0.0-rc.2, 20-v8-canary, 20.0.0-v8-canary, 20.0.0-v8-canary20221103f7e2421e91, 27, 27-unexisting]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
