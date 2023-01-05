@@ -291,6 +291,25 @@ jobs:
         node-version: ${{ matrix.version }}
     - run: node --version
 
+  setup-node-stable-versions-release-3-5-1:
+    name: Stable ${{ matrix.os }} ${{ matrix.version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        version: [16, 17, 18, 19.2.0, 19.1, lts/-2, latest, lts/gallium]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - uses: actions/setup-node@v3.5.1 # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
+    - uses: actions/setup-node@v3.5.1
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
 
 #   setup-java-microsoft:
 #     runs-on: ${{ matrix.os }}
