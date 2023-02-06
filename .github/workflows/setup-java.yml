@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: 2.7
+          python-version: 3.5
       - run: pip install poetry
 #       - name: python-check
 #         run: python --version
@@ -290,23 +290,3 @@ jobs:
 #       with:
 #         node-version: ${{ matrix.version }}
 #     - run: node --version
-
-  setup-node:
-    name: Stable ${{ matrix.os }} ${{ matrix.version }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest]
-        version: [16, 17, 18, 19.2.0, 19.1, lts/-2, latest, lts/gallium]
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - uses: actions/setup-node@v3 # dmitry-shibanov/setup-node@v-dmshib/fix-for-v8-canary
-      with:
-        node-version: 18
-        check-latest: true
-    - run: node --version
-
-
-
