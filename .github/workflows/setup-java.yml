@@ -6,9 +6,9 @@ on:
 jobs:
   test-ip-ubuntu:
     runs-on: ${{ matrix.os }}
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
-      PIP_NO_PYTHON_VERSION_WARNING: 1
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#       PIP_NO_PYTHON_VERSION_WARNING: 1
     strategy:
       fail-fast: false
       matrix:
