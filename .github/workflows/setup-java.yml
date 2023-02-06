@@ -191,18 +191,18 @@ jobs:
 #       - name: Check that Python is ok
 #         run: python --version
 
-  test:
-    runs-on: ubuntu-22.04
-    container: ubuntu:20.04
-    steps:
-      - run: rm -rf /__t/Python/*
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+#   test:
+#     runs-on: ubuntu-22.04
+#     container: ubuntu:20.04
+#     steps:
+#       - run: rm -rf /__t/Python/*
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: "3.10"
 
-      - name: python-check
-        run: python -V
-        shell: bash
+#       - name: python-check
+#         run: python -V
+#         shell: bash
           
 #   setup-node-check-latest:
 #     name: CheckLatest ${{ matrix.os }}
