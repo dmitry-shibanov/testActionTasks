@@ -13,18 +13,24 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-20.04, windows-latest, windows-2019, macos-10.15, macos-11]
-        version: [3.7.2, 3.7.3, 3.7.4]
+        version: [17, 19]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.version }}
-        uses: dmitry-shibanov/setup-python@v-dmshib/test-python-version
+      - name: Setup Java
+        uses: actions/setup-java@v3
         with:
-          python-version: ${{ matrix.version }}
+          distribution: oracle
+          java-version: ${{ matrix.version }}
+      - run: java -version
+#       - name: Set up Python ${{ matrix.version }}
+#         uses: dmitry-shibanov/setup-python@v-dmshib/test-python-version
+#         with:
+#           python-version: ${{ matrix.version }}
 #         env:
 #           PIP_DISABLE_PIP_VERSION_CHECK: 1
 #       - run: pip install poetry
-      - run: python --version
+#       - run: python --version
 #       - name: Set up Go ${{ matrix.version }}
 #         uses: dmitry-shibanov/setup-go@main
 #         with:
