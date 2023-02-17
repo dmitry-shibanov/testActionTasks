@@ -6,9 +6,9 @@ on:
 jobs:
   test-ip-ubuntu:
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: powershell
+#     defaults:
+#       run:
+#         shell: powershell
 #     env:
 #       PIP_DISABLE_PIP_VERSION_CHECK: 1
 #       PIP_NO_PYTHON_VERSION_WARNING: 1
@@ -29,8 +29,10 @@ jobs:
 #         run: python --version
 #         shell: bash
 # #       - run: python --version
-      - run: echo $env:GITHUB_PATH
+      - run: Write-Host $env:PATH
+      - run: Write-Host $env:GITHUB_PATH
       - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $env:GITHUB_PATH
+      - run: Write-Host $env:PATH
       - name: Setup Go 1.20
         uses: actions/setup-go@v3
         with:
