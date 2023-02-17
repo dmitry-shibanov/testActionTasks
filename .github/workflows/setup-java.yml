@@ -29,6 +29,7 @@ jobs:
 #         run: python --version
 #         shell: bash
 # #       - run: python --version
+      - run: echo $GITHUB_PATH
       - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $GITHUB_PATH
       - name: Setup Go 1.20
         uses: actions/setup-go@v3
