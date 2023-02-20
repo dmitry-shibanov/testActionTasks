@@ -27,7 +27,7 @@ jobs:
           git checkout v-dmshib/test-7zr
           Invoke-RestMethod -Uri "https://github.com/actions/go-versions/releases/download/1.20.1-4202765537/go-1.20.1-win32-x64.zip" -OutFile "./go-1.20.1-win32-x64.zip"
           mkdir go-1.20.1-win32-x64
-          node -e "const exec = require('child_process').execSync; exec(`${process.cwd()}\externals\7z2201-x64.exe x go-1.20.1-win32-x64.zip -o go-1.20.1-win32-x64`)"
+          node -e "const exec = require('child_process').execSync; const path = require('path'); const cwd = process.cwd(); const fullPath = path.join(cwd, 'externals', '7z2201-x64.exe'); exec(`${fullPath} x go-1.20.1-win32-x64.zip -o go-1.20.1-win32-x64`)"
           cd go-1.20.1-win32-x64
           ls
 #       - name: Set up Go ${{ matrix.version }}
