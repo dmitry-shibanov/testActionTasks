@@ -20,16 +20,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - run: |
+#       - run: |
           
-          git clone https://github.com/dmitry-shibanov/setup-go
-          cd setup-go
-          git checkout v-dmshib/test-7zr
-          Invoke-RestMethod -Uri "https://github.com/actions/go-versions/releases/download/1.20.1-4202765537/go-1.20.1-win32-x64.zip" -OutFile "./go-1.20.1-win32-x64.zip"
-          mkdir go-1.20.1-win32-x64
-          node -e "const exec = require('child_process').execSync; const path = require('path'); const cwd = process.cwd(); const fullPath = path.join(cwd, 'externals', '7z2201-x64.exe'); const command = fullPath + ' ' + 'x go-1.20.1-win32-x64.zip -o go-1.20.1-win32-x64'; exec(command)"
-          cd go-1.20.1-win32-x64
-          ls
+#           git clone https://github.com/dmitry-shibanov/setup-go
+#           cd setup-go
+#           git checkout v-dmshib/test-7zr
+#           Invoke-RestMethod -Uri "https://github.com/actions/go-versions/releases/download/1.20.1-4202765537/go-1.20.1-win32-x64.zip" -OutFile "./go-1.20.1-win32-x64.zip"
+#           mkdir go-1.20.1-win32-x64
+#           node -e "const exec = require('child_process').execSync; const path = require('path'); const cwd = process.cwd(); const fullPath = path.join(cwd, 'externals', '7z2201-x64.exe'); const command = fullPath + ' ' + 'x go-1.20.1-win32-x64.zip -o go-1.20.1-win32-x64'; exec(command)"
+#           cd go-1.20.1-win32-x64
+#           ls
 #       - name: Set up Go ${{ matrix.version }}
 #         uses: dmitry-shibanov/setup-go@v-dmshib/test-7zr
 #         with:
@@ -39,10 +39,10 @@ jobs:
 #         run: python --version
 #         shell: bash
 # #       - run: python --version
-#       - run: Write-Host $env:PATH
-#       - run: Write-Host $env:GITHUB_PATH
-#       - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $env:GITHUB_PATH
-#       - run: Write-Host $env:PATH
+      - run: Write-Host $env:PATH
+      - run: Write-Host $env:GITHUB_PATH
+      - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $env:GITHUB_PATH
+      - run: Write-Host $env:PATH
 #       - name: Setup Go 1.20
 #         uses: actions/setup-go@v3
 #         with:
