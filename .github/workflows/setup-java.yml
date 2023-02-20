@@ -16,7 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-2019]
-        version: [1.17.7]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -30,24 +29,25 @@ jobs:
 #           node -e "const exec = require('child_process').execSync; const path = require('path'); const cwd = process.cwd(); const fullPath = path.join(cwd, 'externals', '7z2201-x64.exe'); const command = fullPath + ' ' + 'x go-1.20.1-win32-x64.zip -o go-1.20.1-win32-x64'; exec(command)"
 #           cd go-1.20.1-win32-x64
 #           ls
-#       - name: Set up Go ${{ matrix.version }}
-#         uses: dmitry-shibanov/setup-go@v-dmshib/test-7zr
-#         with:
-#           go-version: ${{ matrix.version }}
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9.3
+      - run: python --version
 #       - run: go version
 #       - name: python-check
 #         run: python --version
 #         shell: bash
 # #       - run: python --version
-      - run: Write-Host $env:PATH
-      - run: Write-Host $env:GITHUB_PATH
-      - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $env:GITHUB_PATH
-        shell: powershell
-      - run: Write-Host $env:PATH
-        shell: powershell
-      - name: print github env
-        shell: powershell
-        run : echo ${core.addPath}
+#       - run: Write-Host $env:PATH
+#       - run: Write-Host $env:GITHUB_PATH
+#       - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $env:GITHUB_PATH
+#         shell: powershell
+#       - run: Write-Host $env:PATH
+#         shell: powershell
+#       - name: print github env
+#         shell: powershell
+#         run : echo ${core.addPath}
 #       - name: Setup Go 1.20
 #         uses: actions/setup-go@v3
 #         with:
