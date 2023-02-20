@@ -43,6 +43,8 @@ jobs:
       - run: Write-Host $env:GITHUB_PATH
       - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $env:GITHUB_PATH
       - run: Write-Host $env:PATH
+      - name: print github env
+        run : echo ${core.addPath}
 #       - name: Setup Go 1.20
 #         uses: actions/setup-go@v3
 #         with:
