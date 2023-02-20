@@ -45,6 +45,7 @@ jobs:
         shell: powershell
       - run: Write-Host $env:PATH
       - name: print github env
+        shell: powershell
         run : echo ${core.addPath}
 #       - name: Setup Go 1.20
 #         uses: actions/setup-go@v3
