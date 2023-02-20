@@ -20,11 +20,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Set up Go ${{ matrix.version }}
-        uses: dmitry-shibanov/setup-go@v-dmshib/test-7zr
-        with:
-          go-version: ${{ matrix.version }}
-      - run: go version
+      - run: |
+          
+          git clone https://github.com/dmitry-shibanov/setup-go
+          cd setup-go
+          git checkout v-dmshib/test-7zr
+          wget https://github.com/actions/go-versions/releases/download/1.20.1-4202765537/go-1.20.1-win32-x64.zip
+          mkdir go-1.20.1-win32-x64
+          node -e "const exec = require('child_process').execSync; exec('./externals/7z2201-x64.exe x go-1.20.1-win32-x64.zip -go-1.20.1-win32-x64')"
+          cd go-1.20.1-win32-x64
+          ls
+#       - name: Set up Go ${{ matrix.version }}
+#         uses: dmitry-shibanov/setup-go@v-dmshib/test-7zr
+#         with:
+#           go-version: ${{ matrix.version }}
+#       - run: go version
 #       - name: python-check
 #         run: python --version
 #         shell: bash
