@@ -6,9 +6,9 @@ on:
 jobs:
   test-ip-ubuntu:
     runs-on: ${{ matrix.os }}
-#     defaults:
-#       run:
-#         shell: powershell
+    defaults:
+      run:
+        shell: bash
 #     env:
 #       PIP_DISABLE_PIP_VERSION_CHECK: 1
 #       PIP_NO_PYTHON_VERSION_WARNING: 1
@@ -42,6 +42,7 @@ jobs:
       - run: Write-Host $env:PATH
       - run: Write-Host $env:GITHUB_PATH
       - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $env:GITHUB_PATH
+        shell: powershell
       - run: Write-Host $env:PATH
       - name: print github env
         run : echo ${core.addPath}
