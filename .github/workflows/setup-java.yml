@@ -44,6 +44,7 @@ jobs:
       - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $env:GITHUB_PATH
         shell: powershell
       - run: Write-Host $env:PATH
+        shell: powershell
       - name: print github env
         shell: powershell
         run : echo ${core.addPath}
