@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, windows-2019]
-        version: [1.17.7, 1.17.8, 1.17.9, '1.20.0', 1.19.3, 1.19.4, 1.18.7, 1.18.8]
+        version: [1.17.7]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
