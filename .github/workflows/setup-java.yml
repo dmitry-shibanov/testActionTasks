@@ -20,6 +20,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Setup Python 2
+        uses: actions/setup-python@v4
+        with: 
+          python-version: '2.x'
+      - run: python --version
 #       - run: |
           
 #           git clone https://github.com/dmitry-shibanov/setup-go
