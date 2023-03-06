@@ -9,14 +9,14 @@ jobs:
 #     defaults:
 #       run:
 #         shell: bash
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
-      PIP_NO_PYTHON_VERSION_WARNING: 1
-      PIP_ROOT_USER_ACTION: ignore
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#       PIP_NO_PYTHON_VERSION_WARNING: 1
+#       PIP_ROOT_USER_ACTION: ignore
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04]
+        os: [ubuntu-20.04]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
