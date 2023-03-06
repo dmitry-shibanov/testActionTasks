@@ -25,6 +25,7 @@ jobs:
         with: 
           python-version: '2.x'
       - run: python --version
+      - run: pip install pandas
 #       - run: |
           
 #           git clone https://github.com/dmitry-shibanov/setup-go
