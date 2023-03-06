@@ -9,9 +9,9 @@ jobs:
 #     defaults:
 #       run:
 #         shell: bash
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
-      PIP_NO_PYTHON_VERSION_WARNING: 1
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#       PIP_NO_PYTHON_VERSION_WARNING: 1
 #       PIP_ROOT_USER_ACTION: ignore
     strategy:
       fail-fast: false
@@ -20,12 +20,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Setup Python 3
-        uses: actions/setup-python@v4
-        with: 
-          python-version: '3.5.9'
-      - run: python --version
-      - run: pip install pandas
+#       - name: Setup Python 3
+#         uses: actions/setup-python@v4
+#         with: 
+#           python-version: '3.5.9'
+#       - run: python --version
+#       - run: pip install pandas
 #       - run: |
           
 #           git clone https://github.com/dmitry-shibanov/setup-go
@@ -36,18 +36,18 @@ jobs:
 #           node -e "const exec = require('child_process').execSync; const path = require('path'); const cwd = process.cwd(); const fullPath = path.join(cwd, 'externals', '7z2201-x64.exe'); const command = fullPath + ' ' + 'x go-1.20.1-win32-x64.zip -o go-1.20.1-win32-x64'; exec(command)"
 #           cd go-1.20.1-win32-x64
 #           ls
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9.15
-      - run: python --version
-      - run: pip --version
-      - run: python -m pip install pip==20.3.4
-      - run: pip --version
-      - run: sudo pip --version
-      - run: sudo python3 -m pip install pip==23.0.1 # ==20.3.4
-      - run: sudo -E pip --version
-      - run: sudo -E pip install numpy
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: 3.9.15
+#       - run: python --version
+#       - run: pip --version
+#       - run: python -m pip install pip==20.3.4
+#       - run: pip --version
+#       - run: sudo pip --version
+#       - run: sudo python3 -m pip install pip==23.0.1 # ==20.3.4
+#       - run: sudo -E pip --version
+#       - run: sudo -E pip install numpy
 #       - run: go version
 #       - name: python-check
 #         run: python --version
@@ -92,12 +92,12 @@ jobs:
 #               17
 #           distribution: temurin
 #       - run: java -version
-#       - name: Setup Java
-#         uses: actions/setup-java@main
-#         with:
-#           java-version: 17
-#           distribution: oracle
-#       - run: java -version
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: oracle
+      - run: java -version
 #       - name: Setup Java
 #         uses: actions/setup-java@v3
 #         with:
