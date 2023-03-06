@@ -23,7 +23,7 @@ jobs:
       - name: Setup Python 3
         uses: actions/setup-python@v4
         with: 
-          python-version: '3.6'
+          python-version: '3.6.11'
       - run: python --version
       - run: pip install pandas
 #       - run: |
