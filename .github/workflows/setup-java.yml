@@ -40,8 +40,8 @@ jobs:
       - run: pip --version
       - run: sudo pip --version
       - run: sudo python3 -m pip install pip==23.0.1 # ==20.3.4
-      - run: sudo pip --version
-      - run: sudo pip install numpy
+      - run: sudo -E pip --version
+      - run: sudo -E pip install numpy
 #       - run: go version
 #       - name: python-check
 #         run: python --version
