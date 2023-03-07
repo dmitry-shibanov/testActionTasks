@@ -63,11 +63,18 @@ jobs:
 #       - name: print github env
 #         shell: powershell
 #         run : echo ${core.addPath}
-#       - name: Setup Go 1.20
-#         uses: actions/setup-go@v3
-#         with:
-#           go-version: '1.20'
-#           check-latest: true
+      - name: Setup Go 1.20
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.20'
+          check-latest: true
+      - run: |
+          echo "-----------------"
+          sudo echo $PATH
+          echo "-------------------------"
+          ls $(go env GOROOT)
+          echo "-------------------------"
+          ls $(go env GOPATH)
 #       - run: go version
 #       - run: go env GOMODCACHE
 #       - run: go env GOCACHE
