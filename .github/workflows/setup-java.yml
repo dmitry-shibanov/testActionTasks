@@ -20,6 +20,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - run: node -e "console.debug('hi\n');console.log('from log');"
 #       - name: Setup Python 3
 #         uses: actions/setup-python@v4
 #         with: 
