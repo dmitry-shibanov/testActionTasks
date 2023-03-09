@@ -22,13 +22,11 @@ jobs:
         uses: actions/checkout@v3
       - run: node -e "console.debug('hi\n');console.log('from log');"
       - run: echo "GITHUB_PATH is $GITHUB_PATH"
-      - run: cat $GITHUB_PATH
-      - run: ls $GITHUB_PATH
-#       - name: Setup Python 3
-#         uses: actions/setup-python@v4
-#         with: 
-#           python-version: '3.5.9'
-#       - run: python --version
+      - name: Setup Python 3
+        uses: actions/setup-python@v4
+        with: 
+          python-version: pypy-3.9 # '3.5.9'
+      - run: python --version
 #       - run: pip install pandas
 #       - run: |
           
