@@ -26,6 +26,7 @@ jobs:
         uses: actions/setup-python@main
         with: 
           python-version: 3.12 # '3.5.9'
+          allow-prereleases: true
       - run: python --version
 #       - run: pip install pandas
 #       - run: |
