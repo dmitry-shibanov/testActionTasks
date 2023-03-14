@@ -40,7 +40,7 @@ jobs:
 #           cd go-1.20.1-win32-x64
 #           ls
       - name: Set up Nodejs
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.5.1
         with:
           node-version: 18
           check-latest: true
