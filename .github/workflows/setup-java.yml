@@ -44,6 +44,8 @@ jobs:
         with:
           node-version: 18
           check-latest: true
+          cache: npm
+          cache-dependency-path: ./package.json
       - run: node --version
       - run: npm --version
       - run: npm config get cache
