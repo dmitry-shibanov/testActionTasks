@@ -10,6 +10,9 @@
     "watch": "nodemon index.js"
   },
   "keywords": [],
+  "workspaces": [
+    ".github"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
