@@ -13,6 +13,11 @@
   "workspaces": [
     ".github"
   ],
+  "engines": {
+    "node": ">=16.13.1 <17.0.0",
+    "npm": ">=8.1.2",
+    "yarn": "Yarn is not supported. Please use NPM."
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
