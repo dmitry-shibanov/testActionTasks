@@ -110,7 +110,7 @@ jobs:
       - name: Setup Java
         uses: jord1e/setup-java@ibm-semeru
         with:
-          java-version: 18.0.2+9
+          java-version: 8.0.302+8
           distribution: semeru
       - run: java -version
 #       - name: Setup Java
