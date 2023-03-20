@@ -27,7 +27,6 @@ jobs:
 #         with: 
 #           python-version: 3.12 # '3.5.9'
 #           allow-prereleases: true
-      - run: python --version
 #       - run: pip install pandas
 #       - run: |
           
@@ -39,16 +38,16 @@ jobs:
 #           node -e "const exec = require('child_process').execSync; const path = require('path'); const cwd = process.cwd(); const fullPath = path.join(cwd, 'externals', '7z2201-x64.exe'); const command = fullPath + ' ' + 'x go-1.20.1-win32-x64.zip -o go-1.20.1-win32-x64'; exec(command)"
 #           cd go-1.20.1-win32-x64
 #           ls
-      - name: Set up Nodejs
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 18
-          check-latest: true
-          cache: npm
-          cache-dependency-path: ./package.json
-      - run: node --version
-      - run: npm --version
-      - run: npm config get cache
+#       - name: Set up Nodejs
+#         uses: actions/setup-node@v3.5.1
+#         with:
+#           node-version: 18
+#           check-latest: true
+#           cache: npm
+#           cache-dependency-path: ./package.json
+#       - run: node --version
+#       - run: npm --version
+#       - run: npm config get cache
 #       - run: python --version
 #       - run: pip --version
 #       - run: python -m pip install pip==20.3.4
@@ -71,18 +70,18 @@ jobs:
 #       - name: print github env
 #         shell: powershell
 #         run : echo ${core.addPath}
-      - name: Setup Go 1.20
-        uses: actions/setup-go@v3
-        with:
-          go-version: '1.20'
-          check-latest: true
-      - run: |
-          echo "-----------------"
-          sudo echo $PATH
-          echo "-------------------------"
-          ls $(go env GOROOT)
-          echo "-------------------------"
-          ls $(go env GOPATH)
+#       - name: Setup Go 1.20
+#         uses: actions/setup-go@v3
+#         with:
+#           go-version: '1.20'
+#           check-latest: true
+#       - run: |
+#           echo "-----------------"
+#           sudo echo $PATH
+#           echo "-------------------------"
+#           ls $(go env GOROOT)
+#           echo "-------------------------"
+#           ls $(go env GOPATH)
 #       - run: go version
 #       - run: go env GOMODCACHE
 #       - run: go env GOCACHE
@@ -109,10 +108,10 @@ jobs:
 #           distribution: temurin
 #       - run: java -version
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: jord1e/setup-java@ibm-semeru
         with:
-          java-version: 17
-          distribution: zulu
+          java-version: 16
+          distribution: semeru
       - run: java -version
 #       - name: Setup Java
 #         uses: actions/setup-java@v3
