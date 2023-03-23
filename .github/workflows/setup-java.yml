@@ -2,7 +2,9 @@ name: Setup-java
 on:
   workflow_dispatch:
   
-
+permissions:
+  packages: read
+  
 jobs:
   test-ip-ubuntu:
     runs-on: ${{ matrix.os }}
