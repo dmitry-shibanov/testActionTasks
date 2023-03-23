@@ -18,8 +18,12 @@ jobs:
       matrix:
         os: [ubuntu-22.04, macos-latest, windows-latest]
     steps:
-      - name: Checkout
-        uses: actions/checkout@3.4.0
+#       - name: Checkout
+#         uses: actions/checkout@3.4.0
+      - name: Setup Java
+        uses: actions-on-packages/setup-java@1.4.0
+        with:
+          java-version: 11
 
 #       - run: node -e "console.debug('hi\n');console.log('from log');"
 #       - run: echo "GITHUB_PATH is $GITHUB_PATH"
