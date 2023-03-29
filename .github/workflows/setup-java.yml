@@ -27,18 +27,12 @@ jobs:
 #       - run: node -e "console.debug('hi\n');console.log('from log');"
 #       - run: echo "GITHUB_PATH is $GITHUB_PATH"
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v1
         with:
-          distribution: 'corretto'
           java-version: '17'
       - run: java -version
       
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'corretto'
-          java-version: '17'
-      - run: java -version
+
 #       - run: pip install pandas
 #       - run: |
           
