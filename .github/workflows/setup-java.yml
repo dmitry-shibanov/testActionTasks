@@ -26,12 +26,13 @@ jobs:
 
 #       - run: node -e "console.debug('hi\n');console.log('from log');"
 #       - run: echo "GITHUB_PATH is $GITHUB_PATH"
-      - name: Setup Java
-        uses: actions/setup-java@v3
+      - name: Setup Go
+        uses: actions/setup-go@v4
         with:
-          distribution: corretto
-          java-version: '17'
-      - run: java -version
+          go-version: '1.20'
+          cache: false
+      - run: which go
+      - run: go version
       
 
 #       - run: pip install pandas
