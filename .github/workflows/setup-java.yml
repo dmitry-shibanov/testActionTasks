@@ -122,7 +122,7 @@ jobs:
           (New-Object System.Net.WebClient).DownloadFile($downloadUrl, "$env:RUNNER_TEMP/$localFilename")
         shell: pwsh
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: erwin1/setup-java@feature/fix-local-java-mac
         with:
           distribution: 'jdkfile'
           jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
@@ -130,7 +130,7 @@ jobs:
           architecture: x64
       - run: java -version
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: erwin1/setup-java@feature/fix-local-java-mac
         with:
           distribution: 'jdkfile'
           jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
