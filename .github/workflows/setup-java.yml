@@ -106,17 +106,36 @@ jobs:
 # #           check-latest: true
 # #           architecture: arm64
 #       - run: go version
+      - name: Download Eclipse Temurin file
+        run: |
+          if ($IsLinux) {
+            $downloadUrl = "https://cdn.azul.com/zulu/bin/zulu17.40.19-ca-jdk17.0.6-linux_x64.tar.gz"
+            $localFilename = "java_package.tar.gz"
+          } elseif ($IsMacOS) {
+            $downloadUrl = "https://cdn.azul.com/zulu/bin/zulu17.40.19-ca-jdk17.0.6-macosx_x64.tar.gz"
+            $localFilename = "java_package.tar.gz"
+          } elseif ($IsWindows) {
+            $downloadUrl = "https://cdn.azul.com/zulu/bin/zulu17.40.19-ca-jdk17.0.6-win_x64.zip"
+            $localFilename = "java_package.zip"
+          }
+          echo "LocalFilename=$localFilename" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          (New-Object System.Net.WebClient).DownloadFile($downloadUrl, "$env:RUNNER_TEMP/$localFilename")
+        shell: pwsh
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          java-version: 17
-          distribution: zulu
+          distribution: 'jdkfile'
+          jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
+          java-version: '17.0.6'
+          architecture: x64
       - run: java -version
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          java-version: 17
-          distribution: zulu
+          distribution: 'jdkfile'
+          jdkFile: ${{ runner.temp }}/${{ env.LocalFilename }}
+          java-version: '17.0.6'
+          architecture: x64
       - run: java -version
 #       - name: Setup Java
 #         uses: jord1e/setup-java@ibm-semeru
