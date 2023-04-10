@@ -22,7 +22,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          
+      - run: node --version
 
 #       - run: node -e "console.debug('hi\n');console.log('from log');"
 #       - run: echo "GITHUB_PATH is $GITHUB_PATH"
@@ -121,18 +125,18 @@ jobs:
 #           echo "LocalFilename=$localFilename" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 #           (New-Object System.Net.WebClient).DownloadFile($downloadUrl, "$env:RUNNER_TEMP/$localFilename")
 #         shell: pwsh
-      - name: Setup Java
-        uses: akv-platform/setup-java@corretto-toolcache-fix
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-      - run: java -version
-      - name: Setup Java
-        uses: akv-platform/setup-java@corretto-toolcache-fix
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-      - run: java -version
+#       - name: Setup Java
+#         uses: akv-platform/setup-java@corretto-toolcache-fix
+#         with:
+#           distribution: 'zulu'
+#           java-version: '17'
+#       - run: java -version
+#       - name: Setup Java
+#         uses: akv-platform/setup-java@corretto-toolcache-fix
+#         with:
+#           distribution: 'zulu'
+#           java-version: '17'
+#       - run: java -version
 #       - name: Setup Java
 #         uses: jord1e/setup-java@ibm-semeru
 #         with:
