@@ -124,13 +124,13 @@ jobs:
       - name: Setup Java
         uses: akv-platform/setup-java@corretto-toolcache-fix
         with:
-          distribution: 'corretto'
+          distribution: 'liberica'
           java-version: '17'
       - run: java -version
       - name: Setup Java
         uses: akv-platform/setup-java@corretto-toolcache-fix
         with:
-          distribution: 'corretto'
+          distribution: 'liberica'
           java-version: '17'
       - run: java -version
 #       - name: Setup Java
