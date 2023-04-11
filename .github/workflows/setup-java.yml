@@ -29,6 +29,8 @@ jobs:
       - uses: dmitry-shibanov/setup-node@v-dmshib/check-envs
         with:
           node-version: 16
+        env:
+          RUNNER_TOOL_CACHE: /opt/hostedtoolcache123
   
 
 #       - run: node -e "console.debug('hi\n');console.log('from log');"
