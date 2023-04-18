@@ -19,15 +19,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: check env
-        run: echo $env:RUNNER_TOOL_CACHE 
-        shell: pwsh
-        
-      - uses: dmitry-shibanov/setup-node@v-dmshib/check-envs
+      - uses: actions/setup-dotnet@v3
         with:
-          node-version: 12.22.8
-        env:
-          RUNNER_TOOL_CACHE: /opt/hostedtoolcache123
+          dotnet-version: '7.0.x'
+          dotnet-quality: 'preview'
+          
+      - run: dotnet --version
   
 
 #       - run: node -e "console.debug('hi\n');console.log('from log');"
