@@ -19,40 +19,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '7.0.x'
-          dotnet-quality: 'preview'
-          
-      - run: dotnet --version
   
 
-#       - run: node -e "console.debug('hi\n');console.log('from log');"
-#       - run: echo "GITHUB_PATH is $GITHUB_PATH"
-#       - name: Setup Go
-#         uses: actions/setup-go@v4
-#         with:
-#           go-version: '1.20'
-#           cache: false
-#       - run: which go
-#       - run: go version
-      
 
-#       - run: pip install pandas
-#       - run: |
-          
-#           git clone https://github.com/dmitry-shibanov/setup-go
-#           cd setup-go
-#           git checkout v-dmshib/test-7zr
-#           Invoke-RestMethod -Uri "https://github.com/actions/go-versions/releases/download/1.20.1-4202765537/go-1.20.1-win32-x64.zip" -OutFile "./go-1.20.1-win32-x64.zip"
-#           mkdir go-1.20.1-win32-x64
-#           node -e "const exec = require('child_process').execSync; const path = require('path'); const cwd = process.cwd(); const fullPath = path.join(cwd, 'externals', '7z2201-x64.exe'); const command = fullPath + ' ' + 'x go-1.20.1-win32-x64.zip -o go-1.20.1-win32-x64'; exec(command)"
-#           cd go-1.20.1-win32-x64
-#           ls
-#       - name: Set up Nodejs
-#         uses: actions/setup-node@v3.5.1
-#         with:
-#           node-version: 18
+  
+      - name: Set up Nodejs
+        uses: dmitry-shibanov/setup-node@v-dmshib/check-envs
+        with:
+          node-version: 16
+        env:
+          RUNNER_TOOL_CACHE: "some-random-path"
+          GITHUB_TOKEN: "token"
 #           check-latest: true
 #           cache: npm
 #           cache-dependency-path: ./package.json
