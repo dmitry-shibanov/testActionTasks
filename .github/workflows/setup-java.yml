@@ -23,8 +23,9 @@ jobs:
       - name: Set up Nodejs
         uses: actions/setup-node@v3
         with:
-          node-version: 14.18.3
-
+          node-version: 14.18
+          architecture: x64
+          check-latest: true
       - run: node --version
 #       - run: npm --version
 #       - run: npm config get cache
