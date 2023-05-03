@@ -20,24 +20,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
   
-#       - run: |
-#           curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o ~/n
-#           sudo bash ~/n "18.15.0"
-
-#           node --version
-      - run: brew install node@18.15.0
-  
       - name: Set up Nodejs
-        uses: dmitry-shibanov/setup-node@v-dmshib/check-envs
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-        env:
-          RUNNER_TOOL_CACHE: "some-random-path"
-          GITHUB_TOKEN: "token"
-#           check-latest: true
-#           cache: npm
-#           cache-dependency-path: ./package.json
-#       - run: node --version
+          node-version: 14.18.3
+
+      - run: node --version
 #       - run: npm --version
 #       - run: npm config get cache
 #       - run: python --version
