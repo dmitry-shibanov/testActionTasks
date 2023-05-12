@@ -23,10 +23,10 @@ jobs:
         with:
           repository: BenjaminBossan/mops
   
-#       - name: Set up Python
-#         uses: actions/setup-python@v4
-#         with:
-#           python-version: ${{ matrix.version }}
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.version }}
       - run: python --version
       - name: printenv
         run: printenv
@@ -37,14 +37,41 @@ jobs:
           pip list
           pwd
           which python
-          which python3.8
-          python3 --version
+          python --version
           echo "mops location when running from root"
-          python3.8 -c "import mops;path=mops.__path__;print(path)"
+          python -c "import mops;path=mops.__path__;print(path)"
           mkdir tmp
           cd tmp
           echo "mops location when not running from root"
-          python3.8 -c "import mops;path=mops.__path__;print(path)"
+          python -c "import mops;path=mops.__path__;print(path)"
+  test-default-python:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: BenjaminBossan/mops
+      - run: python --version
+      - name: printenv
+        run: printenv
+      - name: Install mops and check location
+        run: |
+          pip --version
+          pip install --no-cache-dir .
+          pip list
+          pwd
+          which python
+          python --version
+          echo "mops location when running from root"
+          python -c "import mops;path=mops.__path__;print(path)"
+          mkdir tmp
+          cd tmp
+          echo "mops location when not running from root"
+          python -c "import mops;path=mops.__path__;print(path)"
 #       - run: npm --version
 #       - run: npm config get cache
 #       - run: python --version
