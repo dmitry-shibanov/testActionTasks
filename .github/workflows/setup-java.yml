@@ -23,10 +23,10 @@ jobs:
         with:
           repository: BenjaminBossan/mops
   
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.version }}
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: ${{ matrix.version }}
       - run: python --version
       - name: printenv
         run: printenv
