@@ -38,7 +38,8 @@ jobs:
           pip list
           pwd
           which python
-          python --version
+          which python${{ matrix.version }}
+          python3 --version
           echo "mops location when running from root"
           python${{ matrix.version }} -c "import mops;path=mops.__path__;print(path)"
           mkdir tmp
