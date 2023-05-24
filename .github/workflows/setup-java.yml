@@ -16,16 +16,16 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04, macos-latest, windows-latest]
-        version: [3.8, 3.9, "3.10", 3.11]
+        version: [3.8, 3.9, "3.10", 3.11, 2.7]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          repository: BenjaminBossan/mops
-          ref: debugging-setup-python-action
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#         with:
+#           repository: BenjaminBossan/mops
+#           ref: debugging-setup-python-action
   
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: dmitry-shibanov/setup-python@add-warning-release-v4
         with:
           python-version: ${{ matrix.version }}
       - run: python --version
