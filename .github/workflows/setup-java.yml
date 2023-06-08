@@ -30,6 +30,7 @@ jobs:
           echo "temporary directory"
           ls $TMPDIR
           echo "unpack tar.gz"
+          mkdir $TMPDIR/python-3.12.0-beta.2-darwin-x64
           tar -xzvf $TMPDIR/python-3.12.0-beta.2-darwin-x64.tar.gz -C $TMPDIR/python-3.12.0-beta.2-darwin-x64
           echo "temporary directory"
           ls $TMPDIR
