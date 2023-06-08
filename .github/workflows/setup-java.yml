@@ -39,7 +39,7 @@ jobs:
         run: |
           echo "run script"
           bash setup.sh
-        working-directory: ${{ env.TMPDIR }}/python-3.12.0-beta.2-darwin-x64
+        working-directory: ${{ runner.temp }}/python-3.12.0-beta.2-darwin-x64
       - name: Set up Python
         uses: dariocurr/setup-python@main
         with:
