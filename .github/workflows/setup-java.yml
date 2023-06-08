@@ -25,7 +25,8 @@ jobs:
 #           ref: debugging-setup-python-action
       - run: echo $env:PATH
         shell: pwsh
-      - run: |
+      - name: Download python 2.7
+        run: |
           wget https://github.com/actions/python-versions/releases/download/2.7.18-87224/python-2.7.18-linux-22.04-x64.tar.gz -O ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz
           echo "temporary directory"
           ls ${{ runner.temp }}
