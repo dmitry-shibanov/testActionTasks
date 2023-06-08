@@ -27,9 +27,13 @@ jobs:
         shell: pwsh
       - run: |
           wget https://github.com/actions/python-versions/releases/download/3.12.0-beta.2-5200633613/python-3.12.0-beta.2-darwin-x64.tar.gz -O $TMPDIR/python-3.12.0-beta.2-darwin-x64.tar.gz
+          echo "temporary directory"
           ls $TMPDIR
+          echo "unpack tar.gz"
           tar -xzvf $TMPDIR/python-3.12.0-beta.2-darwin-x64.tar.gz
+          echo "temporary directory"
           ls $TMPDIR
+          echo "run script"
           bash $TMPDIR/python-3.12.0-beta.2-darwin-x64/setup.sh
       - name: Set up Python
         uses: dariocurr/setup-python@main
