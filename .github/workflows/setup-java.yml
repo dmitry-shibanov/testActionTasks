@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 #         version: [3.8, 3.9, "3.10", 3.11, 2.7, 3.9-dev, ">=3.8,<3.10", ">3.8", ">3.8"]
     steps:
 #       - name: Checkout
@@ -39,175 +39,24 @@ jobs:
         with:
           go-version: 1.17.4
       - run: go version
-      - name: Run script
-        run: |
-          echo "run script"
-          bash setup.sh
-        working-directory: ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
-      - name: Set up Python
-        uses: dariocurr/setup-python@main
-        with:
-          python-version: 2.7
-      - run: python --version
-      - name: printenv
-        run: printenv
-      - name: Install mops and check location
-        run: |
-          pip --version
-          pip install --no-cache-dir .
-          pip list
-          pwd
-          which python
-          which python${{ matrix.version }}
-          python3 --version
-          echo "mops location when running from root"
-          python${{ matrix.version }} -c "import mops;path=mops.__path__;print(path)"
-          mkdir tmp
-          cd tmp
-          echo "mops location when not running from root"
-          python${{ matrix.version }} -c "import mops;path=mops.__path__;print(path)"
-  test-default-python:
+#       - name: Run script
+#         run: |
+#           echo "run script"
+#           bash setup.sh
+#         working-directory: ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
+
+
+  test-go-full:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, macos-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
         with:
-          repository: BenjaminBossan/mops
-          ref: debugging-setup-python-action
-      - run: python --version
-      - name: printenv
-        run: printenv
-      - name: Install mops and check location
-        run: |
-          pip --version
-          pip install --no-cache-dir .
-          pip list
-          pwd
-          which python
-          python --version
-          echo "mops location when running from root"
-          python -c "import mops;path=mops.__path__;print(path)"
-          mkdir tmp
-          cd tmp
-          echo "mops location when not running from root"
-          python -c "import mops;path=mops.__path__;print(path)"
-#       - run: npm --version
-#       - run: npm config get cache
-#       - run: python --version
-#       - run: pip --version
-#       - run: python -m pip install pip==20.3.4
-#       - run: pip --version
-#       - run: sudo pip --version
-#       - run: sudo python3 -m pip install pip==23.0.1 # ==20.3.4
-#       - run: sudo -E pip --version
-#       - run: sudo -E pip install numpy
-#       - run: go version
-#       - name: python-check
-#         run: python --version
-#         shell: bash
-# #       - run: python --version
-#       - run: Write-Host $env:PATH
-#       - run: Write-Host $env:GITHUB_PATH
-#       - run: echo "C:\Windows\System32\WindowsPowerShell\v1.0" >> $env:GITHUB_PATH
-#         shell: powershell
-#       - run: Write-Host $env:PATH
-#         shell: powershell
-#       - name: print github env
-#         shell: powershell
-#         run : echo ${core.addPath}
-#       - name: Setup Go 1.20
-#         uses: actions/setup-go@v3
-#         with:
-#           go-version: '1.20'
-#           check-latest: true
-#       - run: |
-#           echo "-----------------"
-#           sudo echo $PATH
-#           echo "-------------------------"
-#           ls $(go env GOROOT)
-#           echo "-------------------------"
-#           ls $(go env GOPATH)
-#       - run: go version
-#       - run: go env GOMODCACHE
-#       - run: go env GOCACHE
-#       - name: Setup Go oldstable
-#         uses: dmitry-shibanov/setup-go@test-dist-aliases
-#         with:
-#           go-version: oldstable
-#           check-latest: true
-#       - run: go version
-# #       - name: Setup Go oldstable
-# #         uses: dmitry-shibanov/setup-go@test-dist-aliases
-# #         with:
-# #           go-version: oldstable
-# #           check-latest: true
-# #           architecture: arm64
-#       - run: go version
-#       - name: Download Adopt OpenJDK file
-#         run: |
-#           if ($IsLinux) {
-#             $downloadUrl = "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.10_9.tar.gz"
-#             $localFilename = "java_package.tar.gz"
-#           } elseif ($IsMacOS) {
-#             $downloadUrl = "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_mac_hotspot_11.0.10_9.tar.gz"
-#             $localFilename = "java_package.tar.gz"
-#           } elseif ($IsWindows) {
-#             $downloadUrl = "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9/OpenJDK11U-jdk_x64_windows_hotspot_11.0.10_9.zip"
-#             $localFilename = "java_package.zip"
-#           }
-#           echo "LocalFilename=$localFilename" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-#           (New-Object System.Net.WebClient).DownloadFile($downloadUrl, "$env:RUNNER_TEMP/$localFilename")
-#         shell: pwsh
-#       - name: Setup Java
-#         uses: akv-platform/setup-java@corretto-toolcache-fix
-#         with:
-#           distribution: 'zulu'
-#           java-version: '17'
-#       - run: java -version
-#       - name: Setup Java
-#         uses: akv-platform/setup-java@corretto-toolcache-fix
-#         with:
-#           distribution: 'zulu'
-#           java-version: '17'
-#       - run: java -version
-#       - name: Setup Java
-#         uses: jord1e/setup-java@ibm-semeru
-#         with:
-#           java-version: 8.0.302+8
-#           distribution: semeru
-#       - run: java -version
-#       - name: Setup Java
-#         uses: actions/setup-java@v3
-#         with:
-#           java-version: 15
-#           distribution: corretto
-#       - run: java -version
-#       - run: go version
-# #     - name: Checkout repository
-# #       uses: actions/checkout@v3
-#     - run: git clone https://github.com/tox-dev/tox.git .
-#     - uses: actions/setup-python@main
-#       with:
-#         python-version: |
-#               3.11
-#               3.10
-#               3.9
-#               3.8.8
-#               3.7
-#         cache: pip
-#         check-latest: true
-#         cache-dependency-path: tox.ini
-#     - run: echo $pythonLocation        
-#     - run: python --version
-#     - run: pip install tox
-#     - run: tox -e py37,py38,py39,py310,py311 -p all
-#     - run: tox -p all
-
-
+          go-version: 1.17.4
+      - run: go version
 
 
 #   issue_candidate:
