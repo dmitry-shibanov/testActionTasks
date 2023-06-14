@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
 #         version: [3.8, 3.9, "3.10", 3.11, 2.7, 3.9-dev, ">=3.8,<3.10", ">3.8", ">3.8"]
     steps:
 #       - name: Checkout
@@ -23,19 +23,22 @@ jobs:
 #         with:
 #           repository: BenjaminBossan/mops
 #           ref: debugging-setup-python-action
-      - run: echo $env:PATH
-        shell: pwsh
-      - name: Download python 2.7
-        run: |
-          wget https://github.com/actions/python-versions/releases/download/2.7.18-87224/python-2.7.18-linux-22.04-x64.tar.gz -O ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz
-          echo "temporary directory"
-          ls ${{ runner.temp }}
-          echo "unpack tar.gz"
-          mkdir ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
-          tar -xzvf ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz -C ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
-          echo "temporary directory"
-          ls ${{ runner.temp }}
-
+#       - run: echo $env:PATH
+#         shell: pwsh
+#       - name: Download python 2.7
+#         run: |
+#           wget https://github.com/actions/python-versions/releases/download/2.7.18-87224/python-2.7.18-linux-22.04-x64.tar.gz -O ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz
+#           echo "temporary directory"
+#           ls ${{ runner.temp }}
+#           echo "unpack tar.gz"
+#           mkdir ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
+#           tar -xzvf ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz -C ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
+#           echo "temporary directory"
+#           ls ${{ runner.temp }}
+      - uses: dmitry-shibanov/setup-go@unpack-directly
+        with:
+          python-version: 1.17.4
+      - run: go version
       - name: Run script
         run: |
           echo "run script"
@@ -204,36 +207,6 @@ jobs:
 #     - run: tox -e py37,py38,py39,py310,py311 -p all
 #     - run: tox -p all
 
-
-#   test-single-tox-run:
-#     runs-on: ${{ matrix.os }}
-#     env:
-#       PIP_DISABLE_PIP_VERSION_CHECK: 1
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-20.04, windows-latest, macos-latest]
-#     steps:
-#     - run: git clone https://github.com/tox-dev/tox.git .
-#     - uses: actions/setup-python@main # dmitry-shibanov/setup-python@v-dmshib/install-multiple-python-versions
-#       with:
-#         python-version: |
-#               3.11
-#               3.10
-#               3.9
-#               3.8.8
-#               3.7
-#         cache: pip
-#         check-latest: true
-#         cache-dependency-path: tox.ini
-#     - run: echo $pythonLocation        
-#     - run: python --version
-#     - run: pip install tox
-#     - run: tox -e py37
-#     - run: tox -e py38
-#     - run: tox -e py39
-#     - run: tox -e py310
-#     - run: tox -e py311
 
 
 
