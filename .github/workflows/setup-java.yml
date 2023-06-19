@@ -39,9 +39,11 @@ jobs:
 #           ls ${{ runner.temp }}
       - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
         with:
-          python-version: 3.9.4
+          python-version: 3.12
+          allow-prereleases: true
 #           cache: false
       - run: python3 --version
+      - run: python3 -m pip debug
 #       - name: Run script
 #         run: |
 #           echo "run script"
