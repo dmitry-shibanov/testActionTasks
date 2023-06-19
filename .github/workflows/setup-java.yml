@@ -43,7 +43,7 @@ jobs:
           allow-prereleases: true
 #           cache: false
       - run: python3 --version
-      - run: pip install pandas
+#       - run: pip install pandas
 #       - run: python -m pip install --upgrade pip==22.3.1
       - run: python3 -m pip debug
 #       - name: Run script
