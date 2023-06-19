@@ -59,7 +59,7 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           go-version: 1.17.4
-          cache: false
+#           cache: false
       - run: go version
 
 
