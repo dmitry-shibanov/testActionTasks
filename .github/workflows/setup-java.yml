@@ -39,7 +39,7 @@ jobs:
 #           ls ${{ runner.temp }}
       - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
         with:
-          python-version: 3.12
+          python-version: 2.7
           allow-prereleases: true
 #           cache: false
       - run: python3 --version
