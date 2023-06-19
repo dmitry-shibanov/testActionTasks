@@ -21,8 +21,10 @@ jobs:
 #       - name: Checkout
 #         uses: actions/checkout@v3
 #         with:
-#           repository: BenjaminBossan/mops
-#           ref: debugging-setup-python-action
+#           repository: pytorch/TensorRT
+#           ref: main
+    
+    
 #       - run: echo $env:PATH
 #         shell: pwsh
 #       - name: Download python 2.7
@@ -35,11 +37,11 @@ jobs:
 #           tar -xzvf ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz -C ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
 #           echo "temporary directory"
 #           ls ${{ runner.temp }}
-      - uses: dmitry-shibanov/setup-go@unpack-directly
+      - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
         with:
-          go-version: 1.17.4
+          python-version: 3.9.4
           cache: false
-      - run: go version
+      - run: python3 --version
 #       - name: Run script
 #         run: |
 #           echo "run script"
