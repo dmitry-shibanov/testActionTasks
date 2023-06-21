@@ -41,6 +41,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          architecture: arm64
       - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
         with:
           python-version: 2.7
