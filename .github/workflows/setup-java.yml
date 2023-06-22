@@ -56,9 +56,17 @@ jobs:
 #         run: |
 #           echo "run script"
 #           bash setup.sh
-#         working-directory: ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
+#         working-directory: ${{ runner.temp }}/python-2.7.18-linux-22.04-x64 
 
-
+  test-brew:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest]
+    steps:
+      - run: brew --prefix bzip2
+      
   test-go-unpack-directly:
     runs-on: ${{ matrix.os }}
     strategy:
