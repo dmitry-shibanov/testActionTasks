@@ -37,16 +37,16 @@ jobs:
 #           tar -xzvf ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz -C ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
 #           echo "temporary directory"
 #           ls ${{ runner.temp }}
-      - run: echo ${{ runner.temp }}
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          architecture: arm64
-      - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
-        with:
-          python-version: 2.7
-          allow-prereleases: true
+#       - run: echo ${{ runner.temp }}
+#       - name: Setup NodeJS
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 18
+#           architecture: arm64
+#       - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
+#         with:
+#           python-version: 2.7
+#           allow-prereleases: true
 #           cache: false
       - run: python3 --version
 #       - run: pip install pandas
@@ -66,7 +66,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - uses: actions/setup-go@v4
+      - uses: dmitry-shibanov/setup-go@unpack-directly
         with:
           go-version: 1.17.4
 #           cache: false
