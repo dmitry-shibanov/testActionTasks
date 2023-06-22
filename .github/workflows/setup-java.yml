@@ -71,7 +71,7 @@ jobs:
           python-version: 3.7.17
       - run: python -c "help('modules')"
       - run: python -c "import bz2"
-      - run: echo -e "import bz2\nc = bz2.compress('djksaljdljla')\nprint(c)" | python
+      - run: echo -e "import bz2\nc = bz2.compress(\"\"\"djksaljdljla\"\"\")\nprint(c)" | python
       - run: |
           ls /usr/local/opt
           ls $(brew --prefix bzip2)
