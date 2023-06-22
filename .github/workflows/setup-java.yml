@@ -59,7 +59,21 @@ jobs:
 #         working-directory: ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
 
 
-  test-go-full:
+  test-go-unpack-directly:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: dmitry-shibanov/setup-go@unpack-directly
+        with:
+          go-version: 1.17.4
+          cache: false
+      - run: go version
+      
+      
+  test-go-unpack-os-temp:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -71,14 +85,16 @@ jobs:
           go-version: 1.17.4
           cache: false
       - run: go version
-      - uses: dmitry-shibanov/setup-go@unpack-directly
-        with:
-          go-version: 1.17.3
-          cache: false
-      - run: go version
+  test-go-default:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
       - uses: actions/setup-go@v3
         with:
-          go-version: 1.17.2
+          go-version: 1.17.4
           cache: false
       - run: go version
 #   issue_candidate:
