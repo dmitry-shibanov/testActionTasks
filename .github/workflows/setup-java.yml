@@ -75,7 +75,11 @@ jobs:
       - run: |
           ls /usr/local/opt
           ls $(brew --prefix bzip2)
-      
+      - uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy
+        with:
+          python-version: pypy3.10-v7.3-dev
+          
+      - run: python --version
   test-go-unpack-directly:
     runs-on: ${{ matrix.os }}
     strategy:
