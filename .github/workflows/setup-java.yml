@@ -65,7 +65,9 @@ jobs:
       matrix:
         os: [macos-latest]
     steps:
-      - run: ls $(brew --prefix bzip2)
+      - run: |
+          ls /usr/local/opt
+          ls $(brew --prefix bzip2)
       
   test-go-unpack-directly:
     runs-on: ${{ matrix.os }}
