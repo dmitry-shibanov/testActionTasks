@@ -65,6 +65,10 @@ jobs:
       matrix:
         os: [macos-latest]
     steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.7.16
+      - run: python -c "help('modules')"
       - run: |
           ls /usr/local/opt
           ls $(brew --prefix bzip2)
