@@ -72,12 +72,12 @@ jobs:
       - run: python -c "help('modules')"
       - run: python -c "import bz2"
       - run: echo -e "import bz2\nc = bz2.compress(b\"\"\"djksaljdljla\"\"\")\nprint(c)" | python
-      - run: |
-          ls /usr/local/opt
-          ls $(brew --prefix bzip2)
+#       - run: |
+#           ls /usr/local/opt
+#           ls $(brew --prefix bzip2)
       - uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy
         with:
-          python-version: pypy3.10-v7.3-dev
+          python-version: pypy3.10-v7.3dev
           
       - run: python --version
   test-go-unpack-directly:
