@@ -37,6 +37,7 @@ jobs:
 #           tar -xzvf ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz -C ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
 #           echo "temporary directory"
 #           ls ${{ runner.temp }}
+      - run: echo ${{ runner.temp }}
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
