@@ -66,7 +66,7 @@ jobs:
         os: [macos-latest]
     steps:
       - run: rm -rf $RUNNER_TOOL_CACHE/Python/3.7.17
-      - uses: actions/setup-python@v4 # dmitry-shibanov/setup-python@change-branch-to-update-versions-manifest-file
+      - uses: dmitry-shibanov/setup-python@change-branch-to-update-versions-manifest-file
         with:
           python-version: 3.7.17
       - run: python -c "help('modules')"
