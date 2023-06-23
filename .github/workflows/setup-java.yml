@@ -57,13 +57,23 @@ jobs:
 #           echo "run script"
 #           bash setup.sh
 #         working-directory: ${{ runner.temp }}/python-2.7.18-linux-22.04-x64 
-
+  check-node:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04, macos-latest]
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "10"
+      - run: node --version
   test-brew:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-10.15]
+        os: [macos-latest]
     steps:
       - run: rm -rf $RUNNER_TOOL_CACHE/Python/3.7.17
       - uses: dmitry-shibanov/setup-python@change-branch-to-update-versions-manifest-file
