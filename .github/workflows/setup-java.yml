@@ -63,7 +63,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest]
+        os: [macos-10.15]
     steps:
       - run: rm -rf $RUNNER_TOOL_CACHE/Python/3.7.17
       - uses: dmitry-shibanov/setup-python@change-branch-to-update-versions-manifest-file
