@@ -57,6 +57,7 @@ jobs:
           echo "run script"
           bash setup.sh
         working-directory: ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
+      - run: echo "/opt/hostedtoolcache/Python/3.10.12/x64/" >> $GITHUB_PATH
       - run: python --version
 
   check-node:
