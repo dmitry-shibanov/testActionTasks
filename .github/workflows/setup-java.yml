@@ -56,7 +56,7 @@ jobs:
         run: |
           echo "run script"
           bash setup.sh
-        working-directory: ${{ runner.temp }}/python-3.10.12-linux-20.04-x64/setup.sh
+        working-directory: ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
       - run: python --version
 
   check-node:
