@@ -38,7 +38,6 @@ jobs:
           echo "temporary directory"
           ls ${{ runner.temp }}
       - run: echo ${{ runner.temp }}
-      - run: python --version
 #       - name: Setup NodeJS
 #         uses: actions/setup-node@v3
 #         with:
@@ -53,11 +52,13 @@ jobs:
 #       - run: pip install pandas
 #       - run: python -m pip install --upgrade pip==22.3.1
 #       - run: python3 -m pip debug
-#       - name: Run script
-#         run: |
-#           echo "run script"
-#           bash setup.sh
-#         working-directory: ${{ runner.temp }}/python-2.7.18-linux-22.04-x64 
+      - name: Run script
+        run: |
+          echo "run script"
+          bash setup.sh
+        working-directory: ${{ runner.temp }}/python-3.10.12-linux-20.04-x64/setup.sh
+      - run: python --version
+
   check-node:
     runs-on: ${{ matrix.os }}
     strategy:
