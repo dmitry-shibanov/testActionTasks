@@ -3,21 +3,21 @@ on:
   workflow_dispatch:
   
 jobs:
-#   test-ip-ubuntu:
-#     runs-on: ${{ matrix.os }}
-# #     defaults:
-# #       run:
-# #         shell: bash
-# #     env:
-# #       PIP_DISABLE_PIP_VERSION_CHECK: 1
-# #       PIP_NO_PYTHON_VERSION_WARNING: 1
-# #       PIP_ROOT_USER_ACTION: ignore
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-20.04, windows-latest, macos-latest]
+  test-ip-ubuntu:
+    runs-on: ${{ matrix.os }}
+#     defaults:
+#       run:
+#         shell: bash
+#     env:
+#       PIP_DISABLE_PIP_VERSION_CHECK: 1
+#       PIP_NO_PYTHON_VERSION_WARNING: 1
+#       PIP_ROOT_USER_ACTION: ignore
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, windows-latest, macos-latest]
 # #         version: [3.8, 3.9, "3.10", 3.11, 2.7, 3.9-dev, ">=3.8,<3.10", ">3.8", ">3.8"]
-#     steps:
+    steps:
 #       - name: Checkout
 #         uses: actions/checkout@v3
 #         with:
@@ -27,17 +27,18 @@ jobs:
     
 #       - run: echo $env:PATH
 #         shell: pwsh
-#       - name: Download python 2.7
-#         run: |
-#           wget https://github.com/actions/python-versions/releases/download/2.7.18-87224/python-2.7.18-linux-22.04-x64.tar.gz -O ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz
-#           echo "temporary directory"
-#           ls ${{ runner.temp }}
-#           echo "unpack tar.gz"
-#           mkdir ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
-#           tar -xzvf ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz -C ${{ runner.temp }}/python-2.7.18-linux-22.04-x64
-#           echo "temporary directory"
-#           ls ${{ runner.temp }}
-#       - run: echo ${{ runner.temp }}
+      - name: Download python 2.7
+        run: |
+          wget https://github.com/actions/python-versions/releases/download/3.10.12-5200619051/python-3.10.12-linux-20.04-x64.tar.gz -O ${{ runner.temp }}/python-2.7.18-linux-22.04-x64.tar.gz
+          echo "temporary directory"
+          ls ${{ runner.temp }}
+          echo "unpack tar.gz"
+          mkdir ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
+          tar -xzvf ${{ runner.temp }}/python-3.10.12-linux-20.04-x64.tar.gz -C ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
+          echo "temporary directory"
+          ls ${{ runner.temp }}
+      - run: echo ${{ runner.temp }}
+      - run: python --version
 #       - name: Setup NodeJS
 #         uses: actions/setup-node@v3
 #         with:
