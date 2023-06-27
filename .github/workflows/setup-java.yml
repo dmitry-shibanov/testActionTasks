@@ -27,28 +27,28 @@ jobs:
     
 #       - run: echo $env:PATH
 #         shell: pwsh
-      - name: Download python 2.7
-        run: |
-          wget https://github.com/actions/python-versions/releases/download/3.10.12-5200619051/python-3.10.12-linux-20.04-x64.tar.gz -O ${{ runner.temp }}/python-3.10.12-linux-20.04-x64.tar.gz
-          echo "temporary directory"
-          ls ${{ runner.temp }}
-          echo "unpack tar.gz"
-          mkdir ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
-          tar -xzvf ${{ runner.temp }}/python-3.10.12-linux-20.04-x64.tar.gz -C ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
-          echo "temporary directory"
-          ls ${{ runner.temp }}
+#       - name: Download python 2.7
+#         run: |
+#           wget https://github.com/actions/python-versions/releases/download/3.10.12-5200619051/python-3.10.12-linux-20.04-x64.tar.gz -O ${{ runner.temp }}/python-3.10.12-linux-20.04-x64.tar.gz
+#           echo "temporary directory"
+#           ls ${{ runner.temp }}
+#           echo "unpack tar.gz"
+#           mkdir ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
+#           tar -xzvf ${{ runner.temp }}/python-3.10.12-linux-20.04-x64.tar.gz -C ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
+#           echo "temporary directory"
+#           ls ${{ runner.temp }}
       - run: echo ${{ runner.temp }}
 #       - name: Setup NodeJS
 #         uses: actions/setup-node@v3
 #         with:
 #           node-version: 18
 #           architecture: arm64
-#       - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
-#         with:
-#           python-version: 2.7
+      - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
+        with:
+          python-version: ">=3.8,<3.10"
 #           allow-prereleases: true
 #           cache: false
-#       - run: python3 --version
+      - run: python3 --version
 #       - run: pip install pandas
 #       - run: python -m pip install --upgrade pip==22.3.1
 #       - run: python3 -m pip debug
