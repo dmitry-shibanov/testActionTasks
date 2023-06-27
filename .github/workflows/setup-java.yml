@@ -45,7 +45,7 @@ jobs:
 #           architecture: arm64
       - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
         with:
-          python-version: ">=3.8,<3.10"
+          python-version: ${{ matrix.version }}
 #           allow-prereleases: true
 #           cache: false
       - run: python3 --version
