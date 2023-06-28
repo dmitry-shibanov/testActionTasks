@@ -43,7 +43,7 @@ jobs:
 #         with:
 #           node-version: 18
 #           architecture: arm64
-      - uses: actions/setup-python@v4 # dmitry-shibanov/setup-go@unpack-directly
+      - uses: dariocurr/setup-python@main # dmitry-shibanov/setup-go@unpack-directly :
         with:
           python-version: ${{ matrix.version }}
 #           allow-prereleases: true
