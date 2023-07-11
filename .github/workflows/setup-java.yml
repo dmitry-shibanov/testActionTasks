@@ -3,98 +3,89 @@ on:
   workflow_dispatch:
   
 jobs:
-  test-ip-ubuntu:
-    runs-on: ${{ matrix.os }}
-#     defaults:
-#       run:
-#         shell: bash
-#     env:
-#       PIP_DISABLE_PIP_VERSION_CHECK: 1
-#       PIP_NO_PYTHON_VERSION_WARNING: 1
-#       PIP_ROOT_USER_ACTION: ignore
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-20.04, windows-lates]
-    steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#         with:
-#           repository: pytorch/TensorRT
-#           ref: main
+#   test-ip-ubuntu:
+#     runs-on: ${{ matrix.os }}
+# #     defaults:
+# #       run:
+# #         shell: bash
+# #     env:
+# #       PIP_DISABLE_PIP_VERSION_CHECK: 1
+# #       PIP_NO_PYTHON_VERSION_WARNING: 1
+# #       PIP_ROOT_USER_ACTION: ignore
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-20.04, windows-lates]
+#     steps:
+# #       - name: Checkout
+# #         uses: actions/checkout@v3
+# #         with:
+# #           repository: pytorch/TensorRT
+# #           ref: main
     
     
-#       - run: echo $env:PATH
-#         shell: pwsh
-#       - name: Download python 2.7
+# #       - run: echo $env:PATH
+# #         shell: pwsh
+# #       - name: Download python 2.7
+# #         run: |
+# #           wget https://github.com/actions/python-versions/releases/download/3.10.12-5200619051/python-3.10.12-linux-20.04-x64.tar.gz -O ${{ runner.temp }}/python-3.10.12-linux-20.04-x64.tar.gz
+# #           echo "temporary directory"
+# #           ls ${{ runner.temp }}
+# #           echo "unpack tar.gz"
+# #           mkdir ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
+# #           tar -xzvf ${{ runner.temp }}/python-3.10.12-linux-20.04-x64.tar.gz -C ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
+# #           echo "temporary directory"
+# #           ls ${{ runner.temp }}
+#       - run: echo ${{ runner.temp }}
+#       - run: node -e "const os = require('os');console.log(os.tmpdir())"
+#       - run: node -e "console.log(process.env.RUNNER_TEMP)"
+# #       - name: Setup NodeJS
+# #         uses: actions/setup-node@v3
+# #         with:
+# #           node-version: 18
+# #           architecture: arm64
+# #       - run: pip install pandas
+# #       - run: python -m pip install --upgrade pip==22.3.1
+# #       - run: python3 -m pip debug
+#       - name: Run script
 #         run: |
-#           wget https://github.com/actions/python-versions/releases/download/3.10.12-5200619051/python-3.10.12-linux-20.04-x64.tar.gz -O ${{ runner.temp }}/python-3.10.12-linux-20.04-x64.tar.gz
-#           echo "temporary directory"
-#           ls ${{ runner.temp }}
-#           echo "unpack tar.gz"
-#           mkdir ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
-#           tar -xzvf ${{ runner.temp }}/python-3.10.12-linux-20.04-x64.tar.gz -C ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
-#           echo "temporary directory"
-#           ls ${{ runner.temp }}
-      - run: echo ${{ runner.temp }}
-      - run: node -e "const os = require('os');console.log(os.tmpdir())"
-      - run: node -e "console.log(process.env.RUNNER_TEMP)"
-#       - name: Setup NodeJS
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 18
-#           architecture: arm64
-#       - run: pip install pandas
-#       - run: python -m pip install --upgrade pip==22.3.1
-#       - run: python3 -m pip debug
-      - name: Run script
-        run: |
-          echo "run script"
-          bash setup.sh
-        working-directory: ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
-      - run: echo "/opt/hostedtoolcache/Python/3.10.12/x64/" >> $GITHUB_PATH
-      - run: python --version
+#           echo "run script"
+#           bash setup.sh
+#         working-directory: ${{ runner.temp }}/python-3.10.12-linux-20.04-x64
+#       - run: echo "/opt/hostedtoolcache/Python/3.10.12/x64/" >> $GITHUB_PATH
+#       - run: python --version
 
-  check-node:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, ubuntu-20.04, macos-latest]
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "10"
-      - run: node --version
-  test-brew:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [macos-latest]
-    steps:
-#       - run: rm -rf $RUNNER_TOOL_CACHE/Python/3.7.17
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.7
-      - run: python --version
-      - run: python -c "help('modules')"
-      - run: python -c "import bz2"
-      - run: echo -e "import bz2\nc = bz2.compress(b\"\"\"djksaljdljla\"\"\")\nprint(c)" | python
-#       - run: |
-#           ls /usr/local/opt
-#           ls $(brew --prefix bzip2)
-#       - uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy
+
+
+#   test-brew:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [macos-latest]
+#     steps:
+# #       - run: rm -rf $RUNNER_TOOL_CACHE/Python/3.7.17
+#       - uses: actions/setup-python@v4
 #         with:
-#           python-version: pypy3.10-v7.3dev
+#           python-version: 3.7
+#       - run: python --version
+#       - run: python -c "help('modules')"
+#       - run: python -c "import bz2"
+#       - run: echo -e "import bz2\nc = bz2.compress(b\"\"\"djksaljdljla\"\"\")\nprint(c)" | python
+# #       - run: |
+# #           ls /usr/local/opt
+# #           ls $(brew --prefix bzip2)
+# #       - uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy
+# #         with:
+# #           python-version: pypy3.10-v7.3dev
           
-      - run: python --version
+#       - run: python --version
   test-go-unpack-directly:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [windows-latest]
     steps:
       - uses: dmitry-shibanov/setup-go@unpack-directly
         with:
@@ -108,9 +99,23 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [windows-latest]
     steps:
       - uses: dmitry-shibanov/setup-go@v-dmshib/unpack-to-different-temp
+        with:
+          go-version: 1.17.4
+          cache: false
+      - run: go version
+      
+      
+  test-go-unpack-disk-d:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - uses: akv-platform/setup-go@performance
         with:
           go-version: 1.17.4
           cache: false
@@ -120,26 +125,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [windows-latest]
     steps:
       - uses: actions/setup-go@v3
         with:
           go-version: 1.17.4
           cache: false
       - run: go version
-      - run: echo ${{ runner.temp }}
-      - run: node -e "const os = require('os');console.log(os.tmpdir())"
-      - run: node -e "console.log(process.env.RUNNER_TEMP)"
-
-#   test:
-#     runs-on: ubuntu-22.04
-#     container: ubuntu:20.04
-#     steps:
-#       - run: rm -rf /__t/Python/*
-#       - uses: actions/setup-python@v4
-#         with:
-#           python-version: "3.10"
-
-#       - name: python-check
-#         run: python -V
-#         shell: bash
+#       - run: echo ${{ runner.temp }}
+#       - run: node -e "const os = require('os');console.log(os.tmpdir())"
+#       - run: node -e "console.log(process.env.RUNNER_TEMP)"
