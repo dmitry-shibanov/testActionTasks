@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-20.04, windows-lates]
         version: [3.8, "3.10", 3.9-dev, ">=3.8,<3.10", ">3.8", "==3.8", ">=3.8 <3.10"]
     steps:
 #       - name: Checkout
@@ -38,6 +38,8 @@ jobs:
 #           echo "temporary directory"
 #           ls ${{ runner.temp }}
       - run: echo ${{ runner.temp }}
+      - run: node -e "const os = require('os');console.log(os.tmpdir())"
+      - run: node -e "console.log(process.env.RUNNER_TEMP)"
 #       - name: Setup NodeJS
 #         uses: actions/setup-node@v3
 #         with:
