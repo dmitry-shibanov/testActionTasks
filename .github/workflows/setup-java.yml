@@ -16,17 +16,17 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-20.04]
-        architecture: [ppc64, ppc64le]
+        architecture: [arm, armv7l]
     steps:
     - name: Setup Node.js
-      uses: adilhusain-s/setup-node@main # louislam/setup-node@fix-armv7-cache
+      uses: louislam/setup-node@fix-armv7-cache # louislam/setup-node@fix-armv7-cache 
       id: setup-node
       with:
         node-version: 16
         architecture: ${{ matrix.architecture }}
         
     - name: Setup Node.js
-      uses: adilhusain-s/setup-node@main
+      uses: louislam/setup-node@fix-armv7-cache
       with:
         node-version: 16
         architecture: ${{ matrix.architecture }}
