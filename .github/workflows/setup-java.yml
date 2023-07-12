@@ -23,7 +23,7 @@ jobs:
       with:
 #         cache: ${{ 'false' != 'false' && 'npm' || '' }}
         node-version: 16
-        architecture: armv7
+        architecture: arm
 #       - name: Checkout
 #         uses: actions/checkout@v3
 # #         with:
