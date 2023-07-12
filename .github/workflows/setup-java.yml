@@ -72,13 +72,6 @@ jobs:
 
   test-setup-node-v3:
     runs-on: ${{ matrix.os }}
-#     defaults:
-#       run:
-#         shell: bash
-#     env:
-#       PIP_DISABLE_PIP_VERSION_CHECK: 1
-#       PIP_NO_PYTHON_VERSION_WARNING: 1
-#       PIP_ROOT_USER_ACTION: ignore
     strategy:
       fail-fast: false
       matrix:
@@ -98,6 +91,28 @@ jobs:
         node-version: 16
         architecture: ${{ matrix.architecture }}
 
+
+
+  setup-node-v3-previous:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, ubuntu-22.04]
+        architecture: [x64]
+    steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3 # louislam/setup-node@fix-armv7-cache 
+      id: setup-node
+      with:
+        node-version: 12
+        architecture: ${{ matrix.architecture }}
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 12
+        architecture: ${{ matrix.architecture }}
 
 #   test-brew:
 #     runs-on: ${{ matrix.os }}
