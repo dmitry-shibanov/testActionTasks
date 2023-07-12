@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, windows-lates]
+        os: [ubuntu-20.04]
         architecture: [armv7l, arm]
     steps:
     - name: Setup Node.js
@@ -26,7 +26,6 @@ jobs:
         node-version: 16
         architecture: ${{ matrix.architecture }}
         
-    - run: node --version
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
