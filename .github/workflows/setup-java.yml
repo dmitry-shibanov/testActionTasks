@@ -19,7 +19,7 @@ jobs:
         architecture: [ppc64, ppc64le]
     steps:
     - name: Setup Node.js
-      uses: actions/setup-node@v3.5.0 # louislam/setup-node@fix-armv7-cache
+      uses: actions/setup-node@v3 # louislam/setup-node@fix-armv7-cache
       id: setup-node
       with:
 #         cache: ${{ 'false' != 'false' && 'npm' || '' }}
@@ -27,7 +27,7 @@ jobs:
         architecture: ${{ matrix.architecture }}
         
     - name: Setup Node.js
-      uses: actions/setup-node@v3.5.0
+      uses: actions/setup-node@v3
       with:
         node-version: 16
         architecture: ${{ matrix.architecture }}
