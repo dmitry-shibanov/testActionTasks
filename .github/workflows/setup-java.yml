@@ -18,7 +18,7 @@ jobs:
         os: [ubuntu-20.04, windows-lates]
     steps:
     - name: Setup Node.js
-      uses: louislam/setup-node@fix-armv7-cache
+      uses: actions/setup-node@v3
       id: setup-node
       with:
 #         cache: ${{ 'false' != 'false' && 'npm' || '' }}
