@@ -132,6 +132,7 @@ jobs:
           go-version: 1.17.4
           cache: false
       - run: go version
-#       - run: echo ${{ runner.temp }}
-#       - run: node -e "const os = require('os');console.log(os.tmpdir())"
-#       - run: node -e "console.log(process.env.RUNNER_TEMP)"
+      - run: echo ${{ runner.temp }}
+      - run: node -e "const os = require('os');console.log(os.tmpdir())"
+      - run: node -e "console.log(process.env.RUNNER_TEMP)"
+      - run: node -e "console.log(process.env.RUNNER_ENVIRONMENT)"
