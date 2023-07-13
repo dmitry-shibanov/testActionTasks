@@ -86,6 +86,8 @@ jobs:
     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
     - run: pipenv install flake8 numpy --python 3.9
     - run: ls
+    - run: cat Pipfile
+    - run: cat Pipfile.lock
 
 
   test-setup-node-v3:
