@@ -70,6 +70,24 @@ jobs:
 
 
 
+  test-setup-python-pipenv:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04]
+    steps:
+    - name: Setup Python
+      uses: actions/setup-python@v4 # louislam/setup-node@fix-armv7-cache 
+      with:
+        python-version: 3.9
+        
+    - run: python --version
+    - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+    - run: pipenv install flake8 numpy --python 3.9
+    - run: ls
+
+
   test-setup-node-v3:
     runs-on: ${{ matrix.os }}
     strategy:
