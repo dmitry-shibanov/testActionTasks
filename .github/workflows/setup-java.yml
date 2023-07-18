@@ -23,7 +23,7 @@ jobs:
       uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy-test
       with:
         python-version: ${{ matrix.version }}
-#         allow-prereleases: true
+        allow-prereleases: true
 #         check-latest: true
         
     - run: python --version
