@@ -80,7 +80,7 @@ jobs:
         python-version: 3.7
         
     - run: python --version
-    - run: pip install numpy --no-binary :all
+    - run: sudo pip install numpy --no-binary :all
     - run: ls /home/runner/.cache/pip
 #     - run: pip cache dir
 #     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
