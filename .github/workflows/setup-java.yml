@@ -85,7 +85,7 @@ jobs:
     - run: sudo pip --version
     - run: sudo pip cache dir
     - run: sudo pip install numpy --no-binary :all
-    - run: ls $(sudo pip cache dir)
+    - run: sudo ls $(sudo pip cache dir)
     - run: sudo ls /home/runner/.cache/pip
 #     - run: pip cache dir
 #     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
