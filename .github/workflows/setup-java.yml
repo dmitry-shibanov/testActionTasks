@@ -80,6 +80,8 @@ jobs:
         python-version: 3.7
         
     - run: python --version
+    - run: pip --version
+    - run: sudo pip --version
     - run: sudo pip install numpy --no-binary :all
     - run: sudo ls /home/runner/.cache/pip
 #     - run: pip cache dir
