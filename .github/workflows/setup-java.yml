@@ -20,7 +20,7 @@ jobs:
     steps:
     - run: rm -rf /opt/hostedtoolcache/PyPy/*
     - name: Setup Python
-      uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy
+      uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy-test
       with:
         python-version: ${{ matrix.version }}
         check-latest: true
