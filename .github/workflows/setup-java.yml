@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
-        version: [pypy-3.9-7.3-dev, pypy3.9-7.3, pypy3.10-7.3-dev, pypy3.10-7.3]
+        version: [pypy3.9-7.3dev, pypy3.9-7.3, pypy3.10-7.3-dev, pypy3.10-7.3]
     steps:
     - run: rm -rf /opt/hostedtoolcache/PyPy/*
     - name: Setup Python
