@@ -16,20 +16,14 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
-        architecture: [arm, armv7l]
+        version: [pypy3.9-7.3-dev, pypy3.9-7.3, pypy3.10-7.3-dev, pypy3.10-7.3]
     steps:
-    - name: Setup Node.js
-      uses: louislam/setup-node@fix-armv7-cache # louislam/setup-node@fix-armv7-cache 
-      id: setup-node
+    - name: Setup Python
+      uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy
       with:
-        node-version: 16
-        architecture: ${{ matrix.architecture }}
+        python-version: ${{ matrix.version }}
         
-    - name: Setup Node.js
-      uses: louislam/setup-node@fix-armv7-cache
-      with:
-        node-version: 16
-        architecture: ${{ matrix.architecture }}
+    - run: python --version
 #       - name: Checkout
 #         uses: actions/checkout@v3
 # #         with:
