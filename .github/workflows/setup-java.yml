@@ -77,136 +77,60 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4 # louislam/setup-node@fix-armv7-cache 
       with:
-        python-version: 3.9
+        python-version: 3.7
         
     - run: python --version
-    - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-    - run: pipenv install flake8==6.0.0 numpy==1.25.1 # --python 3.9
-    - run: ls
-    - run: cat Pipfile
-    - run: cat Pipfile.lock
+    - run: pip install numpy --no-binary
+    - run: ls /home/runner/.cache/pip
+#     - run: pip cache dir
+#     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+#     - run: pipenv install flake8==6.0.0 numpy==1.25.1 # --python 3.9
+#     - run: ls
+#     - run: cat Pipfile
+#     - run: cat Pipfile.lock
 
 
-  test-setup-node-v3:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-20.04, ubuntu-22.04]
-        architecture: [arm, armv7l]
-    steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@v3 # louislam/setup-node@fix-armv7-cache 
-      id: setup-node
-      with:
-        node-version: 16
-        architecture: ${{ matrix.architecture }}
+#   test-setup-node-v3:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-20.04, ubuntu-22.04]
+#         architecture: [arm, armv7l]
+#     steps:
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v3 # louislam/setup-node@fix-armv7-cache 
+#       id: setup-node
+#       with:
+#         node-version: 16
+#         architecture: ${{ matrix.architecture }}
         
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        architecture: ${{ matrix.architecture }}
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: 16
+#         architecture: ${{ matrix.architecture }}
 
 
 
-  setup-node-v3-previous:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-20.04, ubuntu-22.04]
-        architecture: [x64]
-    steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@v3 # louislam/setup-node@fix-armv7-cache 
-      id: setup-node
-      with:
-        node-version: 12
-        architecture: ${{ matrix.architecture }}
+#   setup-node-v3-previous:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [ubuntu-20.04, ubuntu-22.04]
+#         architecture: [x64]
+#     steps:
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v3 # louislam/setup-node@fix-armv7-cache 
+#       id: setup-node
+#       with:
+#         node-version: 12
+#         architecture: ${{ matrix.architecture }}
         
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 12
-        architecture: ${{ matrix.architecture }}
-
-#   test-brew:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [macos-latest]
-#     steps:
-# #       - run: rm -rf $RUNNER_TOOL_CACHE/Python/3.7.17
-#       - uses: actions/setup-python@v4
-#         with:
-#           python-version: 3.7
-#       - run: python --version
-#       - run: python -c "help('modules')"
-#       - run: python -c "import bz2"
-#       - run: echo -e "import bz2\nc = bz2.compress(b\"\"\"djksaljdljla\"\"\")\nprint(c)" | python
-# #       - run: |
-# #           ls /usr/local/opt
-# #           ls $(brew --prefix bzip2)
-# #       - uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy
-# #         with:
-# #           python-version: pypy3.10-v7.3dev
-          
-#       - run: python --version
-#   test-go-unpack-directly:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [windows-latest]
-#     steps:
-#       - uses: dmitry-shibanov/setup-go@unpack-directly
-#         with:
-#           go-version: 1.17.4
-#           cache: false
-#       - run: go version
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: 12
+#         architecture: ${{ matrix.architecture }}      
       
-      
-#   test-go-unpack-os-temp:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [windows-latest]
-#     steps:
-#       - uses: dmitry-shibanov/setup-go@v-dmshib/unpack-to-different-temp
-#         with:
-#           go-version: 1.17.4
-#           cache: false
-#       - run: go version
-      
-      
-#   test-go-unpack-disk-d:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [windows-latest]
-#     steps:
-#       - uses: akv-platform/setup-go@performance
-#         with:
-#           go-version: 1.17.4
-#           cache: false
-#       - run: go version
-#   test-go-default:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [windows-latest]
-#     steps:
-#       - uses: actions/setup-go@v3
-#         with:
-#           go-version: 1.17.4
-#           cache: false
-#       - run: go version
-#       - run: echo ${{ runner.temp }}
-#       - run: node -e "const os = require('os');console.log(os.tmpdir())"
-#       - run: node -e "console.log(process.env.RUNNER_TEMP)"
-#       - run: node -e "console.log(process.env.RUNNER_ENVIRONMENT)"
