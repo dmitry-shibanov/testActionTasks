@@ -81,7 +81,9 @@ jobs:
         
     - run: python --version
     - run: pip --version
+    - run: pip cache dir
     - run: sudo pip --version
+    - run: sudo pip cache dir
     - run: sudo pip install numpy --no-binary :all
     - run: sudo ls /home/runner/.cache/pip
 #     - run: pip cache dir
