@@ -22,6 +22,7 @@ jobs:
       uses: dmitry-shibanov/setup-python@v-dmshib/add-dev-option-pypy
       with:
         python-version: ${{ matrix.version }}
+        check-latest: true
         
     - run: python --version
 #       - name: Checkout
