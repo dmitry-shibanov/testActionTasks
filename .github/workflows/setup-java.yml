@@ -74,19 +74,24 @@ jobs:
       matrix:
         os: [ubuntu-22.04]
     steps:
-    - name: Setup Python
-      uses: actions/setup-python@v4 # louislam/setup-node@fix-armv7-cache 
+    - name: Setup Go
+      uses: actions/setup-go@v3 # louislam/setup-node@fix-armv7-cache 
       with:
-        python-version: 3.7
+        go-version: 1.12.0-rc.3
+    - run: go version
+#     - name: Setup Python
+#       uses: actions/setup-python@v4 # louislam/setup-node@fix-armv7-cache 
+#       with:
+#         python-version: 3.7
         
-    - run: python --version
-    - run: pip --version
-    - run: pip cache dir
-    - run: sudo pip --version
-    - run: sudo pip cache dir
-    - run: sudo pip install numpy --no-binary :all
-    - run: sudo ls $(sudo pip cache dir)
-    - run: sudo ls /home/runner/.cache/pip
+#     - run: python --version
+#     - run: pip --version
+#     - run: pip cache dir
+#     - run: sudo pip --version
+#     - run: sudo pip cache dir
+#     - run: sudo pip install numpy --no-binary :all
+#     - run: sudo ls $(sudo pip cache dir)
+#     - run: sudo ls /home/runner/.cache/pip
 #     - run: pip cache dir
 #     - run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 #     - run: pipenv install flake8==6.0.0 numpy==1.25.1 # --python 3.9
