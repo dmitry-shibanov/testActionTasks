@@ -24,7 +24,7 @@ jobs:
       with:
         python-version: ${{ matrix.version }}
 
-
+    - run: pip install numpy
     - run: python --version
 #       - name: Checkout
 #         uses: actions/checkout@v3
