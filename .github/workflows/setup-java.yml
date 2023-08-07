@@ -17,7 +17,9 @@ jobs:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
     steps:
-      - run: sudo apt-get install -y --allow-downgrades python3-tk
+      - run: |
+          apt-get update
+          sudo apt-get install -y --allow-downgrades python3-tk
 # #     - run: rm -rf /opt/hostedtoolcache/PyPy/*
 #     - name: Setup Python
 #       uses: actions/setup-python@61a6322f88396a6271a6ee3565807d608ecaddd1
