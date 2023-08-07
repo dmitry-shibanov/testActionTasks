@@ -28,6 +28,7 @@ jobs:
 
 #     - run: pip install numpy
       - run: python --version
+      - run: which python
 #       - name: Checkout
 #         uses: actions/checkout@v3
 # #         with:
