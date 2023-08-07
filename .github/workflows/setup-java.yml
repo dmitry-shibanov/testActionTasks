@@ -15,17 +15,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04, macos-13]
-        version: [3.7.17]
+        os: [ubuntu-20.04, ubuntu-22.04]
     steps:
-#     - run: rm -rf /opt/hostedtoolcache/PyPy/*
-    - name: Setup Python
-      uses: actions/setup-python@61a6322f88396a6271a6ee3565807d608ecaddd1
-      with:
-        python-version: ${{ matrix.version }}
+      - run: sudo apt-get install -y --allow-downgrades python3-tk
+# #     - run: rm -rf /opt/hostedtoolcache/PyPy/*
+#     - name: Setup Python
+#       uses: actions/setup-python@61a6322f88396a6271a6ee3565807d608ecaddd1
+#       with:
+#         python-version: ${{ matrix.version }}
 
-    - run: pip install numpy
-    - run: python --version
+#     - run: pip install numpy
+#     - run: python --version
 #       - name: Checkout
 #         uses: actions/checkout@v3
 # #         with:
