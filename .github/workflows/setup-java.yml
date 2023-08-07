@@ -18,7 +18,7 @@ jobs:
         os: [ubuntu-20.04, ubuntu-22.04]
     steps:
       - run: |
-          apt-get update
+          sudo apt-get update
           sudo apt-get install -y --allow-downgrades python3-tk
 # #     - run: rm -rf /opt/hostedtoolcache/PyPy/*
 #     - name: Setup Python
