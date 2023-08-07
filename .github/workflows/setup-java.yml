@@ -24,6 +24,7 @@ jobs:
 # #     - run: rm -rf /opt/hostedtoolcache/PyPy/*
       - run: echo $PATH
       - run: ls /usr/local/bin
+      - run: /usr/local/bin/python --version
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -31,6 +32,7 @@ jobs:
 
 #     - run: pip install numpy
       - run: python --version
+      - run: /usr/local/bin/python --version
       - run: ls /usr/local/bin
       - run: which python
       - run: echo $PATH
