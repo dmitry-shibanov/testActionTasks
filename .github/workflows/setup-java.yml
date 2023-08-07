@@ -31,6 +31,7 @@ jobs:
         with:
           python-version: ${{ matrix.version }}
       - run: echo '${{ steps.cpy.outputs.python-path }}'
+      - run: ${{ steps.cpy.outputs.python-path }} --version
 #     - run: pip install numpy
       - run: python --version
       - run: /usr/local/bin/python --version
