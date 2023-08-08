@@ -5,9 +5,9 @@ on:
 jobs:
   test-ip-ubuntu:
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash -el {0}
+    # defaults:
+    #   run:
+    #     shell: bash -el {0}
 #     env:
 #       PIP_DISABLE_PIP_VERSION_CHECK: 1
 #       PIP_NO_PYTHON_VERSION_WARNING: 1
