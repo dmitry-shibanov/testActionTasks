@@ -18,9 +18,10 @@ jobs:
         os: [ubuntu-20.04, ubuntu-22.04, macos-11, macos-12]
         version: ["==3.10.10", "==3.10"]
     steps:
-      - uses: actions/setup-node@main
+      - uses: dmitry-shibanov/setup-node@v-dmshib/change-getinput-to-getstate-cache
         with:
           node-version: 16
+          cache: npm
           cache-dependency-path: ./package.json
       - run: node --version
       - run: npm install express
