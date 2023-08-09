@@ -51,7 +51,7 @@ jobs:
           ls -lA /Users/runner/hostedtoolcache/Python/3.11.4/x64
           ls -lA /Users/runner/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages
           echo "--------------"
-          ls -lA /Users/runner/hostedtoolcache/Python/3.10.12/x64/lib/python3.11/site-packages
+          ls -lA /Users/runner/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages
           which pip
           pip3 show pip
           pip3 install --ignore-installed pip==23.0
