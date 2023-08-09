@@ -33,6 +33,7 @@ jobs:
       - run: go version
       - run: |
           # find /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages -name 'pip-*.dist-info'
+          ls -lA /Users/runner/hostedtoolcache/Python
           which pip
           pip3 show pip
           pip3 install --ignore-installed pip==23.0
