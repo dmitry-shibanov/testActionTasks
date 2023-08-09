@@ -19,6 +19,20 @@ jobs:
         version: ["==3.10.10", "==3.10"]
     steps:
       - uses: actions/checkout@v3
+      - run: |
+          ls -lA /usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages
+          node -e "const fs = require('fs');console.log(fs.realpathSync('/usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages'))"
+          which python
+          pkgutil --pkgs
+          sudo pkgutil --forget org.python.Python.PythonFramework-2.7
+          ls -la /Users/runner/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages
+          brew ls python@3.11
+          brew uninstall --ignore-dependencies python@3.11
+          ls -la /Users/runner/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages
+          echo $PATH
+          pip show pip
+          pip install pip==23.0
+          pip show pip
       - uses: dmitry-shibanov/setup-node@v-dmshib/change-getinput-to-getstate-cache
         with:
           node-version: 16
