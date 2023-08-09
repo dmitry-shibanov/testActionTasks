@@ -34,7 +34,7 @@ jobs:
       - run: |
           # find /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages -name 'pip-*.dist-info'
           pip3 show pip
-          pip3 install pip==23.0
+          pip3 install --ignore-installed pip==23.0
           pip3 show pip
       # - run: |
       #     sudo apt-get update
