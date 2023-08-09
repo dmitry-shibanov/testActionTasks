@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 16
           cache: npm
-          cache-dependency-path: ./package.json
+          cache-dependency-path: package.json
       - run: node --version
       - run: npm install express
       
