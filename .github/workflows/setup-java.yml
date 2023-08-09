@@ -22,8 +22,8 @@ jobs:
       - uses: dmitry-shibanov/setup-node@v-dmshib/change-getinput-to-getstate-cache
         with:
           node-version: 16
-          cache: npm
-          cache-dependency-path: package.json
+          # cache: npm
+          # cache-dependency-path: package.json
       - run: node --version
       - run: npm install express
       
