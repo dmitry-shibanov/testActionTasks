@@ -176,11 +176,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, windows-latest]
+        os: [ubuntu-22.04]
         architecture: [x64, ppc, ppc64, ppc64le]
     steps:
     - name: Setup Go
-      uses: actions/setup-go@v3
+      uses: adilhusain-s/setup-go@linux-ppc64le # actions/setup-go@v3
       with:
         go-version: '1.20'
         architecture: ${{ matrix.architecture }}
