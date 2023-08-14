@@ -19,28 +19,33 @@ jobs:
         # version: ["==3.10.10", "==3.10"]
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          sudo apt-get remove -y python3
+      # - run: |
+      #     sudo apt-get remove -y python3
 
-          wget https://github.com/pyston/pyston/releases/download/pyston_2.3.5/pyston_2.3.5_20.04_amd64.deb
-          ls
-          currentPath=$(pwd)
-          echo "currentPath is $currentPath"
-          sudo apt install $currentPath/pyston_2.3.5_20.04_amd64.deb
-          ls /usr/lib/
-          python3 --version
-          # which python
+      #     wget https://github.com/pyston/pyston/releases/download/pyston_2.3.5/pyston_2.3.5_20.04_amd64.deb
+      #     ls
+      #     currentPath=$(pwd)
+      #     echo "currentPath is $currentPath"
+      #     sudo apt install $currentPath/pyston_2.3.5_20.04_amd64.deb
+      #     ls /usr/lib/
+      #     python3 --version
+      #     # which python
           
-      - run: |
-          # python --version
-          ls /usr/bin
-          which python3
-          echo "check python3.8-pyston2.3"
-          python3.8-pyston2.3 --version
-          echo "check python3.8"
-          python3.8 --version
-          echo "check with python code"
-          echo -e "import sys\nprint(hasattr(sys, 'pyston_version_info'))" | python3.8-pyston2.3
+      # - run: |
+      #     # python --version
+      #     ls /usr/bin
+      #     which python3
+      #     echo "check python3.8-pyston2.3"
+      #     python3.8-pyston2.3 --version
+      #     echo "check python3.8"
+      #     python3.8 --version
+      #     echo "check with python code"
+      #     echo -e "import sys\nprint(hasattr(sys, 'pyston_version_info'))" | python3.8-pyston2.3
+
+
+
+
+          
       # - run: |
       #     ls -lA /usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages
       #     node -e "const fs = require('fs');console.log(fs.realpathSync('/usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages'))"
@@ -59,6 +64,7 @@ jobs:
         with:
           version: 8
       - run: pnpm add express
+      - run: ls
       - uses: actions/setup-node@v3
         with:
           node-version: 18
