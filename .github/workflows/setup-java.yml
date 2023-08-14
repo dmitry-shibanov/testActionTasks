@@ -66,11 +66,11 @@ jobs:
       - run: pnpm add express semver
       # - run: npm install express semver jest
       - run: ls
-      - uses: actions/setup-node@v3.7.0 # dmitry-shibanov/setup-node@v-dmshib/add-debug-lines
+      - uses: dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # actions/setup-node@v3.7.0 # 
         with:
           node-version: 18
           cache: pnpm
-          cache-dependency-path: package.json
+          # cache-dependency-path: package.json
       - run: node --version
       
       - run: ls /home/runner/setup-pnpm/node_modules/.bin/store/v3
