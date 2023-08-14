@@ -60,17 +60,19 @@ jobs:
       #     pip show pip
       #     pip install pip==23.0
       #     pip show pip
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 7.33
-      - run: pnpm add express
+      # - uses: pnpm/action-setup@v2
+      #   with:
+      #     version: 7.33
+      # - run: pnpm add express
+      - run: npm install express semver
       - run: ls
       - uses: dmitry-shibanov/setup-node@v-dmshib/add-debug-lines
         with:
           node-version: 18
-          cache: pnpm
+          cache: npm
           # cache-dependency-path: package.json
-      - run: node --version
+      # - run: node --version
+      
       - run: ls /home/runner/setup-pnpm/node_modules/.bin/store/v3
       
       # - uses: actions/setup-go@v4
