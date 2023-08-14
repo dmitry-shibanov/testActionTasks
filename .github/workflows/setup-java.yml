@@ -62,7 +62,7 @@ jobs:
       #     pip show pip
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 7.33
       - run: pnpm add express
       - run: ls
       - uses: actions/setup-node@v3
