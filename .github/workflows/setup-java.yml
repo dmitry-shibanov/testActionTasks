@@ -33,6 +33,7 @@ jobs:
           
       - run: |
           # python --version
+          ls /usr/bin
           which python3
           echo -e "import sys\nhasattr(sys, "pyston_version_info")" | python3
       # - run: |
