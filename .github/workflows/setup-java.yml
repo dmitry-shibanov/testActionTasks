@@ -19,10 +19,6 @@ jobs:
         # version: ["==3.10.10", "==3.10"]
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          ls -lA ~
-          cd ~
-          pwd
       # - run: |
       #     ls -lA /usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages
       #     node -e "const fs = require('fs');console.log(fs.realpathSync('/usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages'))"
@@ -175,20 +171,19 @@ jobs:
 
 
 
-#   setup-node-v3-previous:
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         os: [ubuntu-20.04, ubuntu-22.04]
-#         architecture: [x64]
-#     steps:
-#     - name: Setup Node.js
-#       uses: actions/setup-node@v3 # louislam/setup-node@fix-armv7-cache 
-#       id: setup-node
-#       with:
-#         node-version: 12
-#         architecture: ${{ matrix.architecture }}
+  setup-go-v3:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest]
+        architecture: [x64, ppc, ppc64, ppc64le]
+    steps:
+    - name: Setup Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: '1.20'
+        architecture: ${{ matrix.architecture }}
         
 #     - name: Setup Node.js
 #       uses: actions/setup-node@v3
