@@ -29,8 +29,10 @@ jobs:
           sudo apt install $currentPath/pyston_2.3.5_20.04_amd64.deb
           python --version
           which python
+          
+      - run: |
+          python --version
           echo -e "import sys\nhasattr(sys, "pyston_version_info")" | python
-      - run: python --version
       # - run: |
       #     ls -lA /usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages
       #     node -e "const fs = require('fs');console.log(fs.realpathSync('/usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages'))"
