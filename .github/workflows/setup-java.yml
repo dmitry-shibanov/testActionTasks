@@ -15,8 +15,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04, macos-11, macos-12]
-        version: ["==3.10.10", "==3.10"]
+        os: [ubuntu-20.04, ubuntu-22.04]
+        # version: ["==3.10.10", "==3.10"]
     steps:
       - uses: actions/checkout@v3
       # - run: |
@@ -33,10 +33,10 @@ jobs:
       #     pip show pip
       #     pip install pip==23.0
       #     pip show pip
-      - uses: dmitry-shibanov/setup-node@v-dmshib/change-getinput-to-getstate-cache
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          # cache: npm
+          node-version: 18
+          cache: npm
           # cache-dependency-path: package.json
       - run: node --version
       - run: npm install express
@@ -44,37 +44,37 @@ jobs:
       # - uses: actions/setup-go@v4
       #   with:
       #     go-version: '~1.21.0-0'
-      - run: go version
-      - run: |
-          # find /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages -name 'pip-*.dist-info'
-          ls -lA /Users/runner/hostedtoolcache/Python/3.11.4
-          ls -lA /Users/runner/hostedtoolcache/Python/3.11.4/x64
-          ls -lA /Users/runner/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages
-          echo "--------------"
-          ls -lA /Users/runner/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages
-          which pip
-          pip3 show pip
-          pip3 install --ignore-installed pip==23.0
-          pip3 show pip
+      # - run: go version
+      # - run: |
+      #     # find /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages -name 'pip-*.dist-info'
+      #     ls -lA /Users/runner/hostedtoolcache/Python/3.11.4
+      #     ls -lA /Users/runner/hostedtoolcache/Python/3.11.4/x64
+      #     ls -lA /Users/runner/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages
+      #     echo "--------------"
+      #     ls -lA /Users/runner/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages
+      #     which pip
+      #     pip3 show pip
+      #     pip3 install --ignore-installed pip==23.0
+      #     pip3 show pip
       # - run: |
       #     sudo apt-get update
       #     sudo apt-get install -y --allow-downgrades python3-tk
 # #     - run: rm -rf /opt/hostedtoolcache/PyPy/*
-      - run: echo $PATH
-      - run: ls /usr/local/bin
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        id: cpy
-        with:
-          python-version: ${{ matrix.version }}
-      - run: echo '${{ steps.cpy.outputs.python-path }}'
-      - run: ${{ steps.cpy.outputs.python-path }} --version
-#     - run: pip install numpy
-      - run: python --version
-      - run: /usr/local/bin/python --version
-      - run: ls /usr/local/bin
-      - run: which python
-      - run: echo $PATH
+#       - run: echo $PATH
+#       - run: ls /usr/local/bin
+#       - name: Setup Python
+#         uses: actions/setup-python@v4
+#         id: cpy
+#         with:
+#           python-version: ${{ matrix.version }}
+#       - run: echo '${{ steps.cpy.outputs.python-path }}'
+#       - run: ${{ steps.cpy.outputs.python-path }} --version
+# #     - run: pip install numpy
+#       - run: python --version
+#       - run: /usr/local/bin/python --version
+#       - run: ls /usr/local/bin
+#       - run: which python
+#       - run: echo $PATH
 #       - name: Checkout
 #         uses: actions/checkout@v3
 # #         with:
