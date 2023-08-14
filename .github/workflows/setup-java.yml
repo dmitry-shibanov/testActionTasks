@@ -27,6 +27,7 @@ jobs:
           currentPath=$(pwd)
           echo "currentPath is $currentPath"
           sudo apt install $currentPath/pyston_2.3.5_20.04_amd64.deb
+          ls /usr/lib/
           python --version
           which python
           
