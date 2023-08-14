@@ -62,7 +62,7 @@ jobs:
       #     pip show pip
       - uses: pnpm/action-setup@v2
         with:
-          version: 7.33
+          version: 6.11 # 7.33
       - run: pnpm add express semver -w
       # - run: npm install express semver jest
       - run: ls
@@ -70,10 +70,10 @@ jobs:
         with:
           node-version: 18
           cache: pnpm
-          # cache-dependency-path: package.json
+          cache-dependency-path: yarn.lock
       - run: node --version
       
-      - run: ls /home/runner/setup-pnpm/node_modules/.bin/store/v3
+      # - run: ls /home/runner/setup-pnpm/node_modules/.bin/store/v3
       
       # - uses: actions/setup-go@v4
       #   with:
