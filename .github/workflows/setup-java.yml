@@ -71,6 +71,7 @@ jobs:
           cache: pnpm
           # cache-dependency-path: package.json
       - run: node --version
+      - run: ls /home/runner/setup-pnpm/node_modules/.bin/store/v3
       
       # - uses: actions/setup-go@v4
       #   with:
