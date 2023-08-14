@@ -62,7 +62,7 @@ jobs:
       #     pip show pip
       - uses: pnpm/action-setup@v2
         with:
-          version: 6.11
+          version: 7.33
       - run: pnpm add express semver
       # - run: npm install express semver jest
       - run: ls
@@ -70,7 +70,7 @@ jobs:
         with:
           node-version: 18
           cache: pnpm
-          cache-dependency-path: python-sqlite3.py
+          cache-dependency-path: Dockerfile
       - run: node --version
       
       # - run: ls /home/runner/setup-pnpm/node_modules/.bin/store/v3
