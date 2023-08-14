@@ -21,12 +21,14 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           python --version
+          which python
           wget https://github.com/pyston/pyston/releases/download/pyston_2.3.5/pyston_2.3.5_20.04_amd64.deb
           ls
           currentPath=$(pwd)
           echo "currentPath is $currentPath"
           sudo apt install $currentPath/pyston_2.3.5_20.04_amd64.deb
           python --version
+          which python
       # - run: |
       #     ls -lA /usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages
       #     node -e "const fs = require('fs');console.log(fs.realpathSync('/usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages'))"
