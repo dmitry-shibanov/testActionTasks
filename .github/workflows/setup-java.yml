@@ -22,7 +22,6 @@ jobs:
       - run: |
           sudo apt-get remove -y python3
 
-          which python
           wget https://github.com/pyston/pyston/releases/download/pyston_2.3.5/pyston_2.3.5_20.04_amd64.deb
           ls
           currentPath=$(pwd)
