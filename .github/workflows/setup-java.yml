@@ -19,6 +19,7 @@ jobs:
         # version: ["==3.10.10", "==3.10"]
     steps:
       - uses: actions/checkout@v3
+      - run: ls ~
       # - run: |
       #     ls -lA /usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages
       #     node -e "const fs = require('fs');console.log(fs.realpathSync('/usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages'))"
