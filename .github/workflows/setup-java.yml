@@ -64,14 +64,15 @@ jobs:
         with:
           version: 7.33
       - run: pnpm add express semver
+      - run: pnpm store path
       # - run: npm install express semver jest
       - run: ls
-      - uses: dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # actions/setup-node@v3.7.0 # 
-        with:
-          node-version: 18
-          cache: pnpm
-          cache-dependency-path: .github/workflows/go.mod
-      - run: node --version
+      # - uses: dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # actions/setup-node@v3.7.0 # 
+      #   with:
+      #     node-version: 18
+      #     cache: pnpm
+      #     cache-dependency-path: .github/workflows/go.mod
+      # - run: node --version
       
       # - run: ls /home/runner/setup-pnpm/node_modules/.bin/store/v3
       
