@@ -10,6 +10,9 @@
     "watch": "nodemon index.js"
   },
   "keywords": [],
+  "workspaces": [
+    ".github"
+  ],
   "engines": {
     "node": ">=16.13.1 <17.0.0",
     "npm": ">=8.1.2",
