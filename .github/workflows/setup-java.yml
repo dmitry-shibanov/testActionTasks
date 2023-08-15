@@ -70,12 +70,12 @@ jobs:
       - run: node -e "const child_prosecc = require('child_process');console.log(child_prosecc.execSync('pnpm store path --silent').toString());"
       # - run: npm install express semver jest
       - run: ls
-      # - uses: dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # actions/setup-node@v3.7.0 # 
-      #   with:
-      #     node-version: 18
-      #     cache: pnpm
-      #     cache-dependency-path: .github/workflows/go.mod
-      # - run: node --version
+      - uses: dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # actions/setup-node@v3.7.0 # 
+        with:
+          node-version: 18
+          cache: pnpm
+          cache-dependency-path: .github/workflows/go.mod
+      - run: node --version
       
       # - run: ls /home/runner/setup-pnpm/node_modules/.bin/store/v3
       
