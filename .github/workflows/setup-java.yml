@@ -64,8 +64,10 @@ jobs:
         with:
           version: 7.33
       - run: pnpm store path
+      - run: node -e "const child_prosecc = require('child_process');console.log(child_prosecc.execSync('pnpm store path').toString());"
       - run: pnpm add express semver
       - run: pnpm store path --silent
+      - run: node -e "const child_prosecc = require('child_process');console.log(child_prosecc.execSync('pnpm store path --silent').toString());"
       # - run: npm install express semver jest
       - run: ls
       # - uses: dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # actions/setup-node@v3.7.0 # 
