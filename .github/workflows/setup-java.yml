@@ -63,7 +63,7 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 7.33
-      - run: pnpm store --silent path -- --silent
+      - run: pnpm store path -- --silent --ignore-workspace
       - run: node -e "const child_prosecc = require('child_process');console.log(child_prosecc.execSync('pnpm store path').toString());"
       - run: pnpm add express semver
       - run: pnpm store path --silent
