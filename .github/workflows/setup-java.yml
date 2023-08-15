@@ -63,8 +63,9 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 7.33
-      - run: pnpm add express semver
       - run: pnpm store path
+      - run: pnpm add express semver
+      - run: pnpm store path --silent
       # - run: npm install express semver jest
       - run: ls
       # - uses: dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # dmitry-shibanov/setup-node@v-dmshib/add-debug-lines # actions/setup-node@v3.7.0 # 
