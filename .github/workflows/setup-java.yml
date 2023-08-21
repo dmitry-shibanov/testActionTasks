@@ -222,10 +222,45 @@ jobs:
       with:
         go-version: '1.20'
         architecture: ${{ matrix.architecture }}
-        
-#     - name: Setup Node.js
-#       uses: actions/setup-node@v3
-#       with:
-#         node-version: 12
-#         architecture: ${{ matrix.architecture }}      
+
+  setup-python-container:
+    runs-on: 'ubuntu-latest'
+    container: 'ghcr.io/lecrisut/dev-env:main'
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: [ gcc, llvm, intel ]
+        python-version: ["3.11.1", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: spglib/spglib
+          ref: ae2b2c4c70ebfded63da286412b3de451902ec4a
+      - name: Enable msvc toolchain on windows
+        uses: ilammy/msvc-dev-cmd@v1
+        if: contains(matrix.os, 'windows')
+      - name: Activate Intel compilers
+        # Not elegant, it will propagate all environment variable.
+        # Intel does not provide a way to output the environment variables to a file
+        # Note: PATH needs to be exported to GITHUB_PATH otherwise it can be overwritten
+        run: |
+          source /opt/intel/oneapi/setvars.sh
+          printenv >> $GITHUB_ENV
+          echo $PATH >> $GITHUB_PATH
+        if: matrix.toolchain == 'intel'
+      - uses: actions/checkout@v3
+      - name: Setup python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          allow-prereleases: true
+        # TODO: Replace with editable install once configure presets are available
+      - name: Install python bindings
+        run: python3 -m pip install .[test]
+      - uses: lukka/get-cmake@latest
+      - name: Run CMake configuration for ${{ matrix.toolchain }} toolchain
+        uses: lukka/run-cmake@v10.3
+        with:
+          workflowPreset: "${{ matrix.toolchain }}-ci"
+
       
