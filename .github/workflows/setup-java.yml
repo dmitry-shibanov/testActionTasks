@@ -236,7 +236,7 @@ jobs:
         with:
           repository: spglib/spglib
           ref: ae2b2c4c70ebfded63da286412b3de451902ec4a
-      - run: apt-get update && apt-get install -y lsb-release
+      - run: apt update && apt install -y lsb-release
       - name: Enable msvc toolchain on windows
         uses: ilammy/msvc-dev-cmd@v1
         if: contains(matrix.os, 'windows')
