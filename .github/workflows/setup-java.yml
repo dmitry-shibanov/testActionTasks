@@ -53,6 +53,9 @@ jobs:
           ls -lA /usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages
           echo "--------end ls-------------"
           node -e "const fs = require('fs');console.log(fs.realpathSync('/usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages'))"
+          echo "--------start ls /usr/local/lib/python3.11/site-packages-------------"
+          ls -lA /usr/local/lib/python3.11/site-packages
+          echo "--------end ls /usr/local/lib/python3.11/site-packages-------------"
           echo "--------which-------------"
           which python
           echo "--------forget python 2.7-------------"
