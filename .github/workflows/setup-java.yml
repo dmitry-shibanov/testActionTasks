@@ -53,8 +53,9 @@ jobs:
           ls -lA /usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages
           echo "--------end ls-------------"
           node -e "const fs = require('fs');console.log(fs.realpathSync('/usr/local/Cellar/python@3.11/3.11.4_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages'))"
-          echo "--------which ls-------------"
+          echo "--------which-------------"
           which python
+          echo "--------forget python 2.7-------------"
           pkgutil --pkgs
           sudo pkgutil --forget org.python.Python.PythonFramework-2.7
           echo "--------start ls-------------"
@@ -62,8 +63,13 @@ jobs:
           echo "--------end ls-------------"
           brew ls python@3.11
           brew uninstall --ignore-dependencies python@3.11
+          echo "--------start ls toolcache python 3.11-------------"
           ls -la /Users/runner/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages
+          echo "--------end ls toolcache python 3.11-------------"
           echo $PATH
+          echo "--------start ls /Library/Frameworks/Python.framework/Versions/Current/bin-------------"
+          ls -lA /Library/Frameworks/Python.framework/Versions/Current/bin
+          echo "--------end ls /Library/Frameworks/Python.framework/Versions/Current/bin-------------"
           pip show pip
           pip install pip==23.0
           pip show pip
