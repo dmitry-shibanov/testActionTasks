@@ -249,6 +249,7 @@ jobs:
         # with:
         #   repository: spglib/spglib
         #   ref: ae2b2c4c70ebfded63da286412b3de451902ec4a
+      - run: lsb_release -a
       - run: cat /etc/lsb-release
       - run: cat /etc/os-release
       # - run: |
