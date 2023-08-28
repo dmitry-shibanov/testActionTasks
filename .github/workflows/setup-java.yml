@@ -248,7 +248,7 @@ jobs:
         # with:
         #   repository: spglib/spglib
         #   ref: ae2b2c4c70ebfded63da286412b3de451902ec4a
-      # - run: cat /etc/lsb-release
+      - run: cat /etc/lsb-release
       # - run: cat /etc/os-release
       # - run: |
       #     echo -en 'DISTRIB_ID=Ubuntu\nDISTRIB_RELEASE=22.04\nDISTRIB_CODENAME=jammy\nDISTRIB_DESCRIPTION="Ubuntu 22.04.3 LTS"' >> /etc/lsb-release
