@@ -245,7 +245,7 @@ jobs:
         python-version: ["3.11.1", "3.11", "3.12"]
     steps:
       - uses: actions/checkout@v3
-      - run: apt-get install lsbrelease
+      - run: apt-get update && apt-get install -y lsb-release && apt-get clean all
         # with:
         #   repository: spglib/spglib
         #   ref: ae2b2c4c70ebfded63da286412b3de451902ec4a
