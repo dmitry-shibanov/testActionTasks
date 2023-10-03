@@ -221,19 +221,30 @@ jobs:
 
 
 
-  setup-go-v3:
+  setup-go-v4:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [windows-latest]
-        tag-version: [v4, v4.0.1]
     steps:
     - name: Setup Go
-      uses: actions/setup-go@${{ matrix.tag-version }}
+      uses: actions/setup-go@v4
       with:
         go-version: 1.19.6
-
+ 
+  setup-go-v401:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+    - name: Setup Go
+      uses: actions/setup-go@v4.0.1
+      with:
+        go-version: 1.19.6
+        
   # setup-python-container:
   #   runs-on: 'ubuntu-latest'
   #   container:
