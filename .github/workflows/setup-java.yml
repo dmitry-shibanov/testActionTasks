@@ -221,14 +221,18 @@ jobs:
 
 
 
-  # setup-go-v3:
-  #   runs-on: ${{ matrix.os }}
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       os: [ubuntu-22.04]
-  #   steps:
-  #   - run: lsb_release -a
+  setup-go-v3:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+        tag-version: [v4, v4.0.1]
+    steps:
+    - name: Setup Go
+      uses: actions/setup-go@${{ matrix.tag-version }}
+      with:
+        go-version: 1.19.6
 
   # setup-python-container:
   #   runs-on: 'ubuntu-latest'
