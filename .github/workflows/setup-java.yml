@@ -219,31 +219,42 @@ jobs:
 #         node-version: 16
 #         architecture: ${{ matrix.architecture }}
 
-
-
-  setup-go-v4:
+  setup-node-v4:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest]
+        os: [windows-latest, ubuntu-latest, windows-2019, ubuntu-22.04, ubuntu-18.04, macos-latest]
     steps:
-    - name: Setup Go
-      uses: actions/setup-go@v4
+    - name: Setup Node
+      uses: dmitry-shibanov/setup-node@v-dmshib/action-to-node20
       with:
-        go-version: 1.19.6
+        node-version: 12
+    - run: node --version
+
+  # setup-go-v4:
+  #   runs-on: ${{ matrix.os }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       os: [windows-latest]
+  #   steps:
+  #   - name: Setup Go
+  #     uses: actions/setup-go@v4
+  #     with:
+  #       go-version: 1.19.6
  
-  setup-go-v401:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest]
-    steps:
-    - name: Setup Go
-      uses: actions/setup-go@v4.0.1
-      with:
-        go-version: 1.19.6
+  # setup-go-v401:
+  #   runs-on: ${{ matrix.os }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       os: [windows-latest]
+  #   steps:
+  #   - name: Setup Go
+  #     uses: actions/setup-go@v4.0.1
+  #     with:
+  #       go-version: 1.19.6
         
   # setup-python-container:
   #   runs-on: 'ubuntu-latest'
