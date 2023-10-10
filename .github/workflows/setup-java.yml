@@ -245,6 +245,11 @@ jobs:
         python-version: "graalpy-23.x"
     - run: echo '${{ steps.cp310.outputs.python-version }}'
     - run: graalpy23.1 --version
+    - run: |
+        EXECUTABLE='${{ steps.cp310.outputs.python-version }}'
+        echo "EXECUTABLE is $EXECUTABLE"
+        EXECUTABLE=${EXECUTABLE/.0/}
+        ${EXECUTABLE} --version
     - run: ${{ steps.cp310.outputs.python-version }} --version
     
  
