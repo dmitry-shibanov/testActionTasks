@@ -248,7 +248,7 @@ jobs:
     - run: |
         EXECUTABLE='${{ steps.cp310.outputs.python-version }}'
         echo "EXECUTABLE is $EXECUTABLE"
-        EXECUTABLE=${EXECUTABLE/.0/}
+        EXECUTABLE="${EXECUTABLE%.*}"
         ${EXECUTABLE} --version
     - run: ${{ steps.cp310.outputs.python-version }} --version
     
