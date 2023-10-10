@@ -219,30 +219,31 @@ jobs:
 #         node-version: 16
 #         architecture: ${{ matrix.architecture }}
 
-  setup-node-v4:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, ubuntu-latest, windows-2019, ubuntu-22.04, ubuntu-18.04, macos-latest]
-    steps:
-    - name: Setup Node
-      uses: dmitry-shibanov/setup-node@v-dmshib/action-to-node20
-      with:
-        node-version: 12
-    - run: node --version
-
-  # setup-go-v4:
+  # setup-node-v4:
   #   runs-on: ${{ matrix.os }}
   #   strategy:
   #     fail-fast: false
   #     matrix:
-  #       os: [windows-latest]
+  #       os: [windows-latest, ubuntu-latest, windows-2019, ubuntu-22.04, ubuntu-18.04, macos-latest]
   #   steps:
-  #   - name: Setup Go
-  #     uses: actions/setup-go@v4
+  #   - name: Setup Node
+  #     uses: dmitry-shibanov/setup-node@v-dmshib/action-to-node20
   #     with:
-  #       go-version: 1.19.6
+  #       node-version: 12
+  #   - run: node --version
+
+  setup-python-main:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+    - uses: actions/setup-python@main
+      id: cp310
+      with:
+        python-version: "graalpy-23.x"
+    - run: echo '${{ steps.cp310.outputs.python-version }}'
  
   # setup-go-v401:
   #   runs-on: ${{ matrix.os }}
