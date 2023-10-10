@@ -245,6 +245,7 @@ jobs:
         python-version: "graalpy-23.x"
     - run: echo '${{ steps.cp310.outputs.python-version }}'
     - run: ${{ steps.cp310.outputs.python-version }} --version
+    - run: graalpy23.1 --version
  
   # setup-go-v401:
   #   runs-on: ${{ matrix.os }}
