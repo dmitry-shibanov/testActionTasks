@@ -242,7 +242,7 @@ jobs:
     steps:
     - uses: actions/setup-python@v4
       with:
-        python-version: ${{ matrix.os }}
+        python-version: ${{ matrix.version }}
     - run: python --version
     
   setup-python-main-allow-prereleases:
