@@ -240,7 +240,7 @@ jobs:
         os: [ubuntu-latest]
         version: [3.13.0-alpha.1, 3.13-dev]
     steps:
-    - uses: actions/setup-python@v3
+    - uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.version }}
     - run: python --version
