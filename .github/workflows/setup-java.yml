@@ -259,6 +259,7 @@ jobs:
         
     - run: python --version
     - run: echo "from setuptools import setup" | python
+    - run: echo "from setuptools.extern import packaging" | python
   # setup-go-v401:
   #   runs-on: ${{ matrix.os }}
   #   strategy:
