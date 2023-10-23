@@ -231,7 +231,33 @@ jobs:
   #     with:
   #       node-version: 12
   #   - run: node --version
+  setup-node-main:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        version: [20, 18]
+    steps:
+    - uses: actions/setup-node@main
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
 
+  setup-node-v3:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        version: [20, 18]
+    steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.version }}
+    - run: node --version
+
+    
   setup-python-main:
     runs-on: ${{ matrix.os }}
     strategy:
