@@ -258,7 +258,7 @@ jobs:
         allow-prereleases: true
         
     - run: python --version
-    - run: echo -e "from setuptools import setup" | python
+    - run: echo "from setuptools import setup" | python
   # setup-go-v401:
   #   runs-on: ${{ matrix.os }}
   #   strategy:
