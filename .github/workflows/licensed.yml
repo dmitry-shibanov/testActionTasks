@@ -46,7 +46,7 @@ jobs:
           sudo tar -xzf licensed.tar.gz
           sudo mv licensed /usr/local/bin/licensed
 
-      - name: licensed cache
+      - run: licensed cache
 
       - uses: actions/upload-artifact@v3
         with:
