@@ -256,7 +256,7 @@ jobs:
       with:
         node-version: ${{ matrix.version }}
         architecture: arm64
-    - run: ls "C:\hostedtoolcache\windows\node\20.10.0\arm64\node-v20.10.0-win-arm64"
+    - run: ls "C:\hostedtoolcache\windows\node\20.10.0\arm64"
     - run: node --version
 
     
