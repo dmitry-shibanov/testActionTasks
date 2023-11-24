@@ -249,12 +249,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
         version: [20, 18]
     steps:
     - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.version }}
+        architecture: arm64
     - run: node --version
 
     
