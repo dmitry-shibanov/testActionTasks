@@ -252,7 +252,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         version: [20, 18]
     steps:
-    - uses: actions/setup-node@v3
+    - uses: dmitry-shibanov/setup-node@v-dmshib/fix-arm64-for-windows
       with:
         node-version: ${{ matrix.version }}
         architecture: arm64
