@@ -254,7 +254,7 @@ jobs:
         version: [11, 17, 21]
         distribution: [temurin, adopt]
     steps:
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-java@v3
       with:
         java-version: ${{ matrix.version }}
         architecture: arm64
