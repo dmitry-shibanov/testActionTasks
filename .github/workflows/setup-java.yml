@@ -289,7 +289,7 @@ jobs:
       with:
         python-version: "3.10"
         cache: pip
-        cache-dependency-path: ./package.json
+        cache-dependency-path: ./Dockerfile
     - run: python --version
     - run: pip install Pillow numpy pandas
 
@@ -305,7 +305,7 @@ jobs:
       with:
         python-version: "3.10"
         cache: pip
-        cache-dependency-path: ./yarn.lock
+        cache-dependency-path: ./Dockerfile
     - run: python --version
     - run: pip install Pillow numpy pandas
         
