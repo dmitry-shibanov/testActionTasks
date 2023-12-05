@@ -245,21 +245,21 @@ jobs:
   #   - run: node --version
 
 
-  setup-java-v3:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        version: [11, 17, 21]
-        distribution: [temurin, adopt]
-    steps:
-    - uses: actions/setup-java@v3
-      with:
-        java-version: ${{ matrix.version }}
-        architecture: arm64
-        distribution: ${{ matrix.distribution }}
-    - run: java -version
+  # setup-java-v3:
+  #   runs-on: ${{ matrix.os }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       os: [ubuntu-latest, windows-latest]
+  #       version: [11, 17, 21]
+  #       distribution: [temurin, adopt]
+  #   steps:
+  #   - uses: actions/setup-java@v3
+  #     with:
+  #       java-version: ${{ matrix.version }}
+  #       architecture: arm64
+  #       distribution: ${{ matrix.distribution }}
+  #   - run: java -version
 
   # setup-node-v3:
   #   runs-on: ${{ matrix.os }}
@@ -276,31 +276,38 @@ jobs:
   #   - run: ls "C:\hostedtoolcache\windows\node\20.10.0\arm64"
   #   - run: node --version
 
-    
-  # setup-python-main:
-  #   runs-on: ${{ matrix.os }}
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       os: [ubuntu-latest]
-  #       version: [3.13.0-alpha.1, 3.13-dev]
-  #   steps:
-  #   - uses: actions/setup-python@v2
-  #     with:
-  #       python-version: ${{ matrix.version }}
-  #   - run: python --version
-    
-  # setup-python-main-allow-prereleases:
-  #   runs-on: ${{ matrix.os }}
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       os: [windows-latest]
-  #   steps:
-  #   - uses: actions/setup-python@v4
-  #     with:
-  #       python-version: 3.9.12
-  #       allow-prereleases: true
+
+  setup-python-v5-with-cache-fix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: dmitry-shibanov/setup-python@v-dmshib/update-to-node20
+      with:
+        python-version: "3.10"
+        cache: pip
+        cache-dependency-path: ./package.json
+    - run: python --version
+    - run: pip install Pillow numpy pandas
+
+  setup-python-v5-without-cache-fix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: takost/setup-python@update-to-node20
+      with:
+        python-version: "3.10"
+        cache: pip
+        cache-dependency-path: ./yarn.lock
+    - run: python --version
+    - run: pip install Pillow numpy pandas
         
   #   - run: python --version
   #   - run: echo "from setuptools import setup" | python
