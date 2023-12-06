@@ -252,6 +252,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     steps:
+    - uses: actions/checkout@v4
     - uses: actions/setup-go@main
       with:
         go-version: '1.20'
@@ -265,6 +266,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     steps:
+    - uses: actions/checkout@v4
     - uses: actions/setup-go@bfd2fb341f32be7281829126376a12a780ca79fc
       with:
         go-version: '1.20'
