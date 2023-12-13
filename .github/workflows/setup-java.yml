@@ -255,6 +255,7 @@ jobs:
     - uses: aparnajyothi-y/setup-node@addfixforcache
       with:
         node-version: '20'
+        cache: npm
         cache-dependency-path: ./package.json
     - run: npm install express@latest axios@latest lodash@latest
 
@@ -269,6 +270,7 @@ jobs:
     - uses: xiniria/setup-node@explicitly-exit-process
       with:
         node-version: '20'
+        cache: npm
         cache-dependency-path: ./Dockerfile
     - run: npm install express@latest axios@latest lodash@latest
 
@@ -283,6 +285,7 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
+        cache: npm
         cache-dependency-path: ./yarn.lock
     - run: npm install express@latest axios@latest lodash@latest
 
